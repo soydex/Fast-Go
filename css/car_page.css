@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+header{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+header nav ul li{
+    list-style: none;
+    display: inline;
+    padding: 10px;
+}
+header nav ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+
+.car_infos{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+#main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#paiement_secu{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#rent_me{
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 25px;
+    width: 100%;
+    text-align: center;
+}
+
+#dispo{
+    color: green;
+    font-weight: bold;
+}
+
+#dispo::before{
+    content: " ";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+
+.main_content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.car_card img{
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+}
+
+.car_card{
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    padding: 1rem;
+}
+
+.car_card_info{
+    position: absolute;
+    bottom: 10px;
+}
+
+.car_card a{
+    text-decoration: none;
+    color: black;
+}
+
+#car_description{
+    width: 220px;
+}

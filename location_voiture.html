@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/car_page.css">
+    <title>Car page</title>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="logo_fast&go.png" alt="" srcset="" width="200"></a>
+        <nav>
+          <ul>
+            <li><a href="#">Supercar</a></li>
+            <li><a href="#">Berline</a></li>
+            <li><a href="#">Tout-Terrain</a></li>
+            <li><a href="#">Deux-roues</a></li>
+            <li><a id="compte" href="#">COMPTE</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main id="main">
+        <div id="car_imgs" class="car_imgs"></div>
+        <div class="car_infos">
+            <h2 id="car_brand_name" class="car_brand_name"></h2>
+            <span id="dispo">Disponible</span>
+            <p id="car_description"></p>
+            <p>prix: <span id="prix"></span>€/jour</p>
+            <a id="rent_me" href="">Louez-Moi</a>
+            <div id="paiement_secu">
+                <img src="card.png" alt="" srcset="">
+                <p>Paiement sécurisé en toute circonstance</p>
+            </div>
+        </div>
+      </main>
+</body>
+<script src="js/car.js"></script>
+</html>
