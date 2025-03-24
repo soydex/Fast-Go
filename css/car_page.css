@@ -89,6 +89,13 @@ header nav ul li a{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
     padding: 1rem;
+    transition: 0.6s;
+}
+
+.car_card:hover{
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
 }
 
 .car_card_info{
@@ -99,6 +106,12 @@ header nav ul li a{
 .car_card a{
     text-decoration: none;
     color: black;
+}
+
+.car_card p{
+    font-weight: normal;
+    color: black;
+    font-size: 20px;
 }
 
 #car_description{

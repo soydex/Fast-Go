@@ -9,7 +9,9 @@ async function loadCars() {
         const main_content = document.getElementById('main_content');
 
         cars.forEach(car => {
-            const car_card= document.createElement('div');
+            const car_card= document.createElement('a');
+            car_card.href = `location_voiture.html?model_name=${car.model_name}`;
+            car_card.target = '_blank';
             car_card.classList.add('car_card');
             car_card.innerHTML = `
                 <div class="car_card_img">
