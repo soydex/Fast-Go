@@ -5,9 +5,7 @@ async function loadCars() {
             throw new Error("Erreur HTTP " + response.status);
         }
         const cars = await response.json();
-
         const main_content = document.getElementById('main_content');
-
         cars.forEach(car => {
             const car_card= document.createElement('a');
             car_card.href = `location_voiture.html?model_name=${car.model_name}`;
@@ -30,4 +28,6 @@ async function loadCars() {
     }
 }
 
-loadCars(); // Charger les voitures au démarrage
+document.addEventListener('DOMContentLoaded', (event) => {
+    loadCars();
+});
