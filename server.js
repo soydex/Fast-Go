@@ -42,14 +42,14 @@ app.post('/cars', (req, res) => {
 
 // 🔹 Ajouter un utilisateur
 app.post('/users', (req, res) => {
-    const { name, email } = req.body;
-    if (!name || !email) {
-        return res.status(400).json({ error: "Nom et email requis." });
+    const { name, email, password, role } = req.body;
+    if (!name || !email || !password || !role) {
+        return res.status(400).json({ error: "Nom, email, mot de passe et rôle requis." });
     }
 
-    db.run(`INSERT INTO users (name, email) VALUES (?, ?)`, [name, email], function (err) {
+    db.run(`INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)`, [name, email, password, role], function (err) {
         if (err) return res.status(500).json({ error: err.message });
-        res.json({ id: this.lastID, name, email });
+        res.json({ id: this.lastID, name, email, role });
     });
 });
 
@@ -74,18 +74,20 @@ app.delete('/cars/:id', (req, res) => {
     });
 });
 
+// Route d'authentification
+app.post('/authenticate', (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ success: false, message: 'Email et mot de passe requis.' });
+  }
 
+  db.get(`SELECT * FROM users WHERE email = ? AND password = ?`, [email, password], (err, row) => {
+    if (err) return res.status(500).json({ success: false, message: err.message });
+    if (!row) return res.status(401).json({ success: false, message: 'Email ou mot de passe incorrect' });
 
-
-// 🔹 Récupérer une voiture par ID
-/*app.get('/cars/:id', (req, res) => {
-    const { id } = req.params;
-    db.get(`SELECT * FROM cars WHERE id = ?`, [id], (err, row) => {
-        if (err) return res.status(500).json({ error: err.message });
-        if (!row) return res.status(404).json({ error: "Voiture non trouvée" });
-        res.json(row);
-    });
-});*/
+    res.json({ success: true, message: 'Authentification réussie', user: row });
+  });
+});
 
 // 🔹 Récupérer une voiture par modèle
 app.get('/cars/:model_name', (req, res) => {

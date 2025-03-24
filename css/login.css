@@ -1,0 +1,11 @@
+@import '~mdb-ui-kit/css/mdb.min.css';
+
+
+
+.gradient-custom {
+    background: url("/imgs/audi-rs6-prior-3840x2160-13521.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+}
