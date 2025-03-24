@@ -22,7 +22,6 @@ app.get('/cars', (req, res) => {
     });
 });
 
-
 // Ajouter un véhicule
 app.post('/cars', (req, res) => {
     const { model_name, brand, image_url, transmission, weight, rental_price_per_day, engine_type, horsepower, torque, seating_capacity } = req.body;

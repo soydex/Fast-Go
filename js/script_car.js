@@ -57,9 +57,7 @@ async function addCar(event) {
 
 async function deleteCar(id) {
     if (!confirm("Voulez-vous supprimer cette voiture ?")) return;
-
     const response = await fetch(`http://localhost:3000/cars/${id}`, { method: 'DELETE' });
-
     if (response.ok) {
         loadCars(); // Recharger la liste après suppression
     } else {
