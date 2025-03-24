@@ -1,6 +1,3 @@
-import * as mdb from 'mdb-ui-kit'; // lib
-window.mdb = mdb;
-
 document.querySelector('button[type="submit"]').addEventListener('click', async (event) => {
   event.preventDefault();
 
