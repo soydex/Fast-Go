@@ -1,38 +1,33 @@
-document.querySelector('button[type="submit"]').addEventListener('click', async (event) => {
-  event.preventDefault();
+const RegisterButton = document.getElementById('register_submit');
+const span_notif = document.getElementById('span_notif');
+RegisterButton.addEventListener('click', addUser);
 
-  const email = document.getElementById('typeEmailX').value;
-  const password = document.getElementById('typePasswordX').value;
+async function addUser(event) {
+    event.preventDefault();
+    const name = document.getElementById('typenameX').value;
+    const email = document.getElementById('typeEmailX').value;
+    const password = document.getElementById('typePasswordX').value;
 
-  if (!email || !password) {
-    alert('Veuillez remplir tous les champs.');
-    return;
-  }
+    if ( !name || !email || !password) {
+        alert('Veuillez remplir tous les champs.');
+        return;}
 
-  try {
-    const response = await fetch('http://localhost:3000/authenticate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+        const response = await fetch('http://localhost:3000/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password, role: 'user' })
+        });
 
-    if (!response.ok) {
-      throw new Error('Erreur lors de l\'authentification');
+        const data = await response.json();
+        if (data.error) {
+            alert(data.error);
+        } else {
+            span_notif.style.display = 'block';
+            span_notif.innerHTML = 'Utilisateur ajouté avec succès';
+        }
+    } catch (error) {
+        console.error('Erreur:', error);
+        alert("Erreur lors de l'ajout !");
     }
-
-    const data = await response.json();
-    if (data.success) {
-      alert('Connexion réussie');
-      // Rediriger vers une autre page ou effectuer une autre action
-      window.location.href = '/dashboard.html';
-    } else {
-      alert('Email ou mot de passe incorrect');
-    }
-  } catch (error) {
-    console.error('Erreur:', error);
-    alert('Une erreur est survenue. Veuillez réessayer plus tard.');
-  }
-});
-
+}

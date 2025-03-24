@@ -12,6 +12,8 @@ async function loadUsers() {
                 <td>${user.id}</td>
                 <td>${user.name}</td>
                 <td>${user.email}</td>
+                <td>${user.role}</td>
+                <td>${new Date(user.created_at).toLocaleString()}</td>
                 <td><button class="delete-btn" data-id="${user.id}">❌</button></td>
             `;
             tableBody.appendChild(row);
