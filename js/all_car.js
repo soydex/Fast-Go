@@ -1,6 +1,6 @@
 async function loadCars() {
     try {
-        const response = await fetch(`http://192.168.50.82:3000/cars`);
+        const response = await fetch(`http://localhost:3000/cars`);
         if (!response.ok) {
             throw new Error("Erreur HTTP " + response.status);
         }
