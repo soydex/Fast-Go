@@ -10,7 +10,7 @@ const model_name = urlParams.get("model_name");
 
 async function loadCars() {
     try {
-        const response = await fetch(`http://localhost:3000/cars/${model_name}`);
+        const response = await fetch(`http://192.168.50.82:3000/cars/${model_name}`);
         if (!response.ok) {
             throw new Error("Erreur HTTP " + response.status);
         }
