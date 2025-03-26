@@ -10,29 +10,7 @@ const db = new sqlite3.Database('database.db', (err) => {
 });
 
 // Créer une table (si elle n'existe pas déjà)
-/*db.run(`
-    CREATE TABLE IF NOT EXISTS cars (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    model_name TEXT NOT NULL,
-    brand TEXT NOT NULL,
-    image_url TEXT,
-    transmission TEXT NOT NULL,
-    weight INTEGER,
-    rental_price_per_day REAL NOT NULL,
-    engine_type TEXT NOT NULL,
-    horsepower INTEGER NOT NULL,
-    torque INTEGER NOT NULL,
-    seating_capacity INTEGER NOT NULL
-)
-`, (err) => {
-    if (err) console.error('Erreur lors de la création de la table', err.message);
-});*/
-
-/*db.run(`DROP TABLE users`, (err) => {
-    if (err) console.error('Erreur lors de la suppression de la table', err.message);
-});*/
-
-/*db.run(`
+db.run(`
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
@@ -44,7 +22,5 @@ const db = new sqlite3.Database('database.db', (err) => {
 `, (err) => {
     if (err) console.error('Erreur lors de la création de la table', err.message);
 });
-*/
-
 
 module.exports = db;

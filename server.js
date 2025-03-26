@@ -1,10 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./database');
-
 const app = express();
 app.use(express.json());
 app.use(cors());
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+
 
 // 🔹 Récupérer tous les utilisateurs
 app.get('/users', (req, res) => {
@@ -97,6 +100,64 @@ app.get('/cars/:model_name', (req, res) => {
         if (!row) return res.status(404).json({ error: "Voiture non trouvée" });
         res.json(row);
     });
+});
+
+
+
+const SECRET_KEY = 'vidaloca'; // Remplacez par une clé secrète sécurisée
+
+// 🔹 Inscription d'un utilisateur
+app.post('/register', async (req, res) => {
+    const { name, email, password, role } = req.body;
+    if (!name || !email || !password || !role) {
+        return res.status(400).json({ error: "Nom, email, mot de passe et rôle requis." });
+    }
+
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        db.run(`INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)`, [name, email, hashedPassword, role], function (err) {
+            if (err) return res.status(500).json({ error: err.message });
+            res.json({ id: this.lastID, name, email, role });
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// 🔹 Connexion d'un utilisateur
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return res.status(400).json({ error: 'Email et mot de passe requis.' });
+    }
+
+    db.get(`SELECT * FROM users WHERE email = ?`, [email], async (err, user) => {
+        if (err) return res.status(500).json({ error: err.message });
+        if (!user) return res.status(401).json({ error: 'Email ou mot de passe incorrect' });
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) return res.status(401).json({ error: 'Email ou mot de passe incorrect' });
+
+        const token = jwt.sign({ id: user.id, role: user.role }, SECRET_KEY, { expiresIn: '1h' });
+        res.json({ token });
+    });
+});
+
+// Middleware pour vérifier le token
+function authenticateToken(req, res, next) {
+    const token = req.headers['authorization'];
+    if (!token) return res.sendStatus(401);
+
+    jwt.verify(token, SECRET_KEY, (err, user) => {
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    });
+}
+
+// Exemple de route protégée
+app.get('/protected', authenticateToken, (req, res) => {
+    res.json({ message: 'Accès autorisé', user: req.user });
 });
 
 app.listen(3000, () => console.log('Serveur sur http://localhost:3000'));

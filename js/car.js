@@ -27,4 +27,6 @@ async function loadCars() {
     }
 }
 
-loadCars();
+document.addEventListener('DOMContentLoaded', (event) => {
+    loadCars();
+});
