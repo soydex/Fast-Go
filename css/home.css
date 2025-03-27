@@ -1,51 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: 'Roboto Mono';
 }
 
-body{
+body {
     background-color: #f9f6f6;
+    position: relative;
 }
 
 /*Barre de Navigation*/
 
-nav ul img{
-    width: 10%;
+header{
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    width: 100%;
 }
 
-nav ul  {
+header nav{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    background-color: black;
-    padding: 0.5rem 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
-nav ul li {
+header nav ul{
+    display: flex;
+    gap: 2rem;
     list-style: none;
-    padding: 2rem 0;
 }
 
-nav ul li a {
+header nav ul li a{
     text-decoration: none;
     color: white;
-    font-size: 2rem;
-    font-weight: 500;
 }
 
-#compte{
-color:black;
-font-family: Montserrat;
-font-weight: normal;
-font-size: 2rem;
-background-color: #d9d9d9;
-padding: 1.5rem 3rem;
-border-radius: 2.5rem;
+header nav ul li a:hover{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#compte {
+    color: black;
+    font-family: Montserrat;
+    font-weight: normal;
+    font-size: 2rem;
+    background-color: #d9d9d9;
+    padding: 1.5rem 3rem;
+    border-radius: 2.5rem;
+    transition: all 0.5s;
+}
+
+#compte:hover {
+    background-color: black;
+    color: white;
+    border: solid 1px white;
 }
 
 /*HERO*/
@@ -56,86 +70,136 @@ h1 {
     text-align: center;
     font-family: 'Montserrat';
     color: white;
-    position: relative;
-    top: 15rem;
+}
+
+.hero-1 {
+    background-image: url('../imgs/RS6_banniere.jpg');
+}
+
+.hero-2 {
+    background-image: url('../imgs/classG63_wallpaper.jpg');
+}
+
+.hero-3 {
+    background-image: url('../imgs/svj_wallpaper.jpg'); /* Exemple d'une troisième image */
 }
 
 .hero {
-background-image: url('../img/RS6_banniere.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center;
-height: 80vh;
-
-
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.5s;
 }
 
-.hero p{
+.hero::after,.hero2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.hero h1, .hero p, .hero2 h1, .hero2 p {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+.hero p, .hero2 p {
     font-size: 4rem;
     font-weight: 400;
     text-align: center;
-    color: #d9d9d9;
-    position: relative;
-    top: 12rem;
+    color: rgba(217, 217, 217, 0.521);
+}
+
+.hero .dots .dot, .hero2 .dots .dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    animation: dots 1s infinite;
+}
+
+.hero .dots, .hero2 .dots {
+    position: absolute;
+    bottom: 10%;
+    z-index: 2;
+}
+
+.dot.active{
+    padding: 7px;
+    background-color: white !important;
 }
 
 /*INFORMATIONS ENTRERPRISE*/
 
-.section_info{
+.section_info {
     padding: 8.1rem 10.9rem;
-    background-color: white;
+    background-color: white !important;
 }
 
-.informations{
+.informations {
     display: flex;
     align-items: center;
 }
 
-.informations img{
+.informations img {
     width: 50%;
     height: 50%;
 }
 
-h2{
+h2 {
     font-size: 3.4rem;
     font-weight: bold;
 }
 
-.texte p{
+.texte p {
     font-size: 2.4rem;
     margin-top: 2rem;
 }
 
-.taycan{
+.taycan {
     max-width: 100%;
 }
 
 /*SELECTION DE VEHICULES*/
 
-h3{
+h3 {
     font-size: 5rem;
 }
 
-.nos_vehicules{
+.nos_vehicules {
     background-color: #f9f6f6;
 }
 
-.nos_vehicules h3{
+.nos_vehicules h3 {
     margin: 0rem 5rem;
 }
 
-.nos_vehicules p{
+.nos_vehicules p {
     font-size: 3.2rem;
     margin: 0rem 5rem;
 }
 
-.nos_vehicules_content{
+.nos_vehicules_content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
 }
 
-.description{
+.description {
     position: relative;
     width: 100%;
     height: 100%;
@@ -143,11 +207,13 @@ h3{
     border-radius: 25px;
     box-shadow: 5px 5px 5px #888888;
 }
-.description_img{
+
+.description_img {
     position: relative;
     width: 100%;
 }
-.description_text{
+
+.description_text {
     position: absolute;
     bottom: 5px;
     display: flex;
@@ -156,7 +222,7 @@ h3{
     align-items: center;
 }
 
-.nos_vehicules a{
+.nos_vehicules a {
     color: black;
     font-size: 2rem;
     display: block;
@@ -164,25 +230,25 @@ h3{
 
 }
 
-.nos_vehicules a:hover{
-font-weight: bold;
+.nos_vehicules a:hover {
+    font-weight: bold;
 }
 
 /*AVIS CLIENTS*/
 
-h5{
+h5 {
     font-size: 3.2rem;
     font-weight: normal;
     text-align: center;
     padding: 5rem 0;
 }
 
-h6{
+h6 {
     font-size: 3.2rem;
     font-weight: normal;
 }
 
-.avis{
+.avis {
     width: 70%;
     margin: auto;
     display: flex;
@@ -191,7 +257,7 @@ h6{
     padding-bottom: 15rem;
 }
 
-.contenu_avis{
+.contenu_avis {
     border: solid 1px white;
     background-color: white;
     border-radius: 2.5rem;
@@ -199,29 +265,29 @@ h6{
     box-shadow: 5px 5px 5px #888888;
 }
 
-.contenu_avis{
+.contenu_avis {
     padding: 2.5rem;
 }
 
-.contenu_avis p{
+.contenu_avis p {
     font-size: 1.5rem;
     padding-top: 2.5rem;
 }
 
 /*QUESTIONS FREQUENTES*/
 
-.div_questions{
+.div_questions {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 65rem;
-    word-break:normal;
+    word-break: normal;
     margin: auto;
     gap: 2rem;
     padding-bottom: 12rem;
 }
 
-.questions_box{
+.questions_box {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -236,7 +302,7 @@ h6{
     transition: all 0.5s;
 }
 
-.questions{
+.questions {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -244,19 +310,19 @@ h6{
 }
 
 
-.section_questions{
+.section_questions {
     background-color: #f9f6f6;
     text-align: center;
     text-align: left;
 }
 
 
-.section_questions p{
+.section_questions p {
     font-size: 2.4rem;
     width: 88%;
 }
 
-.section_questions h6{
+.section_questions h6 {
     font-size: 5rem;
     font-weight: bold;
     margin: auto;
@@ -264,12 +330,12 @@ h6{
     padding-bottom: 2rem;
 }
 
-.answers{
+.answers {
     display: none;
     transition: all 0.5s;
 }
 
-.questions.active{
+.questions.active {
     transition: all 0.5s;
     border-bottom: rgba(136, 136, 136, 0.103) solid 3px;
     border-radius: 5px;
@@ -280,7 +346,7 @@ h6{
     transition: all 0.5s;
 }
 
-.questions_box img.active{
+.questions_box img.active {
     transform: rotate(180deg);
     transition: all 0.5s;
 }
@@ -290,7 +356,7 @@ h6{
 
 
 
-.main_content{
+.main_content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -298,34 +364,34 @@ h6{
     padding: 1rem;
 }
 
-.car_card img{
+.car_card img {
     width: 400px;
     height: 400px;
     object-fit: contain;
 }
 
-.car_card{
+.car_card {
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
     padding: 1rem;
 }
 
-.car_card_info{
+.car_card_info {
     position: absolute;
     bottom: 10px;
 }
 
-.car_card a{
+.car_card a {
     text-decoration: none;
     color: black;
 }
 
-#car_description{
+#car_description {
     width: 220px;
 }
 
-footer{
+footer {
     background-color: #333;
     color: white;
     padding: 2rem 0;
@@ -343,7 +409,7 @@ footer{
     padding: 1rem 0;
 }
 
-.footer-top{
+.footer-top {
     width: fit-content;
 }
 
@@ -399,57 +465,57 @@ footer{
 
     /*BARRE DE NAVIGATION*/
 
-    nav ul li a{
+    nav ul li a {
         font-size: 1.6rem;
     }
 
-    #compte{
+    #compte {
         font-size: 1.6rem;
         padding: 1rem 2rem;
     }
 
     /*HERO*/
 
-    h1{
+    h1 {
         font-size: 6rem;
         top: 12rem;
     }
 
-    .hero p{
+    .hero p {
         font-size: 2.2rem;
         top: 10rem;
     }
 
     /*INFORMATIONS ENTREPRISE*/
 
-    .section_info{
+    .section_info {
         padding: 4rem 5.5rem;
     }
 
-    h2{
+    h2 {
         font-size: 2rem;
     }
 
-    .texte p{
+    .texte p {
         font-size: 1.4rem;
     }
 
     /*SELECTION DE VEHICULES*/
 
-    h3{
+    h3 {
         font-size: 2.5rem;
     }
 
-    .nos_vehicules p{
+    .nos_vehicules p {
         font-size: 1.6rem;
     }
 
-    .nos_vehicules a{
+    .nos_vehicules a {
         font-size: 1.4rem;
     }
 
     /*AVIS CLIENTS*/
-    
+
     .avis {
         flex-direction: column;
     }
