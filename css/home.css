@@ -316,6 +316,10 @@ h6 {
     box-shadow: 5px 5px 5px #888888;
 }
 
+.contenu_avis h4{
+    font-size: 2.4rem;
+}
+
 .contenu_avis {
     padding: 2.5rem;
 }
@@ -388,7 +392,6 @@ h6 {
 
 .questions.active {
     transition: all 0.5s;
-    border-bottom: rgba(136, 136, 136, 0.103) solid 3px;
     border-radius: 5px;
 }
 
