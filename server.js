@@ -66,6 +66,24 @@ app.delete('/users/:id', (req, res) => {
     });
 });
 
+// 🔹 Mettre à jour un utilisateur
+app.put('/users/:id', (req, res) => {
+    const { id } = req.params;
+    const { name, email, role } = req.body;
+
+    if (!name || !email || !role) {
+        return res.status(400).json({ error: "Nom, email et rôle requis." });
+    }
+
+    db.run(
+        `UPDATE users SET name = ?, email = ?, role = ? WHERE id = ?`,
+        [name, email, role, id],
+        function (err) {
+            if (err) return res.status(500).json({ error: err.message });
+            res.json({ message: "Utilisateur mis à jour", id });
+        }
+    );
+});
 
 // 🔹 Supprimer un véhicule
 app.delete('/cars/:id', (req, res) => {

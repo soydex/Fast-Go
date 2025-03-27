@@ -10,13 +10,37 @@ async function loadUsers() {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${user.id}</td>
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td>${user.role}</td>
+                <td contenteditable="true" class="editable" data-field="name">${user.name}</td>
+                <td contenteditable="true" class="editable" data-field="email">${user.email}</td>
+                <td>
+                  <select class="editable" data-field="role">
+                    <option value="user" ${user.role === 'user' ? 'selected' : ''}>Utilisateur</option>
+                    <option value="admin" ${user.role === 'admin' ? 'selected' : ''}>Administrateur</option>
+                  </select>
+                </td>
                 <td>${new Date(user.created_at).toLocaleString()}</td>
-                <td><button class="delete-btn" data-id="${user.id}">❌</button></td>
+                <td>
+                  <button class="edit-btn" data-id="${user.id}">🖉</button>
+                  <button class="delete-btn" data-id="${user.id}">❌</button>
+                </td>
             `;
             tableBody.appendChild(row);
+        });
+
+        // Ajouter les écouteurs d'événements sur les boutons d'édition
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const userId = event.target.dataset.id;
+                const row = event.target.closest('tr');
+                const updatedData = {};
+
+                row.querySelectorAll('.editable').forEach(cell => {
+                    const field = cell.dataset.field;
+                    updatedData[field] = cell.tagName === 'SELECT' ? cell.value : cell.textContent.trim();
+                });
+
+                updateUser(userId, updatedData);
+            });
         });
 
         // Ajouter les écouteurs d'événements sur les boutons de suppression
@@ -73,6 +97,26 @@ async function deleteUser(id) {
     } catch (error) {
         console.error('Erreur:', error);
         alert("Erreur lors de la suppression !");
+    }
+}
+
+async function updateUser(id, updatedData) {
+    try {
+        const response = await fetch(`http://localhost:3000/users/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedData)
+        });
+
+        if (response.ok) {
+            alert('Utilisateur mis à jour avec succès');
+            loadUsers(); // Recharger la liste
+        } else {
+            alert("Erreur lors de la mise à jour !");
+        }
+    } catch (error) {
+        console.error('Erreur:', error);
+        alert("Erreur lors de la mise à jour !");
     }
 }
 
