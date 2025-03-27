@@ -1,12 +1,14 @@
 const registerButton = document.getElementById('register_submit');
 registerButton.addEventListener('click', registerUser);
+const Spaninfo = document.getElementById('span_notif');
+
 
 async function registerUser(event) {
     event.preventDefault();
     const name = document.getElementById('typenameX').value;
     const email = document.getElementById('typeEmailX').value;
     const password = document.getElementById('typePasswordX').value;
-    const role = 'user'; // Par défaut, le rôle est 'user'
+    const role = 'user';
 
     if (!name || !email || !password) {
         alert('Veuillez remplir tous les champs.');
@@ -22,11 +24,17 @@ async function registerUser(event) {
 
         const data = await response.json();
         if (data.error) {
-            alert(data.error);
+            Spaninfo.style.display = 'block';
+            Spaninfo.style.color = 'red';
+            if (data.error.includes('SQLITE_CONSTRAINT: UNIQUE constraint failed: users.email')) {
+                Spaninfo.innerHTML="Cet email est déjà utilisé. Veuillez en choisir un autre.";
+            } else {
+                alert(data.error);
+            }
         } else {
             alert('Inscription réussie');
             // Rediriger vers la page de connexion
-            window.location.href = '/log/login.html';
+            window.location.href = 'login.html';
         }
     } catch (error) {
         console.error('Erreur:', error);

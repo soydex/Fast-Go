@@ -1,6 +1,6 @@
-// filepath: c:\Users\CEFIM\Documents\dbveh-1\js\login.js
 const loginButton = document.getElementById('login_submit');
 loginButton.addEventListener('click', loginUser);
+const Spaninfo = document.getElementById('span_notif');
 
 async function loginUser(event) {
     event.preventDefault();
@@ -21,12 +21,17 @@ async function loginUser(event) {
 
         const data = await response.json();
         if (data.error) {
+            Spaninfo.style.display = 'block';
+            Spaninfo.style.color = 'red';
+            Spaninfo.innerHTML='Email ou mot de passe incorrect';
             alert(data.error);
         } else {
             localStorage.setItem('token', data.token);
-            alert('Connexion réussie');
+            Spaninfo.style.display = 'block';
+            Spaninfo.style.color = 'green';
+            Spaninfo.innerHTML='Connexion réussie';
             // Rediriger vers une page protégée
-            window.location.href = '/protected.html';
+            window.location.href = '../catalogue.html';
         }
     } catch (error) {
         console.error('Erreur:', error);
