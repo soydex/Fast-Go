@@ -32,9 +32,11 @@ async function registerUser(event) {
                 alert(data.error);
             }
         } else {
-            alert('Inscription réussie');
+            Spaninfo.style.display = 'block';
+            Spaninfo.style.color = 'green';
+            Spaninfo.innerHTML='Inscription réussie';
             // Rediriger vers la page de connexion
-            window.location.href = 'login.html';
+            window.location.href = '/log/login.html';
         }
     } catch (error) {
         console.error('Erreur:', error);

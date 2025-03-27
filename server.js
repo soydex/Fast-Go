@@ -178,4 +178,14 @@ app.get('/protected', authenticateToken, (req, res) => {
     res.json({ message: 'Accès autorisé', user: req.user });
 });
 
+// 🔹 Récupérer les informations de l'utilisateur connecté
+app.get('/me', authenticateToken, (req, res) => {
+    const userId = req.user.id;
+    db.get(`SELECT id, name, email, role FROM users WHERE id = ?`, [userId], (err, user) => {
+        if (err) return res.status(500).json({ error: err.message });
+        if (!user) return res.status(404).json({ error: "Utilisateur non trouvé" });
+        res.json(user);
+    });
+});
+
 app.listen(3000, () => console.log('Serveur sur http://localhost:3000'));
