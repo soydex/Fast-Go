@@ -188,4 +188,6 @@ app.get('/me', authenticateToken, (req, res) => {
     });
 });
 
+
+// 🔹 Démarrer le serveur
 app.listen(3000, () => console.log('Serveur sur http://localhost:3000'));
