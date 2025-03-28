@@ -5,25 +5,34 @@ Ce projet est une application web permettant de gérer la location de voitures. 
 
 ## Structure du Projet
 ### Fichiers JavaScript
-- `js/login.js` : Gère l'inscription des utilisateurs en envoyant les données au serveur.
+- `js/login.js` : Gère la connexion des utilisateurs en envoyant les données au serveur.
+- `js/register.js` : Gère l'inscription des utilisateurs en envoyant les données au serveur.
 - `database.js` : Configure la base de données SQLite et crée les tables nécessaires pour les utilisateurs et les voitures.
 - `js/car.js` : Charge les informations d'une voiture spécifique et les affiche sur une page de détails.
 - `js/script_car.js` : Gère l'affichage, l'ajout et la suppression des voitures dans une table.
 - `js/script_user.js` : Gère l'affichage, l'ajout et la suppression des utilisateurs dans une table.
 - `js/all_car.js` : Charge et affiche toutes les voitures disponibles dans une page de catalogue.
+- `js/index.js` : Gère les interactions sur la page d'accueil, y compris les animations et le chargement des voitures.
+- `js/selection-vehicule.js` : Gère les filtres et les interactions sur la page de sélection des véhicules.
 
 ### Fichiers HTML
+- `index.html` : Page d'accueil du site.
 - `location_voiture.html` : Page de détails d'une voiture spécifique.
 - `catalogue.html` : Page de catalogue affichant toutes les voitures disponibles.
 - `gestion/gestion_utilisateurs.html` : Page de gestion des utilisateurs avec un formulaire pour ajouter des utilisateurs et une table pour les afficher.
 - `gestion/gestion_vehicules.html` : Page de gestion des véhicules avec un formulaire pour ajouter des voitures et une table pour les afficher.
 - `log/login.html` : Page de connexion des utilisateurs.
 - `log/register.html` : Page d'inscription des utilisateurs.
+- `selection-vehicule.html` : Page permettant de filtrer et trier les véhicules.
 
 ### Fichiers CSS
+- `css/home.css` : Styles pour la page d'accueil, y compris les sections héros, avis clients et questions fréquentes.
 - `css/car_page.css` : Styles pour la page de détails des voitures.
 - `css/style.css` : Styles généraux pour les pages de gestion.
 - `css/login.css` : Styles pour les pages de connexion et d'inscription.
+- `css/style-selection-vehicule.css` : Styles pour la page de sélection des véhicules.
+- `css/reset.css` : Réinitialisation des styles par défaut pour une meilleure compatibilité entre navigateurs.
+- `css/helpers.css` : Contient des styles utilitaires et des ajustements globaux.
 
 ### Fichier JSON
 - `package.json` : Liste des dépendances du projet (Express, CORS, SQLite3, MDB UI Kit).
@@ -40,6 +49,12 @@ Ce projet est une application web permettant de gérer la location de voitures. 
 - **Authentification** : Connexion et inscription des utilisateurs.
 - **Catalogue de voitures** : Affichage de toutes les voitures disponibles.
 - **Détails des voitures** : Affichage des informations détaillées d'une voiture spécifique.
+
+## Fonctionnalités Secondaires
+- **Filtres dynamiques** : Filtrer et trier les véhicules par type, transmission, prix, etc.
+- **Animations interactives** : Transitions et animations sur la page d'accueil.
+- **Questions fréquentes** : Section FAQ avec des réponses interactives.
+- **Avis clients** : Affichage des avis des clients avec un design attrayant.
 
 ## Technologies Utilisées
 - **Backend** : Express.js
@@ -63,5 +78,4 @@ Ce projet est une application web permettant de gérer la location de voitures. 
    ```
 
 ## Auteur
-Projet développé par [Ton Nom / Ton Équipe].
-
+Projet développé par nous.
