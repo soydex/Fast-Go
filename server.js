@@ -188,6 +188,24 @@ app.get('/me', authenticateToken, (req, res) => {
     });
 });
 
+// 🔹 Mettre à jour un véhicule
+app.put('/cars/:id', (req, res) => {
+    const { id } = req.params;
+    const { model_name, brand, image_url, transmission, weight, rental_price_per_day, engine_type, horsepower, torque, seating_capacity } = req.body;
+
+    if (!model_name || !brand || !image_url || !transmission || !weight || !rental_price_per_day || !engine_type || !horsepower || !torque || !seating_capacity) {
+        return res.status(400).json({ error: "Tous les champs sont requis." });
+    }
+
+    db.run(
+        `UPDATE cars SET model_name = ?, brand = ?, image_url = ?, transmission = ?, weight = ?, rental_price_per_day = ?, engine_type = ?, horsepower = ?, torque = ?, seating_capacity = ? WHERE id = ?`,
+        [model_name, brand, image_url, transmission, weight, rental_price_per_day, engine_type, horsepower, torque, seating_capacity, id],
+        function (err) {
+            if (err) return res.status(500).json({ error: err.message });
+            res.json({ message: "Véhicule mis à jour", id });
+        }
+    );
+});
 
 // 🔹 Démarrer le serveur
 app.listen(3000, () => console.log('Serveur sur http://localhost:3000'));

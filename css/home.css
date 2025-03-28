@@ -229,9 +229,8 @@ h3 {
 
 
 .main_content{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 1rem;
 }
 
