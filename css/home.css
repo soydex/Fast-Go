@@ -502,6 +502,37 @@ footer {
     font-weight: bold;
 }
 
+@media screen and (max-width: 1024px) {
+    .hero h1 {
+        font-size: 8rem;
+    }
+
+    .hero p {
+        font-size: 3rem;
+    }
+
+    .nos_vehicules {
+        width: 90%;
+    }
+
+    .main_content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .informations {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .informations img {
+        width: 80%;
+    }
+
+    .texte p {
+        font-size: 1.8rem;
+    }
+}
+
 @media screen and (max-width: 769px) {
 
     /*BARRE DE NAVIGATION*/
@@ -582,6 +613,44 @@ footer {
         .footer-links a {
             font-size: 1rem;
         }
+}
+
+@media screen and (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 6rem;
+    }
+
+    .hero p {
+        font-size: 2rem;
+    }
+
+    .main_content {
+        grid-template-columns: 1fr;
+    }
+
+    .car_card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .avis_content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .questions_box {
+        padding: 1rem;
+    }
+
+    .footer-middle {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
 
 @media (max-width: 376px) {
@@ -765,5 +834,35 @@ footer {
 
     .footer-links a {
         font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero {
+        height: 50vh;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .hero p {
+        font-size: 1.6rem;
+    }
+
+    .nos_vehicules h3 {
+        font-size: 2rem;
+    }
+
+    .nos_vehicules p {
+        font-size: 1.4rem;
+    }
+
+    .footer-text a {
+        font-size: 1rem;
+    }
+
+    .footer-links a {
+        font-size: 1rem;
     }
 }
