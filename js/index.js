@@ -73,3 +73,16 @@ async function loadCars() {
 document.addEventListener('DOMContentLoaded', (event) => {
   loadCars();
 });
+
+
+
+const account_button = document.getElementById('compte');
+
+account_button.addEventListener('click', () => {
+  if (localStorage.getItem('token')) {
+    window.location.href = 'account.html';
+  } else {
+    window.location.href = 'log/login.html';
+  }
+}
+);
