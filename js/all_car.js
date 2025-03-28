@@ -16,7 +16,7 @@ async function loadCars() {
                     <img src="${car.image_url}" alt="${car.model_name}">
                 </div>
                 <div class="car_card_info">
-                    <a href="location_voiture.html?model_name=${car.model_name}" target="_blank"><h2>${car.brand} ${car.model_name}</h2></a>
+                    <h2>${car.brand} ${car.model_name}</h2>
                     <p>${car.rental_price_per_day} € / jour</p>
                     <p>${car.horsepower} Ch - ${car.torque} Nm</p>
                 </div>

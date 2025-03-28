@@ -33,16 +33,16 @@
     <!-- A terme : n'appeler qu'une seule feuille de style minifiée -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/helpers.css" />
-    <link rel="stylesheet" href="css/style-selection-vehicule.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/style-selection-vehicule.css">
 
 </head>
 
 <body>
     <header>
         <nav>
+            <img src="/imgs/logo_fastgo.png"  width="200" alt="">
             <ul>
-                <img src="/imgs/logo_fastgo.png" alt="">
                 <li><a href="#">Supercar</a></li>
                 <li><a href="#">Berline</a></li>
                 <li><a href="#">Tout-Terrain</a></li>
@@ -58,10 +58,9 @@
                     <a href="#">Berlines</a>
                     <a href="#">Tout-Terrain</a>
                     <a href="#">Deux-Roues</a>
-                    <a href="login.html">Compte</a>
+                    <a href="/log/login.html">Compte</a>
                 </div>
             </ul>
-
         </nav>
     </header>
     <h1>
@@ -132,8 +131,9 @@
     </div>
 
 
-    <main class="voiture-container">
-        <h2>la ou il y aura les véhicules</h2>
+    <main id="main">
+        <h3 id="user-info"></h3>
+        <div id="main_content" class="main_content"></div>
     </main>
 
     
@@ -173,6 +173,7 @@
       </footer>
 
     <script src="js/selection-vehicule.js"></script>
+    <script src="js/all_car.js"></script>
 </body>
 
 </html>

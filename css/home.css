@@ -77,12 +77,13 @@ header nav ul li a:hover{
 
 /*HERO*/
 
-h1 {
+.fastgo_title {
     font-size: 12rem;
     font-weight: bold;
     text-align: center;
     font-family: 'Montserrat';
     color: white;
+    transition: all 0.5s;
 }
 
 .hero-1 {
@@ -256,7 +257,7 @@ h3 {
 }
 
 .car_card img{
-    width: 400px;
+    /*width: 400px;*/
     height: 400px;
     object-fit: contain;
 }
@@ -280,6 +281,7 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .car_card_info h2{
@@ -471,6 +473,7 @@ footer {
 .footer-text a {
     color: white;
     text-decoration: none;
+    font-size: 2rem;
 }
 
 .footer-middle {
@@ -502,7 +505,7 @@ footer {
 .footer-links a {
     color: white;
     text-decoration: none;
-    font-size: 1.4rem;
+    font-size: 2rem;
 }
 
 .footer-links a:hover {
@@ -518,7 +521,7 @@ footer {
 .footer_nav a{
     color: white;
     text-decoration: none;
-    font-size: 1.6rem;
+    font-size: 2rem;
 }
 
 .footer_nav a:hover{

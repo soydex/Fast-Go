@@ -18,6 +18,7 @@ async function loadCars() {
         const img_car = document.createElement('img');
         img_car.src = car.image_url;
         img_car.alt = car.model_name+car.brand;
+        img_car.width = 600;
         car_imgs_div.appendChild(img_car);
         car_brand_name.innerHTML = `${car.brand} ${car.model_name}`;
         const transmission = document.createElement('p');
@@ -40,8 +41,8 @@ async function loadCars() {
 
 
         /*car_description.innerHTML = `Transmission: ${car.transmission}, Moteur : ${car.engine_type}, Chevaux : ${car.horsepower} Ch, Nm : ${car.torque} Nm, Nombres de sièges: ${car.seating_capacity} sièges`;*/
-        
         car_price.innerHTML = `${car.rental_price_per_day}`;
+        car_price.style.fontWeight = 'bold';
     } catch (error) {
         console.error("Erreur lors du chargement :", error);
     }

@@ -9,14 +9,15 @@ body {
     background-color: #F9F6F6;
 }
 
-.container {
-    padding: 0rem 8rem;
+/*Titre*/
+h1{
+    width: 80%;
+    margin: 2rem auto;
+    padding: 1rem;
 }
 
-/*Titre*/
-h1 {
-    padding-top: 11rem;
-    padding-left: 8rem;
+#main{
+    width: 80%;
 }
 
 /*btn*/
@@ -43,34 +44,8 @@ h1 {
 
 /*Barre de Navigation*/
 
-nav ul {
-    display: flex;
-    justify-content: space-around;
-    background-color: #333;
-    align-items: center;
-    margin: 0%;
-    padding: 1rem 4rem 1rem 4rem;
-}
-
-nav ul li {
-    list-style: none;
-    padding: 2rem 0rem;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 2rem;
-    font-weight: 500;
-}
-
-nav ul li a:hover {
-    color: #D9D9D9;
-    text-decoration: underline;
-}
-
-nav ul img {
-    width: 10%;
+header{
+    position: relative;
 }
 
 .menu {
@@ -82,8 +57,9 @@ nav ul img {
 .list-filtre {
     display: flex;
     gap: 2rem;
-    padding-top: 3.6rem;
     align-items: center;
+    width: 80%;
+    margin: auto;
 }
 
 .filtre {
@@ -413,11 +389,4 @@ footer {
     .footer-links a {
         font-size: 1.2rem;
     }
-
-
-
-
-
-
-
 }
