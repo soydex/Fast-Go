@@ -85,15 +85,6 @@ header nav ul li a{
 }
 
 
-#user-info{
-    font-size: 1.6rem;
-}
-
-#user-info strong{
-    font-weight: bold;
-    font-style: italic;
-}
-
 .main_content{
     display: flex;
     justify-content: center;

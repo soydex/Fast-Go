@@ -16,6 +16,17 @@ body {
 
 /*Barre de Navigation*/
 
+/*catalogue header*/
+.catalogue_header{
+    position: relative;
+    display: flex;
+    background: black;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+
+
 header{
     position: absolute;
     top: 0;
@@ -143,6 +154,15 @@ h1 {
 .dot.active{
     padding: 7px;
     background-color: white !important;
+}
+
+#user-info{
+    font-size: 1.6rem;
+}
+
+#user-info strong{
+    font-weight: bold;
+    font-style: italic;
 }
 
 /*INFORMATIONS ENTRERPRISE*/
@@ -870,3 +890,4 @@ footer {
         font-size: 1rem;
     }
 }
+
