@@ -249,9 +249,7 @@ h3 {
 }
 
 .car_card:hover{
-    border: 1px solid black;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transform: scale(1.05);
 }
 
 .car_card_info{
@@ -448,18 +446,20 @@ footer {
     padding: 1rem 0;
     display: flex;
     gap: 2rem;
+    align-items: center;
+    flex-direction: column;
 }
 
 .footer-bottom p {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
 .footer-links {
     list-style: none;
     padding: 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     gap: 2rem;
 }
@@ -476,6 +476,23 @@ footer {
 
 .footer-links a:hover {
     text-decoration: underline;
+}
+
+.footer_nav{
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.footer_nav a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+
+.footer_nav a:hover{
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {
