@@ -290,6 +290,10 @@ h3 {
     margin: auto;
 }
 
+#see_more:hover{
+    font-weight: bold;
+}
+
 
 /*AVIS CLIENTS*/
 
