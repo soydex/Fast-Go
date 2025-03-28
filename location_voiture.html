@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/car_page.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/helpers.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/car_page.css" />
     <title>Car page</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <a href="catalogue.html"><img src="./imgs/logo_fast&go.png" alt="" srcset="" width="200"></a>
-        <nav>
-          <ul>
-            <li><a href="#">Supercar</a></li>
-            <li><a href="#">Berline</a></li>
-            <li><a href="#">Tout-Terrain</a></li>
-            <li><a href="#">Deux-roues</a></li>
-            <li><a id="compte" href="#">COMPTE</a></li>
-          </ul>
-        </nav>
-      </header>
+      <nav>
+        <a href="index.html"
+          ><img src="imgs/logo_fastgo.webp" width="200px" alt="Logo Fast&GO"
+        /></a>
+        <ul>
+          <li><a href="#">Supercar</a></li>
+          <li><a href="#">Berline</a></li>
+          <li><a href="#">Tout-Terrain</a></li>
+          <li><a href="#">Deux-roues</a></li>
+          <li><a id="compte" href="account.html">COMPTE</a></li>
+        </ul>
+      </nav>
+    </header>
 
-      <main id="main">
-        <div id="car_imgs" class="car_imgs"></div>
-        <div class="car_infos">
-            <h2 id="car_brand_name" class="car_brand_name"></h2>
-            <span id="dispo">Disponible</span>
-            <p id="car_description"></p>
-            <p>prix: <span id="prix"></span>€/jour</p>
-            <a id="rent_me" href="">Louez-Moi</a>
-            <div id="paiement_secu">
-                <img src="imgs/card.png" alt="" srcset="">
-                <p>Paiement sécurisé en toute circonstance</p>
-            </div>
+    <main id="main">
+      <div id="car_imgs" class="car_imgs"></div>
+      <div class="car_infos">
+        <h2 id="car_brand_name" class="car_brand_name"></h2>
+        <span id="dispo">Disponible</span>
+        <div id="car_description"></div>
+        <p>prix: <span id="prix"></span>€/jour</p>
+        <a id="rent_me" href="">Louez-Moi</a>
+        <div id="paiement_secu">
+          <img src="imgs/card.png" alt="" srcset="" />
+          <p>Paiement sécurisé</p>
         </div>
-      </main>
-</body>
-<script src="js/car.js"></script>
+      </div>
+    </main>
+  </body>
+  <script src="js/car.js"></script>
 </html>

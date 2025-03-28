@@ -4,13 +4,20 @@
     box-sizing: border-box;
 }
 
+body{
+    background: none;
+}
 
 header{
+    position: relative;   
+}
+/*header{
     background-color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    position: relative;
 }
 header nav ul li{
     list-style: none;
@@ -20,7 +27,7 @@ header nav ul li{
 header nav ul li a{
     text-decoration: none;
     color: white;
-}
+}*/
 
 
 .car_infos{
@@ -34,18 +41,21 @@ header nav ul li a{
 
 #main{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     width: 70%;
     margin: auto;
     gap: 1rem;
     padding: 1rem;
+    justify-content: center;
 }
 
 #paiement_secu{
     display: flex;
     align-items: center;
     gap: 1rem;
+    color: grey;
+    font-weight: 700;
 }
 
 #rent_me{
@@ -127,5 +137,5 @@ header nav ul li a{
 }
 
 #car_description{
-    width: 220px;
+    width: fit-content;
 }
