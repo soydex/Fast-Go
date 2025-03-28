@@ -510,7 +510,7 @@ footer {
 
     /*BARRE DE NAVIGATION*/
 
-    nav ul li a{
+    header nav ul li a{
         font-size: 1.6rem;
     }
 
@@ -523,18 +523,26 @@ footer {
 
     h1{
         font-size: 6rem;
-        top: 12rem;
+
     }
 
     .hero p{
         font-size: 2.2rem;
-        top: 10rem;
     }
 
     /*INFORMATIONS ENTREPRISE*/
 
     .section_info{
         padding: 4rem 5.5rem;
+    }
+
+    .informations{
+        padding: 0;
+    }
+
+    .informations img{
+        width: 80%;
+        height: 80%;
     }
 
     h2{
@@ -561,8 +569,10 @@ footer {
 
     /*AVIS CLIENTS*/
     
-    .avis {
+    .avis_content {
+        width: 90%;
         flex-direction: column;
+        padding-bottom: 7rem;
     }
 
         /*FOOTER*/
@@ -592,18 +602,18 @@ footer {
 
     /*Barre de Navigation*/
 
-    nav ul {
+    header nav ul {
         height: 7.5rem;
         display: flex;
         align-items: center;
         padding: 1rem 0rem 1rem 0rem;
     }
 
-    nav ul li a {
+    header nav ul li a {
         display: none;
     }
 
-    nav ul img {
+    header nav ul img {
         width: 30%;
     }
 
@@ -729,10 +739,11 @@ footer {
         font-size: 2.6rem;
     } 
 
-    .avis{
+    .avis_content{
         width: 90%;
         gap: 2rem;
         padding-bottom: 5rem;
+        justify-content: center;
     }
 
     .contenu_avis p{
