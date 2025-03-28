@@ -46,6 +46,7 @@ async function loadCars() {
       if (!response.ok) {
           throw new Error("Erreur HTTP " + response.status);
       }
+      console.log('Base de données chargée');
       const cars = await response.json();
       const main_content = document.getElementById('main_content');
       cars.forEach(car => {
