@@ -2,7 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-    font-family: 'roboto';
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -10,17 +13,29 @@ body {
 }
 
 /*Titre*/
-h1{
+h1, h2, h4 {
+    text-align: center;
+}
+
+h1 {
     width: 80%;
     margin: 2rem auto;
     padding: 1rem;
 }
 
-#main{
+#main {
     width: 80%;
 }
 
 /*btn*/
+.btn-effacer-filtre, .btn-offre {
+    border: none;
+    border-radius: 2rem;
+    padding: 0.7rem 3rem;
+    display: block;
+    text-align: center;
+}
+
 .btn-effacer-filtre {
     color: black;
 }
@@ -28,14 +43,10 @@ h1{
 .btn-offre {
     color: white;
     background-color: black;
-    border: none;
-    border-radius: 2rem;
-    padding: .7rem 3rem;
-    display: block;
 }
 
 #compte {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     background-color: #D9D9D9;
     color: #333;
     border-radius: 2rem;
@@ -43,8 +54,7 @@ h1{
 }
 
 /*Barre de Navigation*/
-
-header{
+header {
     position: relative;
 }
 
@@ -53,7 +63,6 @@ header{
 }
 
 /*Menu select pour filtrer*/
-
 .list-filtre {
     display: flex;
     gap: 2rem;
@@ -69,21 +78,13 @@ header{
     background-color: #D9D9D9;
 }
 
-.filtre option:hover{
-    color: black;
-}
-
 .filtre-container {
     display: none;
 }
 
 /*Section main pour les voitures*/
 main {
-    padding: 10rem 0rem 10rem 0rem;
-}
-
-h2 {
-    text-align: center;
+    padding: 10rem 0;
 }
 
 /*FOOTER*/
@@ -97,60 +98,22 @@ footer {
     align-items: center;
 }
 
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem 0;
-}
-
-.footer-top {
-    width: fit-content;
-}
-
-
-.footer-text {
-    font-size: 1.6rem;
-}
-
-.footer-text p {
-    margin: 0.5rem 0;
-}
-
-.footer-text a {
-    color: white;
-    text-decoration: none;
-}
-
 .footer-middle {
-    padding: 1rem 0rem;
     display: flex;
     gap: 2rem;
+    flex-direction: column;
+    align-items: center;
 }
 
-.footer-bottom p {
-    margin: 0;
-    font-size: 1.4rem;
+.footer-text a, .footer-links a {
+    color: white;
+    text-decoration: none;
 }
 
 .footer-links {
-    list-style: none;
-    padding: 0;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     gap: 2rem;
-}
-
-.footer-links li {
-    display: inline;
-}
-
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.4rem;
+    list-style: none;
 }
 
 .footer-links a:hover {
@@ -162,7 +125,7 @@ footer {
     /*Titre*/
     h1 {
         text-align: center;
-        padding-left: 0%;
+        padding-left: 0;
     }
 
     /*NAVIGATION*/
@@ -175,7 +138,7 @@ footer {
     }
 
     /*Section filtre*/
-    .list-filtre { 
+    .list-filtre {
         flex-wrap: wrap;
     }
 
@@ -183,31 +146,13 @@ footer {
         font-size: 1.4rem;
         padding: 0.8rem 1.5rem;
         display: block;
-
     }
 
     /*Section footer*/
-
-    .footer-top {
-        width: 35%;
-    }
-
-    .footer-text a {
-        font-size: 1.2rem;
-    }
-
     .footer-middle {
-        padding: 1rem 2rem;
-        display: flex;
-        gap: 2rem;
-        font-size: 1.2rem;
-    }
-
-    .footer-links a {
         font-size: 1.2rem;
     }
 }
-
 
 @media (max-width: 376px) {
 
@@ -219,7 +164,6 @@ footer {
     .hidden {
         display: none;
     }
-
 
     .box {
         margin-top: 20px;
@@ -239,7 +183,6 @@ footer {
         display: none;
     }
 
-
     /*Menu-burger*/
     .menu-toggle {
         display: flex;
@@ -253,7 +196,6 @@ footer {
         background-color: white;
         margin: 4px 0;
         transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
-
     }
 
     .menu-toggle span:nth-child(1) {
@@ -280,7 +222,7 @@ footer {
 
     .menu {
         display: none;
-        background-color: rgba(0, 0, 0, 0.7);   
+        background-color: rgba(0, 0, 0, 0.7);
         position: absolute;
         top: 95px;
         left: 0;
@@ -333,7 +275,6 @@ footer {
         width: 15rem;
     }
 
-
     #btn-offre {
         color: white;
         background-color: black;
@@ -366,24 +307,10 @@ footer {
         flex-wrap: wrap;
         justify-content: center;
         gap: 1.6rem;
-
     }
 
     /*Section footer*/
-
-    .footer-text a {
-        font-size: 1.2rem;
-    }
-
     .footer-middle {
-        padding: 1rem 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        font-size: 1.2rem;
-    }
-
-    .footer-links a {
         font-size: 1.2rem;
     }
 }
