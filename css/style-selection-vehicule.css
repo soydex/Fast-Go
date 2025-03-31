@@ -99,6 +99,7 @@ footer {
 
 .footer-content {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     padding: 1rem 0;
@@ -229,20 +230,15 @@ footer {
     }
 
     /*Barre de Navigation*/
-    nav ul {
-        height: 7.5rem;
-        display: flex;
-        align-items: center;
-        padding: 1rem 0rem 1rem 0rem;
+    header nav ul {
+        justify-content: space-between;
+        gap: 0rem;
     }
 
     nav ul li a {
         display: none;
     }
 
-    nav ul img {
-        width: 30%;
-    }
 
     /*Menu-burger*/
     .menu-toggle {
@@ -284,12 +280,13 @@ footer {
 
     .menu {
         display: none;
-        background-color: #333;
+        background-color: rgba(0, 0, 0, 0.7);   
         position: absolute;
-        top: 75px;
+        top: 95px;
         left: 0;
         width: 100%;
         transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        z-index: 5000;
     }
 
     .menu a {
