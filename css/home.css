@@ -44,7 +44,8 @@ header nav{
 
 header nav ul{
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    gap: 14rem;
     list-style: none;
 }
 
@@ -654,8 +655,7 @@ footer {
 
 @media screen and (max-width: 768px) {
     header nav ul {
-        flex-direction: column;
-        gap: 1rem;
+        gap: 4rem;
     }
 
     .hero h1 {
