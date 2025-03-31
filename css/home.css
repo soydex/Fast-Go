@@ -7,7 +7,8 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Inter,Helvetica Neue,Helvetica,Arial,sans-serif;}
+    font-family: Inter, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
 
 body {
     background-color: #f9f6f6;
@@ -17,7 +18,7 @@ body {
 /*Barre de Navigation*/
 
 /*catalogue header*/
-.catalogue_header{
+.catalogue_header {
     position: relative;
     display: flex;
     background: black;
@@ -27,14 +28,14 @@ body {
 
 
 
-header{
+header {
     position: absolute;
     top: 0;
     z-index: 3;
     width: 100%;
 }
 
-header nav{
+header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,18 +43,18 @@ header nav{
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-header nav ul{
+header nav ul {
     display: flex;
     gap: 2rem;
     list-style: none;
 }
 
-header nav ul li a{
+header nav ul li a {
     text-decoration: none;
     color: white;
 }
 
-header nav ul li a:hover{
+header nav ul li a:hover {
     font-weight: bold;
     text-decoration: underline;
 }
@@ -95,7 +96,8 @@ header nav ul li a:hover{
 }
 
 .hero-3 {
-    background-image: url('../imgs/svj_wallpaper.jpg'); /* Exemple d'une troisième image */
+    background-image: url('../imgs/svj_wallpaper.jpg');
+    /* Exemple d'une troisième image */
 }
 
 .hero {
@@ -111,7 +113,8 @@ header nav ul li a:hover{
     transition: all 0.5s;
 }
 
-.hero::after,.hero2::after {
+.hero::after,
+.hero2::after {
     content: '';
     position: absolute;
     top: 0;
@@ -122,21 +125,26 @@ header nav ul li a:hover{
     z-index: 1;
 }
 
-.hero h1, .hero p, .hero2 h1, .hero2 p {
+.hero h1,
+.hero p,
+.hero2 h1,
+.hero2 p {
     position: relative;
     z-index: 2;
 }
 
 
 
-.hero p, .hero2 p {
+.hero p,
+.hero2 p {
     font-size: 4rem;
     font-weight: 400;
     text-align: center;
     color: rgba(217, 217, 217, 0.521);
 }
 
-.hero .dots .dot, .hero2 .dots .dot {
+.hero .dots .dot,
+.hero2 .dots .dot {
     width: 10px;
     height: 10px;
     background-color: rgba(255, 255, 255, 0.5);
@@ -146,22 +154,23 @@ header nav ul li a:hover{
     animation: dots 1s infinite;
 }
 
-.hero .dots, .hero2 .dots {
+.hero .dots,
+.hero2 .dots {
     position: absolute;
     bottom: 10%;
     z-index: 2;
 }
 
-.dot.active{
+.dot.active {
     padding: 7px;
     background-color: white !important;
 }
 
-#user-info{
+#user-info {
     font-size: 1.6rem;
 }
 
-#user-info strong{
+#user-info strong {
     font-weight: bold;
     font-style: italic;
 }
@@ -193,7 +202,7 @@ h2 {
     font-weight: bold;
 }
 
-.texte{
+.texte {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -220,7 +229,7 @@ h3 {
     margin: auto;
     background-color: #f9f6f6;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     gap: 2rem;
 }
 
@@ -229,7 +238,7 @@ h3 {
 }
 
 
-.car_infos{
+.car_infos {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -238,7 +247,7 @@ h3 {
     padding: 1rem;
 }
 
-#main{
+#main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -249,20 +258,20 @@ h3 {
 }
 
 
-.main_content{
+.main_content {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(2,1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 1rem;
 }
 
-.car_card img{
+.car_card img {
     /*width: 400px;*/
     height: 400px;
     object-fit: contain;
 }
 
-.car_card{
+.car_card {
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
@@ -271,11 +280,11 @@ h3 {
     background-color: white;
 }
 
-.car_card:hover{
+.car_card:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.car_card_info{
+.car_card_info {
     position: absolute;
     bottom: 10px;
     display: flex;
@@ -284,35 +293,35 @@ h3 {
     align-items: flex-start;
 }
 
-.car_card_info h2{
+.car_card_info h2 {
     font-size: 2.4rem;
     font-weight: bold;
     color: black;
 }
 
-.car_card a{
+.car_card a {
     text-decoration: none;
     color: black;
 }
 
-.car_card p{
+.car_card p {
     font-weight: normal;
     color: black;
     font-size: 20px;
 }
 
-#car_description{
+#car_description {
     width: 220px;
 }
 
 
-#see_more{
+#see_more {
     text-decoration: underline;
     color: black;
     margin: auto;
 }
 
-#see_more:hover{
+#see_more:hover {
     font-weight: bold;
 }
 
@@ -337,7 +346,6 @@ h6 {
     display: flex;
     justify-content: space-around;
     gap: 2rem;
-    padding-bottom: 15rem;
 }
 
 .contenu_avis {
@@ -348,7 +356,7 @@ h6 {
     box-shadow: 5px 5px 5px #888888;
 }
 
-.contenu_avis h4{
+.contenu_avis h4 {
     font-size: 2.4rem;
 }
 
@@ -371,7 +379,6 @@ h6 {
     word-break: normal;
     margin: auto;
     gap: 2rem;
-    padding-bottom: 12rem;
 }
 
 .questions_box {
@@ -392,7 +399,7 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: all 0.5s;
+    animation: slideDown 0.5s ease-in-out;
 }
 
 
@@ -400,6 +407,7 @@ h6 {
     background-color: #f9f6f6;
     text-align: center;
     text-align: left;
+    padding: 4rem 0;
 }
 
 
@@ -419,6 +427,20 @@ h6 {
 .answers {
     display: none;
     transition: all 0.5s;
+    color: rgba(0, 0, 0, 0.7);
+    animation: slideDown 0.5s ease-in-out;
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .questions.active {
@@ -512,19 +534,19 @@ footer {
     text-decoration: underline;
 }
 
-.footer_nav{
+.footer_nav {
     display: flex;
     gap: 2rem;
     flex-direction: column;
 }
 
-.footer_nav a{
+.footer_nav a {
     color: white;
     text-decoration: none;
     font-size: 2rem;
 }
 
-.footer_nav a:hover{
+.footer_nav a:hover {
     text-decoration: underline;
     font-weight: bold;
 }
@@ -564,92 +586,91 @@ footer {
 
     /*BARRE DE NAVIGATION*/
 
-    header nav ul li a{
+    header nav ul li a {
         font-size: 1.6rem;
     }
 
-    #compte{
+    #compte {
         font-size: 1.6rem;
         padding: 1rem 2rem;
     }
 
     /*HERO*/
 
-    h1{
+    h1 {
         font-size: 6rem;
 
     }
 
-    .hero p{
+    .hero p {
         font-size: 2.2rem;
     }
 
     /*INFORMATIONS ENTREPRISE*/
 
-    .section_info{
+    .section_info {
         padding: 4rem 5.5rem;
     }
 
-    .informations{
+    .informations {
         padding: 0;
     }
 
-    .informations img{
+    .informations img {
         width: 80%;
         height: 80%;
     }
 
-    h2{
+    h2 {
         font-size: 2rem;
     }
 
-    .texte p{
+    .texte p {
         font-size: 1.4rem;
     }
 
     /*SELECTION DE VEHICULES*/
 
-    h3{
+    h3 {
         font-size: 2.5rem;
     }
 
-    .nos_vehicules p{
+    .nos_vehicules p {
         font-size: 1.6rem;
     }
 
-    .nos_vehicules a{
+    .nos_vehicules a {
         font-size: 1.4rem;
     }
 
     /*AVIS CLIENTS*/
-    
+
     .avis_content {
         width: 90%;
         flex-direction: column;
-        padding-bottom: 7rem;
     }
 
-        /*FOOTER*/
+    /*FOOTER*/
 
-        .footer-top {
-            width: 35%;
-        }
-    
-        .footer-text a {
-            font-size: 1rem;
-        }
-    
-        .footer-middle {
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            font-size: 1rem;
-        }
-    
-        .footer-links a {
-            font-size: 1rem;
-        }
+    .footer-top {
+        width: 35%;
+    }
+
+    .footer-text a {
+        font-size: 1rem;
+    }
+
+    .footer-middle {
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        font-size: 1rem;
+    }
+
+    .footer-links a {
+        font-size: 1rem;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -711,23 +732,23 @@ footer {
 
     /*HERO*/
 
-    h1{
+    h1 {
         font-size: 5rem;
         top: 10rem;
     }
 
-    .hero{
+    .hero {
         height: 60vh;
     }
 
-    .hero p{
+    .hero p {
         font-size: 2rem;
         top: 8.5rem;
     }
 
     /*INFORMATIONS ENTREPRISE*/
 
-    .informations img{
+    .informations img {
         width: 100%;
         height: 100%;
     }
@@ -748,8 +769,8 @@ footer {
         flex-direction: column-reverse;
     }
 
-     /*Menu-burger*/
-     .menu-toggle {
+    /*Menu-burger*/
+    .menu-toggle {
         display: flex;
         flex-direction: column;
         cursor: pointer;
@@ -810,53 +831,54 @@ footer {
     }
 
 
-    .div_questions{
+    .div_questions {
         width: 35rem;
     }
 
     /*SELECTION DE VEHICULES*/
 
-    .nos_vehicules h3, .nos_vehicules p{
+    .nos_vehicules h3,
+    .nos_vehicules p {
         margin: 0rem 2.5rem;
         text-align: center;
     }
 
     /*AVIS CLIENTS*/
 
-    h5{
+    h5 {
         font-size: 2.3rem;
     }
 
-    h6{
+    h6 {
         font-size: 2.6rem;
-    } 
+    }
 
-    .avis_content{
+    .avis_content {
         width: 90%;
         gap: 2rem;
-        padding-bottom: 5rem;
         justify-content: center;
     }
 
-    .contenu_avis p{
+    .contenu_avis p {
         font-size: 1.4rem;
     }
 
     /*QUESTIONS FREQUENTES*/
 
-    .div_questions{
-        padding-bottom: 6rem;
-    }
 
-    .section_questions h6{
+    .section_questions h6 {
         font-size: 2.8rem;
     }
 
-    .section_questions p{
+    .section_questions p {
         font-size: 1.5rem;
     }
 
     /*FOOTER*/
+
+    footer {
+        flex-direction: column;
+    }
 
     .footer-text a {
         font-size: 1.2rem;
@@ -896,6 +918,22 @@ footer {
         font-size: 1.4rem;
     }
 
+    .div_questions {
+        width: 80%;
+    }
+
+    .questions_box {
+        padding: 1rem;
+    }
+
+    .questions_box p {
+        font-size: 1.4rem;
+    }
+
+    .footer-middle div {
+        flex-direction: column !important;
+    }
+
     .footer-text a {
         font-size: 1rem;
     }
@@ -904,4 +942,3 @@ footer {
         font-size: 1rem;
     }
 }
-
