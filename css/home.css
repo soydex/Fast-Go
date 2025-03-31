@@ -752,6 +752,10 @@ footer {
         top: 8.5rem;
     }
 
+    .car_card_info h2{
+        font-size: 1rem !important; 
+    }
+
     /*INFORMATIONS ENTREPRISE*/
 
     .informations img {
@@ -954,9 +958,6 @@ footer {
     flex-direction: column;
     cursor: pointer;
 }
-
-
-
 
 @media (max-width: 768px) {
 
