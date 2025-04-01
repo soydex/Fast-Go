@@ -58,10 +58,6 @@ header {
     position: relative;
 }
 
-.menu {
-    display: none;
-}
-
 /*Menu select pour filtrer*/
 .list-filtre {
     display: flex;
@@ -171,76 +167,6 @@ footer {
         background-color: #F9F6F6;
         display: inline-block;
         width: 100%;
-    }
-
-    /*Barre de Navigation*/
-    header nav ul {
-        justify-content: space-between;
-        gap: 0rem;
-    }
-
-    nav ul li a {
-        display: none;
-    }
-
-    /*Menu-burger*/
-    .menu-toggle {
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-    }
-
-    .menu-toggle span {
-        width: 48px;
-        height: 4px;
-        background-color: white;
-        margin: 4px 0;
-        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
-    }
-
-    .menu-toggle span:nth-child(1) {
-        transform: translateY(-8px);
-    }
-
-    .menu-toggle span:nth-child(3) {
-        transform: translateY(8px);
-    }
-
-    .menu-toggle.open span:nth-child(1) {
-        transform: rotate(45deg) translateY(0px);
-        position: absolute;
-    }
-
-    .menu-toggle.open span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.open span:nth-child(3) {
-        transform: rotate(-45deg) translateY(0px);
-        position: absolute;
-    }
-
-    .menu {
-        display: none;
-        background-color: rgba(0, 0, 0, 0.7);
-        position: absolute;
-        top: 95px;
-        left: 0;
-        width: 100%;
-        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-        z-index: 5000;
-    }
-
-    .menu a {
-        color: white;
-        text-decoration: none;
-        display: block;
-        padding: 15px;
-        border-bottom: 2px solid white;
-    }
-
-    .show {
-        display: block;
     }
 
     /*Titre*/
