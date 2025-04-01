@@ -39,30 +39,24 @@
   <body>
     <header>
       <nav>
-        <a href="index.html"
-          ><img src="/imgs/logo_fastgo.png" width="200" alt="Logo Fast&Go"
-        /></a>  
-        <ul>
+        <img src="imgs/logo_fastgo.webp" width="200px" alt="Logo Fast&GO" />
+        <ul id="menu" class="menu">
           <li><a href="#">Supercar</a></li>
           <li><a href="#">Berline</a></li>
           <li><a href="#">Tout-Terrain</a></li>
           <li><a href="#">Deux-roues</a></li>
-          <li><a id="compte" href="login.html">COMPTE</a></li>
-          <div class="menu-toggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div id="menu" class="menu">
-            <a href="#">Supercars</a>
-            <a href="#">Berlines</a>
-            <a href="#">Tout-Terrain</a>
-            <a href="#">Deux-Roues</a>
-            <a href="./log/login.html">Compte</a>
-          </div>
+          <li><a id="compte" href="account.html">COMPTE</a></li>
         </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </nav>
     </header>
+
+
+
     <h1>Quel véhicule souhaitez-vous conduire ?</h1>
     <div class="list-filtre container">
       <select class="filtre">
