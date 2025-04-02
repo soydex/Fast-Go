@@ -343,6 +343,7 @@ h5 {
 h6 {
     font-size: 3.2rem;
     font-weight: normal;
+    padding-bottom: 1rem;
 }
 
 .avis_content {
@@ -371,7 +372,7 @@ h6 {
 
 .contenu_avis p {
     font-size: 1.5rem;
-    padding-top: 2.5rem;
+    padding-top: 1rem;
 }
 
 /*QUESTIONS FREQUENTES*/
