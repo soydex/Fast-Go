@@ -48,20 +48,20 @@ async function loadCars() {
       console.log('Base de données chargée');
       const cars = await response.json();
       const main_content = document.getElementById('main_content');
-      cars.forEach(car => {
-          const car_card= document.createElement('a');
+      cars.slice(0, 6).forEach(car => {
+          const car_card = document.createElement('a');
           car_card.href = `location_voiture.html?model_name=${car.model_name}`;
           car_card.target = '_blank';
           car_card.classList.add('car_card');
           car_card.innerHTML = `
-              <div class="car_card_img">
-                  <img src="${car.image_url}" alt="${car.model_name}">
-              </div>
-              <div class="car_card_info">
-                  <h2>${car.brand} ${car.model_name}</h2>
-                  <p>${car.rental_price_per_day}€/jour</p>
-                  <p>${car.horsepower} Ch - ${car.torque} Nm</p>
-              </div>
+          <div class="car_card_img">
+          <img src="${car.image_url}" alt="${car.model_name}">
+          </div>
+          <div class="car_card_info">
+          <h2>${car.brand} ${car.model_name}</h2>
+          <p>${car.rental_price_per_day}€/jour</p>
+          <p>${car.horsepower} Ch - ${car.torque} Nm</p>
+          </div>
           `;
           main_content.appendChild(car_card);
       });
