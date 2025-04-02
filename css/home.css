@@ -524,6 +524,12 @@ footer {
     align-items: center;
 }
 
+.footer-social{
+    display: flex;
+    gap: 2rem;
+    width: 65%;
+}
+
 .footer-bottom p {
     margin: 0;
     font-size: 1.6rem;
