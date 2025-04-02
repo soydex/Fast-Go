@@ -13,6 +13,7 @@ async function loadCars() {
                 <td contenteditable="true" class="editable" data-field="model_name">${car.model_name}</td>
                 <td contenteditable="true" class="editable" data-field="brand">${car.brand}</td>
                 <td contenteditable="true" class="editable" data-field="image_url">${car.image_url}</td>
+                <td><img src="${car.image_url}" alt="${car.model_name}" style="width: 50px; height: auto;"></td>
                 <td contenteditable="true" class="editable" data-field="transmission">${car.transmission}</td>
                 <td contenteditable="true" class="editable" data-field="weight">${car.weight}</td>
                 <td contenteditable="true" class="editable" data-field="rental_price_per_day">${car.rental_price_per_day}</td>

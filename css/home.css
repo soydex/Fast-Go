@@ -29,6 +29,7 @@ body {
 
 
 
+
 header {
     position: absolute;
     top: 0;
@@ -70,6 +71,7 @@ header nav ul li a:hover {
     padding: 1.5rem 3rem;
     border-radius: 2.5rem;
     transition: all 0.5s;
+    text-align: center;
 }
 
 #compte:hover {
@@ -720,244 +722,8 @@ footer {
     }
 }
 
-@media (max-width: 376px) {
-
-    /*Barre de Navigation*/
-
-    header nav ul {
-        height: 7.5rem;
-        display: flex;
-        align-items: center;
-        padding: 1rem 0rem 1rem 0rem;
-    }
-
-    header nav ul li a {
-        display: none;
-    }
-
-    header nav ul img {
-        width: 30%;
-    }
-
-    /*HERO*/
-
-    h1 {
-        font-size: 5rem;
-        top: 10rem;
-    }
-
-    .hero {
-        height: 60vh;
-    }
-
-    .hero p {
-        font-size: 2rem;
-        top: 8.5rem;
-    }
-
-    .car_card_info h2 {
-        font-size: 1rem !important;
-    }
-
-    /*INFORMATIONS ENTREPRISE*/
-
-    .informations img {
-        width: 100%;
-        height: 100%;
-    }
-
-    .section_info {
-        padding: 2rem 2rem;
-    }
-
-    .informations {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    #section_taycan {
-        display: flex;
-        flex-direction: column-reverse;
-    }
-
-    /*Menu-burger*/
-    .menu-toggle {
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-    }
-
-    .menu-toggle span {
-        width: 48px;
-        height: 4px;
-        background-color: white;
-        margin: 4px 0;
-        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
-
-    }
-
-    .menu-toggle span:nth-child(1) {
-        transform: translateY(-8px);
-    }
-
-    .menu-toggle span:nth-child(3) {
-        transform: translateY(8px);
-    }
-
-    .menu-toggle.open span:nth-child(1) {
-        transform: rotate(45deg) translateY(0px);
-        position: absolute;
-    }
-
-    .menu-toggle.open span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.open span:nth-child(3) {
-        transform: rotate(-45deg) translateY(0px);
-        position: absolute;
-    }
-
-    .menu {
-        display: none;
-        background-color: black;
-        position: absolute;
-        top: 75px;
-        left: 0;
-        width: 100%;
-        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-        z-index: 1;
-    }
-
-    .menu a {
-        color: white;
-        text-decoration: none;
-        display: block;
-        padding: 15px;
-        border-bottom: 2px solid white;
-    }
-
-    .show {
-        display: block;
-    }
-
-
-    .div_questions {
-        width: 35rem;
-    }
-
-    /*SELECTION DE VEHICULES*/
-
-    .nos_vehicules h3,
-    .nos_vehicules p {
-        text-align: center;
-    }
-
-    /*AVIS CLIENTS*/
-
-    h5 {
-        font-size: 2.3rem;
-    }
-
-    h6 {
-        font-size: 2.6rem;
-    }
-
-    .avis_content {
-        width: 90%;
-        gap: 2rem;
-        justify-content: center;
-    }
-
-    .contenu_avis p {
-        font-size: 1.4rem;
-    }
-
-    /*QUESTIONS FREQUENTES*/
-
-
-    .section_questions h6 {
-        font-size: 2.8rem;
-    }
-
-    .section_questions p {
-        font-size: 1.5rem;
-    }
-
-    /*FOOTER*/
-
-    footer {
-        flex-direction: column;
-    }
-
-    .footer-text a {
-        font-size: 1.2rem;
-    }
-
-    .footer-middle {
-        padding: 1rem 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        font-size: 1.2rem;
-    }
-
-    .footer-links a {
-        font-size: 1.2rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .hero {
-        height: 50vh;
-    }
-
-    .hero h1 {
-        font-size: 4rem;
-    }
-
-    .hero p {
-        font-size: 1.6rem;
-    }
-
-    .nos_vehicules h3 {
-        font-size: 2rem;
-    }
-
-    .nos_vehicules p {
-        font-size: 1.4rem;
-    }
-
-    .div_questions {
-        width: 80%;
-    }
-
-    .questions_box {
-        padding: 1rem;
-    }
-
-    .questions_box p {
-        font-size: 1.4rem;
-    }
-
-    .footer-middle div {
-        flex-direction: column !important;
-    }
-
-    .footer-text a {
-        font-size: 1rem;
-    }
-
-    .footer-links a {
-        font-size: 1rem;
-    }
-}
-
 .menu-toggle {
     display: none;
-    /* Masquer par défaut */
     flex-direction: column;
     cursor: pointer;
 }
@@ -968,7 +734,7 @@ footer {
         display: none;
         background-color: rgba(0, 0, 0, 0.7);
         position: absolute;
-        top: 130px;
+        top: 137px;
         left: 0;
         width: 100%;
         transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
@@ -1032,5 +798,73 @@ footer {
     header nav ul {
         display: none;
         /* Masquer la navigation classique */
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .logo{
+        width: 50%;
+    }
+
+    .menu{
+        top: 125px;
+    }
+
+    .hero {
+        height: 50vh;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .hero p {
+        font-size: 1.6rem;
+    }
+
+    .nos_vehicules h3 {
+        font-size: 2rem;
+    }
+
+    .nos_vehicules p {
+        font-size: 1.4rem;
+    }
+
+    .div_questions {
+        width: 80%;
+    }
+
+    .questions_box {
+        padding: 1rem;
+    }
+
+    .questions_box p {
+        font-size: 1.4rem;
+    }
+
+    .footer-middle div {
+        flex-direction: column !important;
+    }
+
+    .footer-text a {
+        font-size: 1rem;
+    }
+
+    .footer-links a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 376px){
+    .menu{
+        top: 110px;
+    }
+}
+
+@media (max-width: 326px){
+    .menu{
+        top: 95px;
     }
 }
