@@ -436,6 +436,8 @@ h6 {
     transition: all 0.5s;
     color: rgba(0, 0, 0, 0.7);
     animation: slideDown 0.5s ease-in-out;
+    font-style: oblique;
+    font-weight: 200;
 }
 
 @keyframes slideDown {
