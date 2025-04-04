@@ -16,15 +16,37 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/helpers.css" />
     <link rel="stylesheet" href="css/home.css" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.0.0/mdb.min.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <header>
       <nav>
-        <a href="index.html"><img src="imgs/logo_fastgo.webp" width="200px" alt="Logo Fast&GO" class="logo"/></a>
+        <a href="index.html"
+          ><img
+            src="imgs/logo_fastgo.webp"
+            width="200px"
+            alt="Logo Fast&GO"
+            class="logo"
+        /></a>
         <ul id="menu" class="menu">
           <li><a href="#">Supercar</a></li>
           <li><a href="#">Berline</a></li>
@@ -106,8 +128,9 @@
           <h4>⭐⭐⭐⭐⭐</h4>
           <p>
             Une vraie expérience de luxe !
-            <br>
-            Voiture impeccable, service rapide et équipe aux petits soins. Je réserverai à nouveau sans hésiter !
+            <br />
+            Voiture impeccable, service rapide et équipe aux petits soins. Je
+            réserverai à nouveau sans hésiter !
           </p>
         </div>
 
@@ -127,8 +150,9 @@
           <h4>⭐⭐⭐⭐⭐</h4>
           <p>
             Parfait du début à la fin !
-            <br>
-            Location facile, voiture sublime et équipe professionnelle. Je recommande sans hésitation !
+            <br />
+            Location facile, voiture sublime et équipe professionnelle. Je
+            recommande sans hésitation !
           </p>
         </div>
       </div>
@@ -212,42 +236,138 @@
     </section>
 
     <footer>
-      <div class="footer-top">
-        <img
-          src="imgs/logo_fastgo.webp"
-          alt="FAST&GO Logo"
-          class="footer-logo"
-          width="400px"
-        />
-      </div>
-      <div class="footer-middle">
-        <div style="display: flex; align-items: center; gap: 2rem">
-          <div class="footer-text">
-          <div class="footer-social">
-            <a href="https://https://www.instagram.com/" target="_blank">
-              <img src="imgs/instagram.svg" alt="Instagram" />
-            </a>
-            <a href="https://www.facebook.com/" target="_blank">
-              <img src="imgs/facebook.svg" alt="Facebook" />
-            </a>
-            <a href="https://x.com/" target="_blank">
-              <img src="imgs/twitter.svg" alt="TikTok" />
-            <a href="https://www.linkedin.com/" target="_blank">
-              <img src="imgs/linkedin.svg" alt="LinkedIn" />
-            </a>
+      <footer class="bg-dark text-center text-lg-start text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+          <!--Grid row-->
+          <div class="row my-4">
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <div
+                class="rounded-circle bg-black shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto"
+              >
+                <img
+                  src="imgs/logo_fastgo.webp"
+                  height="120"
+                  alt=""
+                  loading="lazy"
+                />
+              </div>
+
+              <p class="text-center">
+                Location de véhicules<br>de luxe sur Paris
+                <br>Retrouvez-nous sur les réseaux sociaux !
+              </p>
+
+              <ul class="list-unstyled d-flex flex-row justify-content-center">
+                <li>
+                  <a class="text-white px-2" href="#!">
+                    <i class="fab fa-facebook-square"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="text-white px-2" href="#!">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="text-white ps-2" href="#!">
+                    <i class="fab fa-youtube"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase mb-4">Nos Produits</h5>
+
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="#!" class="text-white">F&G+ Abonnement auto</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#!" class="text-white">Location de voiture</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#!" class="text-white">Location de deux roues</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#!" class="text-white">Chauffeur privé</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase mb-4">F&G ENTREPRISE</h5>
+
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="#!" class="text-white"
+                    >Enregistrer votre entreprise</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#!" class="text-white"
+                    >Mobilité pour vos voyages d'affaires</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#!" class="text-white"
+                    >Alternatives voitures de fonction</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase mb-4">Contact</h5>
+
+              <ul class="list-unstyled">
+                <li>
+                  <p>
+                    <i class="fas fa-map-marker-alt pe-2 mr-2"></i>14 Avenue des
+                    Champs Elysées Paris, France
+                  </p>
+                </li>
+                <li>
+                  <p><i class="fas fa-phone pe-2 mr-2"></i>06 95 82 35 74</p>
+                </li>
+                <li>
+                  <p>
+                    <i class="fas fa-envelope pe-2 mb-0 mr-2"></i
+                    >contactfastandgo@gmail.com
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
           </div>
-            <a href="mailto:contactfastandgo@gmail.com"
-              >contactfastandgo@gmail.com</a
-            >
-          </div>
-          <ul class="footer-links">
-            <li><a href="#">Mentions légales</a></li>
-            <li><a href="#">Politique de confidentialité</a></li>
-            <li><a href="#">Conditions d'utilisation</a></li>
-          </ul>
+          <!--Grid row-->
         </div>
-        <p>&copy; 2025 FAST&GO. Tous droits réservés.</p>
-      </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div
+          class="text-center p-3"
+          style="background-color: rgba(0, 0, 0, 0.2)"
+        >
+          © 2025 Copyright:
+          <a class="text-white" href="https://mdbootstrap.com/">FAST&GO.COM</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- MDB -->
+      <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.0.0/mdb.umd.min.js"
+      ></script>
+      <!-- End of .container -->
     </footer>
     <script src="js/index.js"></script>
     <script src="js/nav.js"></script>
