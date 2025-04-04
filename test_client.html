@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Espace - Location de véhicules de luxe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .card h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .card p {
+            color: #555;
+        }
+        .button {
+            display: inline-block;
+            align-self: flex-end;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background: white;
+            color: #333;
+            border: solid 2px #333;
+        }
+        .reservations {
+            margin-top: 20px;
+        }
+        .reservation {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Mon Espace - Mes Réservations</h1>
+        
+        <div class="reservations">
+            <div class="reservation">
+                <h2>Lamborghini Aventador</h2>
+                <p>Date de début : 10/04/2025</p>
+                <p>Date de fin : 15/04/2025</p>
+                <p>Prix total : 6000€</p>
+                <a href="#" class="button">Annuler</a>
+            </div>
+            <div class="reservation">
+                <h2>Ferrari 488 Spider</h2>
+                <p>Date de début : 18/04/2025</p>
+                <p>Date de fin : 22/04/2025</p>
+                <p>Prix total : 4400€</p>
+                <a href="#" class="button">Annuler</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

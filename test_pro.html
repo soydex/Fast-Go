@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - Location de véhicules de luxe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .card h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .card p {
+            color: #555;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .stat {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 1;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Tableau de bord - Location de véhicules de luxe</h1>
+        
+        <div class="grid">
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?lamborghini" alt="Lamborghini Aventador">
+                <h2>Lamborghini Aventador</h2>
+                <p>1200€/jour</p>
+                <a href="#" class="button">Réserver</a>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?ferrari" alt="Ferrari 488 Spider">
+                <h2>Ferrari 488 Spider</h2>
+                <p>1100€/jour</p>
+                <a href="#" class="button">Réserver</a>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?rolls-royce" alt="Rolls-Royce Phantom">
+                <h2>Rolls-Royce Phantom</h2>
+                <p>1500€/jour</p>
+                <a href="#" class="button">Réserver</a>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <h2>20</h2>
+                <p>Véhicules disponibles</p>
+            </div>
+            <div class="stat">
+                <h2>15</h2>
+                <p>Clients actifs</p>
+            </div>
+            <div class="stat">
+                <h2>5</h2>
+                <p>Réservations en cours</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
