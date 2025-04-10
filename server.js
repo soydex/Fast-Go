@@ -6,8 +6,19 @@ app.use(express.json());
 app.use(cors());
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const stripe = require('stripe')('votre_clé_secrète_stripe');
+const helmet = require('helmet');
+const nodemailer = require('nodemailer');
 
+app.use(helmet());
 
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'votre_email@gmail.com',
+        pass: 'votre_mot_de_passe',
+    },
+});
 
 // 🔹 Récupérer tous les utilisateurs
 app.get('/users', (req, res) => {
@@ -205,6 +216,65 @@ app.put('/cars/:id', (req, res) => {
             res.json({ message: "Véhicule mis à jour", id });
         }
     );
+});
+
+// 🔹 Route pour initier un paiement
+app.post('/create-payment-intent', authenticateToken, async (req, res) => {
+    const { amount } = req.body;
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount,
+            currency: 'eur',
+            payment_method_types: ['card'],
+        });
+        res.json({ clientSecret: paymentIntent.client_secret });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// 🔹 Route pour envoyer une notification
+app.post('/notifications', authenticateToken, (req, res) => {
+    const { message } = req.body;
+    // Logique pour envoyer une notification
+    res.json({ success: true, message: 'Notification envoyée.' });
+});
+
+// 🔹 Route pour envoyer un email
+app.post('/send-email', authenticateToken, (req, res) => {
+    const { to, subject, text } = req.body;
+    const mailOptions = {
+        from: 'votre_email@gmail.com',
+        to,
+        subject,
+        text,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) return res.status(500).json({ error: error.message });
+        res.json({ success: true, message: 'Email envoyé.' });
+    });
+});
+
+// 🔹 Route pour récupérer les analyses
+app.get('/analytics', authenticateToken, (req, res) => {
+    db.all(`SELECT * FROM user_actions`, [], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
+
+// Fonction pour enregistrer les actions des utilisateurs
+function logUserAction(userId, action) {
+    db.run(`INSERT INTO user_actions (user_id, action) VALUES (?, ?)`, [userId, action], (err) => {
+        if (err) console.error('Erreur lors de l\'enregistrement de l\'action utilisateur:', err.message);
+    });
+}
+
+// Exemple d'utilisation
+app.post('/some-protected-route', authenticateToken, (req, res) => {
+    logUserAction(req.user.id, 'Accès à une route protégée');
+    res.json({ success: true });
 });
 
 // 🔹 Démarrer le serveur

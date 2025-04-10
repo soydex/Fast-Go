@@ -23,4 +23,14 @@ db.run(`
     if (err) console.error('Erreur lors de la création de la table', err.message);
 });
 
+db.run(`
+    CREATE TABLE IF NOT EXISTS user_actions (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER,
+        action TEXT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id)
+    )
+`);
+
 module.exports = db;

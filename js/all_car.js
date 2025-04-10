@@ -35,14 +35,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 document.addEventListener('DOMContentLoaded', () => {
     const userInfoElement = document.getElementById('user-info');
 
-    // Récupérer le token depuis le stockage local
     const token = localStorage.getItem('token');
     if (!token) {
-        userInfoElement.textContent = 'Vous devez être connecté pour accéder à cette page.';
+        userInfoElement.textContent = 'Vous n\'êtes pas connecté.';
         return;
     }
 
-    // Récupérer les informations utilisateur
     fetch('http://localhost:3000/me', {
         headers: {
             'Authorization': token

@@ -49,6 +49,9 @@ Ce projet est une application web permettant de gérer la location de voitures. 
 - **Authentification** : Connexion et inscription des utilisateurs.
 - **Catalogue de voitures** : Affichage de toutes les voitures disponibles.
 - **Détails des voitures** : Affichage des informations détaillées d'une voiture spécifique.
+- **Paiements** : Gestion des paiements via Stripe.
+- **Notifications** : Envoi de notifications et d'emails aux utilisateurs.
+- **Analyses** : Suivi des actions des utilisateurs pour des statistiques.
 
 ## Fonctionnalités Secondaires
 - **Filtres dynamiques** : Filtrer et trier les véhicules par type, transmission, prix, etc.
@@ -76,6 +79,9 @@ Ce projet est une application web permettant de gérer la location de voitures. 
    ```bash
    node server.js
    ```
+4. Configurez Stripe et Nodemailer :
+   - Remplacez `votre_clé_secrète_stripe` dans `server.js` par votre clé Stripe.
+   - Configurez votre email et mot de passe dans la section Nodemailer.
 
 ## Auteur
 Projet développé par nous.

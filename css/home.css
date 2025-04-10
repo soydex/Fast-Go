@@ -285,6 +285,7 @@ h3 {
 .car_card img {
     height: 400px;
     object-fit: contain;
+    max-width: 100%;
 }
 
 .car_card {
@@ -414,6 +415,10 @@ h6 {
     
 }
 
+.questions_box:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .questions {
     display: flex;
     align-items: center;
@@ -480,7 +485,51 @@ h6 {
 }
 
 
+footer{
+    padding: 2rem 0;
+    background-color: #2b2b2b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*gap: 2rem;*/
+    color: white;
+}
 
+footer div{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+footer a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.6rem;
+}
+
+footer p{
+    text-align: center;
+}
+
+.footer_copyright{
+    background-color: #2b2b2b;
+    text-align: center;
+    width: 100%;
+    color: white;
+}
+
+.footer_copyright a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.6rem;
+}
+
+.footer_copyright a:hover{
+    text-decoration: underline;
+}
 
 @media screen and (max-width: 1024px) {
     .hero h1 {
@@ -510,6 +559,10 @@ h6 {
 
     .texte p {
         font-size: 1.8rem;
+    }
+
+    footer{
+        flex-direction: column;
     }
 }
 
@@ -586,28 +639,10 @@ h6 {
         flex-direction: column;
     }
 
-    /*FOOTER*/
-
-    .footer-top {
-        width: 35%;
-    }
-
-    .footer-text a {
-        font-size: 1rem;
-    }
-
-    .footer-middle {
-        padding: 1rem 0;
-        display: flex;
-        gap: 2rem;
-        align-items: center;
+    footer{
         flex-direction: column;
     }
 
-    .footer-links a {
-        font-size: 1rem;
-    }
-}
 
 @media screen and (max-width: 768px) {
     header nav ul {
@@ -638,6 +673,9 @@ h6 {
 
     .questions_box {
         padding: 1rem;
+    }
+    footer{
+        flex-direction: column;
     }
 }
 
@@ -718,6 +756,9 @@ h6 {
         display: none;
         /* Masquer la navigation classique */
     }
+    footer{
+        flex-direction: column;
+    }
 }
 
 
@@ -757,18 +798,9 @@ h6 {
 
     .questions_box p {
         font-size: 1.4rem;
-    }
-
-    .footer-middle div {
-        flex-direction: column !important;
-    }
-
-    .footer-text a {
-        font-size: 1rem;
-    }
-
-    .footer-links a {
-        font-size: 1rem;
+    }   
+    footer{
+        flex-direction: column;
     }
 }
 
