@@ -231,11 +231,12 @@ h3 {
 }
 
 
-.vehicules_section{
+.vehicules_section {
     background: rgb(249, 246, 246);
     background: linear-gradient(180deg, rgba(249, 246, 246, 1) 0%, rgba(249, 246, 246, 1) 93%, rgba(255, 255, 255, 1) 100%);
 }
-.avis{
+
+.avis {
     background: rgb(249, 246, 246);
     background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(249, 246, 246, 1) 7%, rgba(249, 249, 249, 1) 100%);
 }
@@ -412,7 +413,7 @@ h6 {
     padding: 2rem;
     gap: 1rem;
     transition: all 0.5s;
-    
+
 }
 
 .questions_box:hover {
@@ -485,7 +486,7 @@ h6 {
 }
 
 
-footer{
+footer {
     padding: 2rem 0;
     background-color: #2b2b2b;
     display: flex;
@@ -495,7 +496,7 @@ footer{
     color: white;
 }
 
-footer div{
+footer div {
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -504,30 +505,30 @@ footer div{
     width: 100%;
 }
 
-footer a{
+footer a {
     text-decoration: none;
     color: white;
     font-size: 1.6rem;
 }
 
-footer p{
+footer p {
     text-align: center;
 }
 
-.footer_copyright{
+.footer_copyright {
     background-color: #2b2b2b;
     text-align: center;
     width: 100%;
     color: white;
 }
 
-.footer_copyright a{
+.footer_copyright a {
     text-decoration: none;
     color: white;
     font-size: 1.6rem;
 }
 
-.footer_copyright a:hover{
+.footer_copyright a:hover {
     text-decoration: underline;
 }
 
@@ -561,7 +562,7 @@ footer p{
         font-size: 1.8rem;
     }
 
-    footer{
+    footer {
         flex-direction: column;
     }
 }
@@ -639,179 +640,182 @@ footer p{
         flex-direction: column;
     }
 
-    footer{
-        flex-direction: column;
-    }
-
-
-@media screen and (max-width: 768px) {
-    header nav ul {
-        gap: 4rem;
-    }
-
-    .hero h1 {
-        font-size: 6rem;
-    }
-
-    .hero p {
-        font-size: 2rem;
-    }
-
-    .main_content {
-        grid-template-columns: 1fr;
-    }
-
-    .car_card img {
-        width: 100%;
-        height: auto;
-    }
-
-    .avis_content {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .questions_box {
-        padding: 1rem;
-    }
-    footer{
+    footer {
         flex-direction: column;
     }
 }
 
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
+    @media screen and (max-width: 768px) {
+        header nav ul {
+            gap: 4rem;
+        }
 
-@media (max-width: 768px) {
+        .hero h1 {
+            font-size: 6rem;
+        }
 
-    .menu {
-        display: none;
-        background-color: rgba(0, 0, 0, 0.7);
-        position: absolute;
-        top: 137px;
-        left: 0;
-        width: 100%;
-        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-        z-index: 1;
-    }
+        .hero p {
+            font-size: 2rem;
+        }
 
-    .menu a {
-        color: white;
-        text-decoration: none;
-        display: block;
-        padding: 15px;
-        border-bottom: 2px solid white;
+        .main_content {
+            grid-template-columns: 1fr;
+        }
+
+        .car_card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .avis_content {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .questions_box {
+            padding: 1rem;
+        }
+
+        footer {
+            flex-direction: column;
+        }
     }
 
     .menu-toggle {
         display: none;
-        /* Masquer par défaut */
         flex-direction: column;
         cursor: pointer;
     }
 
-    .menu-toggle span {
-        width: 48px;
-        height: 4px;
-        background-color: white;
-        margin: 4px 0;
-        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
+    @media (max-width: 768px) {
+
+        .menu {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 137px;
+            left: 0;
+            width: 100%;
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+            z-index: 1;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            border-bottom: 2px solid white;
+        }
+
+        .menu-toggle {
+            display: none;
+            /* Masquer par défaut */
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 48px;
+            height: 4px;
+            background-color: white;
+            margin: 4px 0;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
+        }
+
+        .menu-toggle span:nth-child(1) {
+            transform: translateY(-8px);
+        }
+
+        .menu-toggle span:nth-child(3) {
+            transform: translateY(8px);
+        }
+
+        .menu-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translateY(0px);
+            position: absolute;
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translateY(0px);
+            position: absolute;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: flex;
+            /* Afficher uniquement sur les téléphones */
+        }
+
+        header nav ul {
+            display: none;
+            /* Masquer la navigation classique */
+        }
+
+        footer {
+            flex-direction: column;
+        }
     }
 
-    .menu-toggle span:nth-child(1) {
-        transform: translateY(-8px);
+
+    @media (max-width: 480px) {
+
+        .logo {
+            width: 50%;
+        }
+
+        .menu {
+            top: 125px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+        }
+
+        .nos_vehicules h3 {
+            font-size: 2rem;
+        }
+
+        .nos_vehicules p {
+            font-size: 1.4rem;
+        }
+
+        .div_questions {
+            width: 80%;
+        }
+
+        .questions_box {
+            padding: 1rem;
+        }
+
+        .questions_box p {
+            font-size: 1.4rem;
+        }
+
+        footer {
+            flex-direction: column;
+        }
     }
 
-    .menu-toggle span:nth-child(3) {
-        transform: translateY(8px);
+    @media (max-width: 376px) {
+        .menu {
+            top: 110px;
+        }
     }
 
-    .menu-toggle.open span:nth-child(1) {
-        transform: rotate(45deg) translateY(0px);
-        position: absolute;
+    @media (max-width: 326px) {
+        .menu {
+            top: 95px;
+        }
     }
-
-    .menu-toggle.open span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.open span:nth-child(3) {
-        transform: rotate(-45deg) translateY(0px);
-        position: absolute;
-    }
-
-    .show {
-        display: block;
-    }
-
-    .menu-toggle {
-        display: flex;
-        /* Afficher uniquement sur les téléphones */
-    }
-
-    header nav ul {
-        display: none;
-        /* Masquer la navigation classique */
-    }
-    footer{
-        flex-direction: column;
-    }
-}
-
-
-@media (max-width: 480px) {
-
-    .logo{
-        width: 50%;
-    }
-
-    .menu{
-        top: 125px;
-    }
-
-    .hero h1 {
-        font-size: 4rem;
-    }
-
-    .hero p {
-        font-size: 1.6rem;
-    }
-
-    .nos_vehicules h3 {
-        font-size: 2rem;
-    }
-
-    .nos_vehicules p {
-        font-size: 1.4rem;
-    }
-
-    .div_questions {
-        width: 80%;
-    }
-
-    .questions_box {
-        padding: 1rem;
-    }
-
-    .questions_box p {
-        font-size: 1.4rem;
-    }   
-    footer{
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 376px){
-    .menu{
-        top: 110px;
-    }
-}
-
-@media (max-width: 326px){
-    .menu{
-        top: 95px;
-    }
-}
