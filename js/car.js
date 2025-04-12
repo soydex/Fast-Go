@@ -48,6 +48,73 @@ async function loadCars() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
+function generateCalendar() {
+    const calendarDays = document.getElementById('calendar_days');
+    const calendarDates = document.getElementById('calendar_dates');
+    const calendarWeekdays = document.getElementById('calendar_weekdays');
+    const calendarDatesSelected = document.getElementById('calendar_dates_selected');
+
+    const weekdays = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    calendarWeekdays.innerHTML = weekdays.map(day => `<div>${day}</div>`).join('');
+
+    function renderCalendar(month, year) {
+        calendarDates.innerHTML = '';
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.classList.add('empty');
+            calendarDates.appendChild(emptyCell);
+        }
+
+        // Ajoute les jours du mois
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dateCell = document.createElement('div');
+            dateCell.textContent = day;
+            dateCell.classList.add('date');
+            dateCell.addEventListener('click', () => {
+                calendarDatesSelected.innerHTML = `Date sélectionnée : ${day}/${month + 1}/${year}`;
+            });
+            calendarDates.appendChild(dateCell);
+        }
+    }
+
+    renderCalendar(currentMonth, currentYear);
+
+    document.getElementById('calendar_prev').addEventListener('click', () => {
+        const newMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+        const newYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+        renderCalendar(newMonth, newYear);
+    });
+
+    document.getElementById('calendar_next').addEventListener('click', () => {
+        const newMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+        const newYear = currentMonth === 11 ? currentYear + 1 : currentYear;
+        renderCalendar(newMonth, newYear);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
     loadCars();
+    generateCalendar();
 });
+
+
+const car_rent_button = document.getElementById('rent_me');
+
+car_rent_button.addEventListener('click', () => reservation(model_name));
+
+function reservation(model_name) {
+    const div_calendar = document.getElementById('calendar');
+    div_calendar.style.display = 'flex';
+
+    document.getElementById('close_calendar').addEventListener('click', () => {
+        div_calendar.style.display = 'none';
+        console.log(`Réservation pour le modèle : ${model_name}`);
+    });
+}

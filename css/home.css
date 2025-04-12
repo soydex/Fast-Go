@@ -4,6 +4,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 
+:root {
+    --bg-color: #f9f6f6;
+    --text-color: black;
+}
+
+[data-theme="dark"] {
+    --bg-color: #323232;
+    --text-color: white;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +30,6 @@
 }
 
 body {
-    background-color: #f9f6f6;
     position: relative;
 }
 
@@ -181,7 +198,6 @@ header nav ul li a:hover {
     width: 100%;
     margin: auto;
     padding: 4rem;
-    background-color: white !important;
 }
 
 .informations {
@@ -230,7 +246,7 @@ h3 {
     font-size: 5rem;
 }
 
-
+/*
 .vehicules_section {
     background: rgb(249, 246, 246);
     background: linear-gradient(180deg, rgba(249, 246, 246, 1) 0%, rgba(249, 246, 246, 1) 93%, rgba(255, 255, 255, 1) 100%);
@@ -239,7 +255,7 @@ h3 {
 .avis {
     background: rgb(249, 246, 246);
     background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(249, 246, 246, 1) 7%, rgba(249, 249, 249, 1) 100%);
-}
+}*/
 
 
 
@@ -287,11 +303,12 @@ h3 {
     height: 400px;
     object-fit: contain;
     max-width: 100%;
+    justify-self: anchor-center;
 }
 
 .car_card {
     position: relative;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     border-radius: 25px;
     padding: 1rem;
     transition: 0.6s;
@@ -369,7 +386,6 @@ h6 {
 
 .contenu_avis {
     border: solid 1px white;
-    background-color: white;
     border-radius: 2.5rem;
     text-align: center;
     box-shadow: 5px 5px 5px #888888;
@@ -405,7 +421,6 @@ h6 {
     flex-direction: column;
     align-items: stretch;
     border: solid 1px white;
-    background-color: white;
     box-shadow: 5px 5px 5px #ecebebb9;
     border-radius: 2.5rem;
     width: 100%;
@@ -429,7 +444,6 @@ h6 {
 
 
 .section_questions {
-    background-color: #f9f6f6;
     text-align: center;
     text-align: left;
     padding: 4rem 0;
@@ -645,177 +659,177 @@ footer p {
     }
 }
 
-    @media screen and (max-width: 768px) {
-        header nav ul {
-            gap: 4rem;
-        }
+@media screen and (max-width: 768px) {
+    header nav ul {
+        gap: 4rem;
+    }
 
-        .hero h1 {
-            font-size: 6rem;
-        }
+    .hero h1 {
+        font-size: 6rem;
+    }
 
-        .hero p {
-            font-size: 2rem;
-        }
+    .hero p {
+        font-size: 2rem;
+    }
 
-        .main_content {
-            grid-template-columns: 1fr;
-        }
+    .main_content {
+        grid-template-columns: 1fr;
+    }
 
-        .car_card img {
-            width: 100%;
-            height: auto;
-        }
+    .car_card img {
+        width: 100%;
+        height: auto;
+    }
 
-        .avis_content {
-            flex-direction: column;
-            gap: 2rem;
-        }
+    .avis_content {
+        flex-direction: column;
+        gap: 2rem;
+    }
 
-        .questions_box {
-            padding: 1rem;
-        }
+    .questions_box {
+        padding: 1rem;
+    }
 
-        footer {
-            flex-direction: column;
-        }
+    footer {
+        flex-direction: column;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    .menu {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.7);
+        position: absolute;
+        top: 137px;
+        left: 0;
+        width: 100%;
+        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        z-index: 1;
+    }
+
+    .menu a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 15px;
+        border-bottom: 2px solid white;
     }
 
     .menu-toggle {
         display: none;
+        /* Masquer par défaut */
         flex-direction: column;
         cursor: pointer;
     }
 
-    @media (max-width: 768px) {
-
-        .menu {
-            display: none;
-            background-color: rgba(0, 0, 0, 0.7);
-            position: absolute;
-            top: 137px;
-            left: 0;
-            width: 100%;
-            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-            z-index: 1;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 15px;
-            border-bottom: 2px solid white;
-        }
-
-        .menu-toggle {
-            display: none;
-            /* Masquer par défaut */
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 48px;
-            height: 4px;
-            background-color: white;
-            margin: 4px 0;
-            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
-        }
-
-        .menu-toggle span:nth-child(1) {
-            transform: translateY(-8px);
-        }
-
-        .menu-toggle span:nth-child(3) {
-            transform: translateY(8px);
-        }
-
-        .menu-toggle.open span:nth-child(1) {
-            transform: rotate(45deg) translateY(0px);
-            position: absolute;
-        }
-
-        .menu-toggle.open span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.open span:nth-child(3) {
-            transform: rotate(-45deg) translateY(0px);
-            position: absolute;
-        }
-
-        .show {
-            display: block;
-        }
-
-        .menu-toggle {
-            display: flex;
-            /* Afficher uniquement sur les téléphones */
-        }
-
-        header nav ul {
-            display: none;
-            /* Masquer la navigation classique */
-        }
-
-        footer {
-            flex-direction: column;
-        }
+    .menu-toggle span {
+        width: 48px;
+        height: 4px;
+        background-color: white;
+        margin: 4px 0;
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
     }
 
-
-    @media (max-width: 480px) {
-
-        .logo {
-            width: 50%;
-        }
-
-        .menu {
-            top: 125px;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-        }
-
-        .hero p {
-            font-size: 1.6rem;
-        }
-
-        .nos_vehicules h3 {
-            font-size: 2rem;
-        }
-
-        .nos_vehicules p {
-            font-size: 1.4rem;
-        }
-
-        .div_questions {
-            width: 80%;
-        }
-
-        .questions_box {
-            padding: 1rem;
-        }
-
-        .questions_box p {
-            font-size: 1.4rem;
-        }
-
-        footer {
-            flex-direction: column;
-        }
+    .menu-toggle span:nth-child(1) {
+        transform: translateY(-8px);
     }
 
-    @media (max-width: 376px) {
-        .menu {
-            top: 110px;
-        }
+    .menu-toggle span:nth-child(3) {
+        transform: translateY(8px);
     }
 
-    @media (max-width: 326px) {
-        .menu {
-            top: 95px;
-        }
+    .menu-toggle.open span:nth-child(1) {
+        transform: rotate(45deg) translateY(0px);
+        position: absolute;
     }
+
+    .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.open span:nth-child(3) {
+        transform: rotate(-45deg) translateY(0px);
+        position: absolute;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .menu-toggle {
+        display: flex;
+        /* Afficher uniquement sur les téléphones */
+    }
+
+    header nav ul {
+        display: none;
+        /* Masquer la navigation classique */
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .logo {
+        width: 50%;
+    }
+
+    .menu {
+        top: 125px;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .hero p {
+        font-size: 1.6rem;
+    }
+
+    .nos_vehicules h3 {
+        font-size: 2rem;
+    }
+
+    .nos_vehicules p {
+        font-size: 1.4rem;
+    }
+
+    .div_questions {
+        width: 80%;
+    }
+
+    .questions_box {
+        padding: 1rem;
+    }
+
+    .questions_box p {
+        font-size: 1.4rem;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 376px) {
+    .menu {
+        top: 110px;
+    }
+}
+
+@media (max-width: 326px) {
+    .menu {
+        top: 95px;
+    }
+}

@@ -16,6 +16,7 @@
           ><img src="imgs/logo_fastgo.webp" width="200px" alt="Logo Fast&GO"
         /></a>
         <ul>
+          <button id="theme-toggle">Changer de thème</button>
           <li><a href="#">Supercar</a></li>
           <li><a href="#">Berline</a></li>
           <li><a href="#">Tout-Terrain</a></li>
@@ -32,13 +33,31 @@
         <span id="dispo">Disponible</span>
         <div id="car_description"></div>
         <p>Prix : <span id="prix"></span>€/jour</p>
-        <a id="rent_me" href="">Louez-Moi</a>
+        <a id="rent_me">Louez-Moi</a>
         <div id="paiement_secu">
-          <img src="imgs/card.png" alt="" srcset="" />
+          <img src="imgs/card.png"/>
           <p>Paiement sécurisé</p>
         </div>
       </div>
     </main>
+    <div id="calendar">
+      <div id="calendar_content">
+        <h2>Disponibilités</h2>
+        <button id="close_calendar">X</button>
+        <div>
+          <div id="calendar_header">
+            <div id="calendar_prev" class="calendar_button">Précédent</div>
+            <div id="calendar_next" class="calendar_button">Suivant</div>
+          </div>
+          <div id="calendar_days"></div>
+          <div id="calendar_dates"></div>
+          <div id="calendar_weekdays"></div>
+          <div id="calendar_dates_selected"></div>
+        </div>
+        <div id="calendar_infos"></div>
+      </div>
+    </div>
   </body>
+  <script src="js/darkmode.js"></script>
   <script src="js/car.js"></script>
 </html>
