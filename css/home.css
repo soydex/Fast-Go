@@ -78,7 +78,6 @@ header nav ul li a {
 header nav ul li a:hover {
     color: white;
     font-weight: bold;
-    text-decoration: underline;
 }
 
 #compte {
@@ -93,19 +92,15 @@ header nav ul li a:hover {
 }
 
 #compte:hover {
-    background-color: black;
+    background-color: transparent;
     color: white;
-    border: solid 1px white;
 }
 
 #theme-toggle{
     cursor: pointer;
     padding: 1rem 2rem;
-    background-color: #d9d9d9;
     border-radius: 2.5rem;
-    font-size: 2rem;
     transition: all 0.5s;
-    text-align: center;
 }
 
 

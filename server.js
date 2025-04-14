@@ -218,43 +218,6 @@ app.put('/cars/:id', (req, res) => {
     );
 });
 
-// 🔹 Route pour initier un paiement
-app.post('/create-payment-intent', authenticateToken, async (req, res) => {
-    const { amount } = req.body;
-    try {
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount,
-            currency: 'eur',
-            payment_method_types: ['card'],
-        });
-        res.json({ clientSecret: paymentIntent.client_secret });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-// 🔹 Route pour envoyer une notification
-app.post('/notifications', authenticateToken, (req, res) => {
-    const { message } = req.body;
-    // Logique pour envoyer une notification
-    res.json({ success: true, message: 'Notification envoyée.' });
-});
-
-// 🔹 Route pour envoyer un email
-app.post('/send-email', authenticateToken, (req, res) => {
-    const { to, subject, text } = req.body;
-    const mailOptions = {
-        from: 'votre_email@gmail.com',
-        to,
-        subject,
-        text,
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) return res.status(500).json({ error: error.message });
-        res.json({ success: true, message: 'Email envoyé.' });
-    });
-});
 
 // 🔹 Route pour récupérer les analyses
 app.get('/analytics', authenticateToken, (req, res) => {

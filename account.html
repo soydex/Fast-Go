@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/helpers.css" />
     <link rel="stylesheet" href="/css/account.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Ajout du CDN Chart.js -->
 
     <title>Profil</title>
   </head>
@@ -28,7 +29,7 @@
           <div class="profile_user_actions">
             <button id="edit-profile">Modifier le profil</button>
             <button id="change-password">Changer le mot de passe</button>
-            <button id="theme-toggle">Changer de thème</button>
+            <button id="theme-toggle"><img id="theme-toggle-img" src="imgs/moon.svg" alt="Lune" /></a>Changer de thème</button>
             <button id="delete-account">Supprimer le compte</button>
             <button id="logout">Déconnexion</button>
             <a href="http://127.0.0.1:5500/gestion/utilisateurs.html">Gestion Utilisateurs</a>
@@ -56,6 +57,10 @@
             <h2>5</h2>
             <p>Réservations en cours</p>
           </div>
+        </div>
+
+        <div class="chart-container" style="max-width: 600px; margin-top: 2rem;">
+          <canvas id="reservationsChart"></canvas>
         </div>
       </section>
     </main>

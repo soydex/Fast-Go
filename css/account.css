@@ -84,6 +84,11 @@ aside{
 
 }
 
+#theme-toggle{
+    display: flex;
+    gap: 1rem;
+}
+
 .profile_user_actions button:hover{
     background-color: #D9D9D9;
     color: #333;

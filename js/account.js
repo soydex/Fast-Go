@@ -34,3 +34,37 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = '/log/login.html'; // Rediriger vers la page de connexion
     });
 });
+
+const ctx = document.getElementById('reservationsChart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Véhicules', 'Clients', 'Réservations'],
+    datasets: [{
+      label: 'Statistiques',
+      data: [20, 15, 5],
+      backgroundColor: ['#4CAF50', '#2196F3', '#FF9800'],
+      borderRadius: 10,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Aperçu des réservations',
+        font: { size: 18 }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {}
+      },
+      x: {
+        ticks: {}
+      }
+    }
+  }
+});
