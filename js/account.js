@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const userInfoElement = document.getElementById('user-info');
     const logoutButton = document.getElementById('logout');
-
+    const username = document.getElementById('user-name');
+    const userEmail = document.getElementById('user-email');
     // Récupérer le token depuis le stockage local
     const token = localStorage.getItem('token');
     if (!token) {
@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return response.json();
     })
     .then(user => {
-        userInfoElement.innerHTML = `Vous êtes connecté en tant que <strong>${user.name}</strong> (${user.email})`;
+        username.textContent = user.name;
+        userEmail.textContent = user.email;
     })
     .catch(error => {
         console.error(error);

@@ -22,6 +22,54 @@
       border-radius: 25px;
       background: black;
     }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    button {
+      background-color: black;
+
+      color: white;
+      border: none;
+      padding: 5px;
+      cursor: pointer;
+      border-radius: 25px;
+    }
+
+    form {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 80%;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+    }
   </style>
   <body>
     <h1>Gestion des Véhicules</h1>
@@ -31,13 +79,28 @@
       <input type="text" id="model_name" placeholder="model_name" required />
       <input type="text" id="brand" placeholder="brand" required />
       <input type="text" id="image_url" placeholder="image_url" required />
-      <input type="text" id="transmission" placeholder="transmission" required />
+      <input
+        type="text"
+        id="transmission"
+        placeholder="transmission"
+        required
+      />
       <input type="text" id="weight" placeholder="weight" required />
-      <input type="number" id="rental_price_per_day" placeholder="rental_price_per_day" required />
+      <input
+        type="number"
+        id="rental_price_per_day"
+        placeholder="rental_price_per_day"
+        required
+      />
       <input type="text" id="engine_type" placeholder="engine_type" required />
       <input type="number" id="horsepower" placeholder="horsepower" required />
-      <input type="number" id="torque" placeholder="torque" required >
-      <input type="number" id="seating_capacity" placeholder="seating_capacity" required />
+      <input type="number" id="torque" placeholder="torque" required />
+      <input
+        type="number"
+        id="seating_capacity"
+        placeholder="seating_capacity"
+        required
+      />
       <button type="submit">Ajouter</button>
     </form>
 

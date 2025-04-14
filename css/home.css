@@ -98,6 +98,17 @@ header nav ul li a:hover {
     border: solid 1px white;
 }
 
+#theme-toggle{
+    cursor: pointer;
+    padding: 1rem 2rem;
+    background-color: #d9d9d9;
+    border-radius: 2.5rem;
+    font-size: 2rem;
+    transition: all 0.5s;
+    text-align: center;
+}
+
+
 /*HERO*/
 
 .fastgo_title {
@@ -352,7 +363,7 @@ h3 {
 
 #see_more {
     text-decoration: underline;
-    color: black;
+    color: var(--text-color);
     margin: auto;
 }
 
@@ -385,10 +396,9 @@ h6 {
 }
 
 .contenu_avis {
-    border: solid 1px white;
     border-radius: 2.5rem;
     text-align: center;
-    box-shadow: 5px 5px 5px #888888;
+    box-shadow: 0px 5px 5px #888888;
 }
 
 .contenu_avis h4 {
@@ -466,7 +476,7 @@ h6 {
 .answers {
     display: none;
     transition: all 0.5s;
-    color: rgba(0, 0, 0, 0.7);
+    opacity: 0.7;
     animation: slideDown 0.5s ease-in-out;
     font-style: oblique;
     font-weight: 200;

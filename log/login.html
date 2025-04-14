@@ -21,6 +21,30 @@
     <link rel="stylesheet" href="../css/login.css" />
     <title>Connexion</title>
   </head>
+  <style>
+    .gradient-custom {
+      background: url("../imgs/rs6.jpeg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    #login_container {
+      background-color: rgba(38, 38, 38, 0.7) !important;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    a[href="login.html"] {
+      transition: 0.6s;
+    }
+
+    a[href="login.html"]:hover,
+    a[href="register.html"]:hover {
+      text-decoration: underline;
+    }
+  </style>
   <body>
     <section class="vh-100 gradient-custom">
       <div class="container py-5 h-100">
@@ -63,7 +87,6 @@
                   </div>
 
                   <span id="span_notif" style="display: none"></span>
-
 
                   <p class="small mb-5 pb-lg-2">
                     <a class="text-white-50" href="#!">Mot de passe oublié ?</a>

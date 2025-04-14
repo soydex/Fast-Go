@@ -1,17 +1,65 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil</title>
-</head>
-<body>
-    <h1>Profil</h1>
-    <p id="user-info">Chargement des informations utilisateur...</p>
-    <a href="http://127.0.0.1:5500/gestion/utilisateurs.html">Gestion Utilisateurs</a>
-    <a href="http://127.0.0.1:5500/gestion/vehicules.html">Gestion Véhicules</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/helpers.css" />
+    <link rel="stylesheet" href="/css/account.css" />
 
-    <button id="logout">Déconnexion</button>
+    <title>Profil</title>
+  </head>
+  <body>
+    <main>
+      <aside>
+        <div class="profile_user">
+          <div class="profile_user_img">
+            <img
+              src="/imgs/user.png"
+              alt="User Image"
+              id="user-image"
+              width="300"
+            />
+          </div>
+          <div class="profile_user_info">
+            <h2 id="user-name">Nom d'utilisateur</h2>
+            <p id="user-email">Email</p>
+          </div>
+          <div class="profile_user_actions">
+            <button id="edit-profile">Modifier le profil</button>
+            <button id="change-password">Changer le mot de passe</button>
+            <button id="theme-toggle">Changer de thème</button>
+            <button id="delete-account">Supprimer le compte</button>
+            <button id="logout">Déconnexion</button>
+            <a href="http://127.0.0.1:5500/gestion/utilisateurs.html">Gestion Utilisateurs</a>
+            <a href="http://127.0.0.1:5500/gestion/vehicules.html">Gestion Véhicules</a>
+          </div>
+        </div>
+      </aside>
+      <section class="profile_content">
+        <h1>Bienvenue sur votre profil</h1>
+        <p>
+          Vous pouvez gérer vos informations personnelles et vos paramètres de
+          compte ici.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <h2>20</h2>
+            <p>Véhicules disponibles</p>
+          </div>
+          <div class="stat">
+            <h2>15</h2>
+            <p>Clients actifs</p>
+          </div>
+          <div class="stat">
+            <h2>5</h2>
+            <p>Réservations en cours</p>
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="/js/account.js"></script>
-</body>
+    <script src="/js/darkmode.js"></script>
+  </body>
 </html>

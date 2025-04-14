@@ -21,6 +21,30 @@
     <link rel="stylesheet" href="../css/login.css" />
     <title>Inscription</title>
   </head>
+  <style>
+    .gradient-custom {
+      background: url("../imgs/rs6.jpeg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    #login_container {
+      background-color: rgba(38, 38, 38, 0.7) !important;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    a[href="login.html"] {
+      transition: 0.6s;
+    }
+
+    a[href="login.html"]:hover,
+    a[href="register.html"]:hover {
+      text-decoration: underline;
+    }
+  </style>
   <body>
     <section class="vh-100 gradient-custom">
       <div class="container py-5 h-100">
@@ -29,14 +53,16 @@
             <div
               id="login_container"
               class="card bg-dark text-white"
-              style="border-radius: 1rem">
+              style="border-radius: 1rem"
+            >
               <div class="card-body p-5 text-center">
                 <div class="mb-md-5 mt-md-4 pb-5">
                   <img
                     src="../imgs/logo_fast&go.png"
                     width="200px"
                     style="margin: 1rem"
-                    alt="Logo Fast&Go"/>
+                    alt="Logo Fast&Go"
+                  />
                   <h2 class="fw-bold mb-2 text-uppercase">Inscription</h2>
                   <p class="text-white-50 mb-5">
                     Entrez votre email et mot de passe pour vous connecter.
@@ -69,7 +95,6 @@
                   </div>
 
                   <span id="span_notif" style="display: none"></span>
-
 
                   <p class="small mb-5 pb-lg-2">
                     <a class="text-white-50" href="#!">Mot de passe oublié ?</a>

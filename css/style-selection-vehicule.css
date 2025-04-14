@@ -2,18 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     background-color: #F9F6F6;
 }
 
 /*Titre*/
-h1, h2, h4 {
+h1,
+h2,
+h4 {
     text-align: left;
 }
 
@@ -28,7 +24,8 @@ h1 {
 }
 
 /*btn*/
-.btn-effacer-filtre, .btn-offre {
+.btn-effacer-filtre,
+.btn-offre {
     border: none;
     border-radius: 2rem;
     padding: 0.7rem 3rem;
@@ -101,7 +98,8 @@ footer {
     align-items: center;
 }
 
-.footer-text a, .footer-links a {
+.footer-text a,
+.footer-links a {
     color: white;
     text-decoration: none;
 }
