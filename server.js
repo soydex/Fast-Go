@@ -20,24 +20,44 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-// 🔹 Récupérer tous les utilisateurs
-app.get('/users', (req, res) => {
+// Middleware pour vérifier le token
+function authenticateToken(req, res, next) {
+    const token = req.headers['authorization'];
+    if (!token) return res.sendStatus(401);
+
+    jwt.verify(token, SECRET_KEY, (err, user) => {
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    });
+}
+
+// Middleware pour vérifier si l'utilisateur est administrateur
+function authenticateAdmin(req, res, next) {
+    if (req.user.role !== 'admin') {
+        return res.status(403).json({ error: "Accès interdit : droits administrateur requis." });
+    }
+    next();
+}
+
+// 🔹 Récupérer tous les utilisateurs (protégé par admin)
+app.get('/users', authenticateToken, authenticateAdmin, (req, res) => {
     db.all(`SELECT * FROM users`, [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
     });
 });
 
-// 🔹 Récupérer tous les véhicules
-app.get('/cars', (req, res) => {
+// 🔹 Récupérer tous les véhicules (protégé par admin)
+app.get('/cars', authenticateToken, authenticateAdmin, (req, res) => {
     db.all(`SELECT * FROM cars`, [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
     });
 });
 
-// Ajouter un véhicule
-app.post('/cars', (req, res) => {
+// Ajouter un véhicule (protégé par admin)
+app.post('/cars', authenticateToken, authenticateAdmin, (req, res) => {
     const { model_name, brand, image_url, transmission, weight, rental_price_per_day, engine_type, horsepower, torque, seating_capacity } = req.body;
     if (!model_name || !brand || !transmission || !weight || !rental_price_per_day || !engine_type || !horsepower || !torque || !seating_capacity) {
         return res.status(400).json({ error: "Tous les champs sont requis." });
@@ -54,8 +74,8 @@ app.post('/cars', (req, res) => {
     });
 });
 
-// 🔹 Ajouter un utilisateur
-app.post('/users', (req, res) => {
+// 🔹 Ajouter un utilisateur (protégé par admin)
+app.post('/users', authenticateToken, authenticateAdmin, (req, res) => {
     const { name, email, password, role } = req.body;
     if (!name || !email || !password || !role) {
         return res.status(400).json({ error: "Nom, email, mot de passe et rôle requis." });
@@ -67,8 +87,8 @@ app.post('/users', (req, res) => {
     });
 });
 
-// 🔹 Supprimer un utilisateur
-app.delete('/users/:id', (req, res) => {
+// 🔹 Supprimer un utilisateur (protégé par admin)
+app.delete('/users/:id', authenticateToken, authenticateAdmin, (req, res) => {
     const { id } = req.params;
 
     db.run(`DELETE FROM users WHERE id = ?`, id, function (err) {
@@ -77,8 +97,8 @@ app.delete('/users/:id', (req, res) => {
     });
 });
 
-// 🔹 Mettre à jour un utilisateur
-app.put('/users/:id', (req, res) => {
+// 🔹 Mettre à jour un utilisateur (protégé par admin)
+app.put('/users/:id', authenticateToken, authenticateAdmin, (req, res) => {
     const { id } = req.params;
     const { name, email, role } = req.body;
 
@@ -96,8 +116,8 @@ app.put('/users/:id', (req, res) => {
     );
 });
 
-// 🔹 Supprimer un véhicule
-app.delete('/cars/:id', (req, res) => {
+// 🔹 Supprimer un véhicule (protégé par admin)
+app.delete('/cars/:id', authenticateToken, authenticateAdmin, (req, res) => {
     const { id } = req.params;
 
     db.run(`DELETE FROM cars WHERE id = ?`, id, function (err) {
@@ -172,18 +192,6 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Middleware pour vérifier le token
-function authenticateToken(req, res, next) {
-    const token = req.headers['authorization'];
-    if (!token) return res.sendStatus(401);
-
-    jwt.verify(token, SECRET_KEY, (err, user) => {
-        if (err) return res.sendStatus(403);
-        req.user = user;
-        next();
-    });
-}
-
 // Exemple de route protégée
 app.get('/protected', authenticateToken, (req, res) => {
     res.json({ message: 'Accès autorisé', user: req.user });
@@ -199,8 +207,8 @@ app.get('/me', authenticateToken, (req, res) => {
     });
 });
 
-// 🔹 Mettre à jour un véhicule
-app.put('/cars/:id', (req, res) => {
+// 🔹 Mettre à jour un véhicule (protégé par admin)
+app.put('/cars/:id', authenticateToken, authenticateAdmin, (req, res) => {
     const { id } = req.params;
     const { model_name, brand, image_url, transmission, weight, rental_price_per_day, engine_type, horsepower, torque, seating_capacity } = req.body;
 

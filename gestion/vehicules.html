@@ -130,5 +130,27 @@
       </tbody>
     </table>
   </body>
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert("Vous devez être connecté pour accéder à cette page.");
+      window.location.href = "/log/login.html";
+    }
+
+    fetch('http://localhost:3000/me', {
+      headers: { 'Authorization': token }
+    })
+    .then(response => response.json())
+    .then(user => {
+      if (user.role !== 'admin') {
+        alert("Accès interdit : droits administrateur requis.");
+        window.location.href = "/";
+      }
+    })
+    .catch(() => {
+      alert("Erreur lors de la vérification des droits.");
+      window.location.href = "/log/login.html";
+    });
+  </script>
   <script src="../js/script_car.js"></script>
 </html>
