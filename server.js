@@ -6,19 +6,9 @@ app.use(express.json());
 app.use(cors());
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const stripe = require('stripe')('votre_clé_secrète_stripe');
 const helmet = require('helmet');
-const nodemailer = require('nodemailer');
 
 app.use(helmet());
-
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'votre_email@gmail.com',
-        pass: 'votre_mot_de_passe',
-    },
-});
 
 // Middleware pour vérifier le token
 function authenticateToken(req, res, next) {
@@ -41,7 +31,7 @@ function authenticateAdmin(req, res, next) {
 }
 
 // 🔹 Récupérer tous les utilisateurs (protégé par admin)
-app.get('/users', authenticateToken, authenticateAdmin, (req, res) => {
+app.get('/users', (req, res) => {
     db.all(`SELECT * FROM users`, [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
@@ -57,7 +47,7 @@ app.get('/cars', (req, res) => {
 });
 
 // Ajouter un véhicule (protégé par admin)
-app.post('/cars', authenticateToken, authenticateAdmin, (req, res) => {
+app.post('/cars', (req, res) => {
     const { model_name, brand, image_url, transmission, weight, rental_price_per_day, engine_type, horsepower, torque, seating_capacity } = req.body;
     if (!model_name || !brand || !transmission || !weight || !rental_price_per_day || !engine_type || !horsepower || !torque || !seating_capacity) {
         return res.status(400).json({ error: "Tous les champs sont requis." });
@@ -75,7 +65,7 @@ app.post('/cars', authenticateToken, authenticateAdmin, (req, res) => {
 });
 
 // 🔹 Ajouter un utilisateur (protégé par admin)
-app.post('/users', authenticateToken, authenticateAdmin, (req, res) => {
+app.post('/users', (req, res) => {
     const { name, email, password, role } = req.body;
     if (!name || !email || !password || !role) {
         return res.status(400).json({ error: "Nom, email, mot de passe et rôle requis." });
