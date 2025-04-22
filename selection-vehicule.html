@@ -43,31 +43,31 @@
 
     <h1>Quel véhicule souhaitez-vous conduire ?</h1>
     <div class="list-filtre container">
-      <select class="filtre">
+      <select id="sort" class="filtre">
         <option value="" selected>Trier par</option>
-        <option value="prix-croissant">Prix croissant</option>
-        <option value="prix-croissant">Prix déroissant</option>
+        <option value="asc">Prix croissant</option>
+        <option value="desc">Prix décroissant</option>
       </select>
-      <select class="filtre">
+      <select id="type" class="filtre">
         <option value="" selected>Type de véhicule</option>
         <option value="supercars">Supercars</option>
         <option value="berlines">Berlines</option>
         <option value="tout-terrain">Tout-Terrain</option>
         <option value="deux-roues">Deux-roues</option>
       </select>
-      <select class="filtre">
+      <select id="transmission" class="filtre">
         <option value="" selected>Transmission</option>
         <option value="automatique">Automatique</option>
         <option value="manuelle">Manuelle</option>
       </select>
-      <select class="filtre">
+      <select id="passengers" class="filtre">
         <option value="" selected>Passagers</option>
-        <option value="2+">2+</option>
-        <option value="4+">4+</option>
-        <option value="5+">5+</option>
-        <option value="7+">7+</option>
+        <option value="2">2+</option>
+        <option value="4">4+</option>
+        <option value="5">5+</option>
+        <option value="7">7+</option>
       </select>
-      <button class="btn-offre">Voir les 15 offres</button>
+      <button id="apply-filters" class="btn-offre">Appliquer les filtres</button>
       <a class="btn-effacer-filtre" href="">Effacer</a>
     </div>
 
