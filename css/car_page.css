@@ -232,3 +232,11 @@ header{
     font-weight: bold;
     text-align: center;
 }
+
+#theme-toggle {
+    display: flex;
+    gap: 1rem;
+    background: none;
+    border: none;
+    color: white;
+}   
