@@ -48,8 +48,8 @@ app.get('/users', authenticateToken, authenticateAdmin, (req, res) => {
     });
 });
 
-// 🔹 Récupérer tous les véhicules (protégé par admin)
-app.get('/cars', authenticateToken, authenticateAdmin, (req, res) => {
+// 🔹 Récupérer tous les véhicules
+app.get('/cars', (req, res) => {
     db.all(`SELECT * FROM cars`, [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
