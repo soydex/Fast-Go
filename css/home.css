@@ -142,6 +142,47 @@ header nav ul li a:hover {
     transition: all 0.5s;
 }
 
+.hero_buttons{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero_buttons a{
+    text-decoration: none;
+    font-size: 2rem;
+    padding: 1.5rem 3rem;
+    border-radius: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: all 0.5s;
+    z-index: 2;
+    color: white;
+}
+
+.hero_buttons a:hover{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+.hero_buttons a:active{
+    transform: scale(0.9);
+}
+
+.hero_buttons a:nth-child(2){
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+.hero_buttons a:nth-child(2):hover{
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+
 .hero::after {
     content: '';
     position: absolute;
@@ -264,6 +305,10 @@ h3 {
     background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(249, 246, 246, 1) 7%, rgba(249, 249, 249, 1) 100%);
 }*/
 
+.avis, .section_questions {
+    padding: 10rem 0;
+}
+
 
 
 .nos_vehicules {
@@ -361,6 +406,7 @@ h3 {
     text-decoration: underline;
     color: var(--text-color);
     margin: auto;
+    transition: all 0.5s;
 }
 
 #see_more:hover {
@@ -451,7 +497,6 @@ h6 {
 .section_questions {
     text-align: center;
     text-align: left;
-    padding: 4rem 0;
 }
 
 
@@ -509,10 +554,18 @@ footer {
     padding: 2rem 0;
     background-color: #2b2b2b;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    /*gap: 2rem;*/
+    gap: 2rem;
     color: white;
+    text-align: left;
+}
+
+footer a{
+    text-align: left;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 footer div {
@@ -521,6 +574,8 @@ footer div {
     gap: 2rem;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+
     width: 100%;
 }
 
@@ -531,7 +586,7 @@ footer a {
 }
 
 footer p {
-    text-align: center;
+    text-align: left;
 }
 
 .footer_copyright {
