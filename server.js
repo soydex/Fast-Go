@@ -6,7 +6,9 @@ app.use(express.json());
 app.use(cors());
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const stripe = require('stripe')('votre_clé_secrète_stripe');
 const helmet = require('helmet');
+const nodemailer = require('nodemailer');
 
 app.use(helmet());
 
@@ -22,13 +24,6 @@ function authenticateToken(req, res, next) {
     });
 }
 
-// Middleware pour vérifier si l'utilisateur est administrateur
-function authenticateAdmin(req, res, next) {
-    if (req.user.role !== 'admin') {
-        return res.status(403).json({ error: "Accès interdit : droits administrateur requis." });
-    }
-    next();
-}
 
 // 🔹 Récupérer tous les utilisateurs (protégé par admin)
 app.get('/users', (req, res) => {
@@ -78,7 +73,7 @@ app.post('/users', (req, res) => {
 });
 
 // 🔹 Supprimer un utilisateur (protégé par admin)
-app.delete('/users/:id', authenticateToken, authenticateAdmin, (req, res) => {
+app.delete('/users/:id', (req, res) => {
     const { id } = req.params;
 
     db.run(`DELETE FROM users WHERE id = ?`, id, function (err) {
@@ -88,7 +83,7 @@ app.delete('/users/:id', authenticateToken, authenticateAdmin, (req, res) => {
 });
 
 // 🔹 Mettre à jour un utilisateur (protégé par admin)
-app.put('/users/:id', authenticateToken, authenticateAdmin, (req, res) => {
+app.put('/users/:id', (req, res) => {
     const { id } = req.params;
     const { name, email, role } = req.body;
 
@@ -107,7 +102,7 @@ app.put('/users/:id', authenticateToken, authenticateAdmin, (req, res) => {
 });
 
 // 🔹 Supprimer un véhicule (protégé par admin)
-app.delete('/cars/:id', authenticateToken, authenticateAdmin, (req, res) => {
+app.delete('/cars/:id', (req, res) => {
     const { id } = req.params;
 
     db.run(`DELETE FROM cars WHERE id = ?`, id, function (err) {
@@ -188,7 +183,7 @@ app.get('/protected', authenticateToken, (req, res) => {
 });
 
 // 🔹 Récupérer les informations de l'utilisateur connecté
-app.get('/me', authenticateToken, (req, res) => {
+app.get('/me', (req, res) => {
     const userId = req.user.id;
     db.get(`SELECT id, name, email, role FROM users WHERE id = ?`, [userId], (err, user) => {
         if (err) return res.status(500).json({ error: err.message });
@@ -198,7 +193,7 @@ app.get('/me', authenticateToken, (req, res) => {
 });
 
 // 🔹 Mettre à jour un véhicule (protégé par admin)
-app.put('/cars/:id', authenticateToken, authenticateAdmin, (req, res) => {
+app.put('/cars/:id', (req, res) => {
     const { id } = req.params;
     const { model_name, brand, image_url, transmission, weight, rental_price_per_day, engine_type, horsepower, torque, seating_capacity } = req.body;
 
@@ -218,7 +213,7 @@ app.put('/cars/:id', authenticateToken, authenticateAdmin, (req, res) => {
 
 
 // 🔹 Route pour récupérer les analyses
-app.get('/analytics', authenticateToken, (req, res) => {
+app.get('/analytics', (req, res) => {
     db.all(`SELECT * FROM user_actions`, [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
