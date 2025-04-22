@@ -177,13 +177,8 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Exemple de route protégée
-app.get('/protected', authenticateToken, (req, res) => {
-    res.json({ message: 'Accès autorisé', user: req.user });
-});
-
 // 🔹 Récupérer les informations de l'utilisateur connecté
-app.get('/me', (req, res) => {
+app.get('/me', authenticateToken, (req, res) => {
     const userId = req.user.id;
     db.get(`SELECT id, name, email, role FROM users WHERE id = ?`, [userId], (err, user) => {
         if (err) return res.status(500).json({ error: err.message });
@@ -227,11 +222,6 @@ function logUserAction(userId, action) {
     });
 }
 
-// Exemple d'utilisation
-app.post('/some-protected-route', authenticateToken, (req, res) => {
-    logUserAction(req.user.id, 'Accès à une route protégée');
-    res.json({ success: true });
-});
 
 // 🔹 Démarrer le serveur
 app.listen(3000, () => console.log('Serveur sur http://localhost:3000'));
