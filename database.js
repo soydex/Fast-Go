@@ -11,26 +11,12 @@ const db = new sqlite3.Database('database.db', (err) => {
 
 // Créer une table (si elle n'existe pas déjà)
 db.run(`
-    CREATE TABLE IF NOT EXISTS users (
+    CREATE TABLE IF NOT EXISTS reservations (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT NOT NULL UNIQUE,
-        password TEXT NOT NULL,
-        role TEXT NOT NULL CHECK (role IN ('user', 'admin')),
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-`, (err) => {
-    if (err) console.error('Erreur lors de la création de la table', err.message);
-});
-
-db.run(`
-    CREATE TABLE IF NOT EXISTS user_actions (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER,
-        action TEXT,
-        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users(id)
+        client_name TEXT NOT NULL,
+        vehicle TEXT NOT NULL,
+        date TEXT NOT NULL,
+        status TEXT NOT NULL
     )
 `);
-
 module.exports = db;

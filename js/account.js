@@ -35,6 +35,29 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "/log/login.html"; // Rediriger vers la page de connexion
     });
 
+  // Récupérer les statistiques et mettre à jour les divs stats
+  Promise.all([
+    fetch("http://localhost:3000/cars", { headers: { Authorization: token } }),
+    fetch("http://localhost:3000/users", { headers: { Authorization: token } }),
+    //fetch("http://localhost:3000/reservations", { headers: { Authorization: token } }),
+  ])
+    .then(async ([carsRes, usersRes]) => {
+      if (!carsRes.ok || !usersRes.ok) {
+        throw new Error("Erreur lors de la récupération des statistiques.");
+      }
+
+      const cars = await carsRes.json();
+      const users = await usersRes.json();
+
+      // Mettre à jour les divs stats
+      document.querySelector(".stat:nth-child(1) h2").textContent = cars.length;
+      document.querySelector(".stat:nth-child(2) h2").textContent = users.filter(user => user.role === "client").length;
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Erreur lors de la récupération des statistiques.");
+    });
+
   // Gestion de la déconnexion
   logoutButton.addEventListener("click", () => {
     localStorage.removeItem("token");
@@ -77,3 +100,5 @@ new Chart(ctx, {
     },
   },
 });
+
+

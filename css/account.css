@@ -60,6 +60,7 @@ aside{
 .profile_user_img img{
     width: 50%;
     border-radius: 50%;
+    box-shadow: 0 0 4px var(--text-color);
 }
 
 .profile_user_info::after{
