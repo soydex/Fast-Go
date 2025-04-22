@@ -20,17 +20,15 @@ async function loginUser(event) {
         });
 
         const data = await response.json();
-        if (data.error) {
+        if (!response.ok) {
             Spaninfo.style.display = 'block';
             Spaninfo.style.color = 'red';
-            Spaninfo.innerHTML='Email ou mot de passe incorrect';
-            alert(data.error);
+            Spaninfo.innerHTML = data.error || 'Erreur lors de la connexion.';
         } else {
             localStorage.setItem('token', data.token);
             Spaninfo.style.display = 'block';
             Spaninfo.style.color = 'green';
-            Spaninfo.innerHTML='Connexion réussie';
-            // Rediriger vers une page protégée
+            Spaninfo.innerHTML = 'Connexion réussie';
             window.location.href = '../catalogue.html';
         }
     } catch (error) {
