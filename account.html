@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/helpers.css" />
     <link rel="stylesheet" href="/css/account.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Ajout du CDN Chart.js -->
-
+    <link rel="icon" href="/imgs/favicon.ico" sizes="any" />
+    <link rel="icon" href="/imgs/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <title>Profil</title>
   </head>
   <body>
@@ -29,12 +31,26 @@
           <div class="profile_user_actions">
             <button id="edit-profile">Modifier le profil</button>
             <button id="change-password">Changer le mot de passe</button>
-            <button id="theme-toggle"><img id="theme-toggle-img" src="imgs/moon.svg" alt="Lune" /></a>Changer de thème</button>
+            <button id="theme-toggle">
+              <img
+                id="theme-toggle-img"
+                src="imgs/moon.svg"
+                alt="Lune"
+              />Changer de thème
+            </button>
             <button id="delete-account">Supprimer le compte</button>
             <button id="logout">Déconnexion</button>
-            <p style="border-bottom: 1px solid;">Gestion Administrative</p>
-            <button onclick="location.href='http://127.0.0.1:5500/gestion/utilisateurs.html'">Gestion Utilisateurs</button>
-            <button onclick="location.href='http://127.0.0.1:5500/gestion/vehicules.html'">Gestion Véhicules</button>
+            <p style="border-bottom: 1px solid">Gestion Administrative</p>
+            <button
+              onclick="location.href='http://127.0.0.1:5500/gestion/utilisateurs.html'"
+            >
+              Gestion Utilisateurs
+            </button>
+            <button
+              onclick="location.href='http://127.0.0.1:5500/gestion/vehicules.html'"
+            >
+              Gestion Véhicules
+            </button>
           </div>
         </div>
       </aside>
@@ -60,8 +76,70 @@
           </div>
         </div>
 
-        <div class="chart-container" style="max-width: 600px; margin-top: 2rem;">
+        <div class="chart-container" style="max-width: 600px; margin-top: 2rem">
           <canvas id="reservationsChart"></canvas>
+        </div>
+        <div class="reservations">
+          <div style="display: flex; align-items: center; gap: 1rem">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#ffffff"
+              width="50px"
+              height="50px"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                ></path>
+              </g>
+            </svg>
+            <h2>Mes réservations</h2>
+          </div>
+          <div class="reservations_content">
+            <p>Oups.. Vous n'avez pas de réservations actuellement</p>
+          </div>
+        </div>
+        <div class="history">
+          <div style="display: flex; align-items: center; gap: 1rem">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              width="50px"
+              height="50px"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M3.0156 10H6.99999M3.0156 10V6M3.0156 10L6.34315 6.34315C9.46734 3.21895 14.5327 3.21895 17.6569 6.34315C20.781 9.46734 20.781 14.5327 17.6569 17.6569C14.5327 20.781 9.46734 20.781 6.34315 17.6569C5.55928 16.873 4.97209 15.9669 4.58158 15M12 9V13L15 14.5"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+            <h2>Historique des réservations</h2>
+          </div>
+          <div class="history_content">
+            <p>Oups.. Vous n'avez pas d'historique de réservations</p>
+          </div>
         </div>
       </section>
     </main>
