@@ -7,6 +7,8 @@
 :root {
     --bg-color: #f9f6f6;
     --text-color: black;
+    --bg-button-gradient: linear-gradient(180deg, rgba(238, 210, 158, 1) 0%, rgba(211, 176, 115, 1) 50%, rgba(177, 141, 87, 1) 100%);
+    --bg-button-gradient-hover: linear-gradient(180deg, rgba(177, 141, 87, 1) 0%, rgba(211, 176, 115, 1) 50%, rgba(238, 210, 158, 1) 100%);
 }
 
 [data-theme="dark"] {
@@ -84,8 +86,9 @@ header nav ul li a:hover {
 #compte {
     color: black;
     font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
     font-size: 2rem;
-    background-color: #d9d9d9;
+    background: var(--bg-button-gradient);
     padding: 1.5rem 3rem;
     border-radius: 2.5rem;
     transition: all 0.5s;
@@ -93,8 +96,8 @@ header nav ul li a:hover {
 }
 
 #compte:hover {
-    background-color: transparent;
-    color: white;
+    background: transparent;
+    color: #ddb87f;
 }
 
 #theme-toggle{
@@ -155,16 +158,18 @@ header nav ul li a:hover {
     font-size: 2rem;
     padding: 1.5rem 3rem;
     border-radius: 2.5rem;
-    background-color: rgba(0, 0, 0, 0.7);
-    transition: all 0.5s;
+    background: var(--bg-button-gradient);
+    transition: all .5s;
     z-index: 2;
-    color: white;
+    color: black;
+    font-weight: bold;
 }
 
 .hero_buttons a:hover{
-    background-color: white;
-    color: black;
+    background: var(--bg-button-gradient-hover);
     font-weight: bold;
+    color: white;
+
 }
 
 .hero_buttons a:active{
@@ -172,14 +177,12 @@ header nav ul li a:hover {
 }
 
 .hero_buttons a:nth-child(2){
-    background-color: white;
     color: black;
     font-weight: bold;
 }
 
 .hero_buttons a:nth-child(2):hover{
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
+    background: var(--bg-button-gradient-hover);
 }
 
 
@@ -202,6 +205,15 @@ header nav ul li a:hover {
     color: white;
     z-index: 2;
 }
+
+.hero h1 span {
+    background: var(--bg-button-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* For future browser support */
+    color: transparent;    /* Fallback */
+}
+
 
 .hero p {
     font-size: 4rem;
