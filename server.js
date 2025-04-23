@@ -206,6 +206,45 @@ app.put('/cars/:id', (req, res) => {
     );
 });
 
+// 🔹 Récupérer toutes les réservations
+app.get('/reservations', (req, res) => {
+    db.all(`SELECT reservations.*, cars.model_name, cars.brand 
+            FROM reservations 
+            JOIN cars ON reservations.vehicle_id = cars.id`, 
+    [], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
+
+// 🔹 Ajouter une réservation
+app.post('/reservations', (req, res) => {
+    const { client_name, vehicle_id, start_date, end_date, status } = req.body;
+    if (!client_name || !vehicle_id || !start_date || !end_date || !status) {
+        return res.status(400).json({ error: "Tous les champs sont requis." });
+    }
+
+    db.run(`INSERT INTO reservations (client_name, vehicle_id, start_date, end_date, status) 
+            VALUES (?, ?, ?, ?, ?)`, 
+    [client_name, vehicle_id, start_date, end_date, status], 
+    function (err) {
+        if (err) {
+            console.error('Erreur lors de l\'insertion dans la base de données', err.message);
+            return res.status(500).json({ error: err.message });
+        }
+        res.json({ id: this.lastID, client_name, vehicle_id, start_date, end_date, status });
+    });
+});
+
+// 🔹 Supprimer une réservation
+app.delete('/reservations/:id', (req, res) => {
+    const { id } = req.params;
+
+    db.run(`DELETE FROM reservations WHERE id = ?`, id, function (err) {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ message: "Réservation supprimée", id });
+    });
+});
 
 // 🔹 Route pour récupérer les analyses
 app.get('/analytics', (req, res) => {
