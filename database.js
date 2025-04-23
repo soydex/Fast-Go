@@ -9,31 +9,22 @@ const db = new sqlite3.Database('database.db', (err) => {
     }
 });
 
-// Supprimer la table si elle existe déjà
-db.run(`DROP TABLE IF EXISTS reservations`, (err) => {
+db.run(`
+    CREATE TABLE IF NOT EXISTS reservations (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        client_name TEXT NOT NULL,
+        vehicle_id TEXT NOT NULL,
+        start_date TEXT NOT NULL,
+        end_date TEXT NOT NULL,
+        status TEXT NOT NULL,
+        FOREIGN KEY (vehicle_id) REFERENCES cars(id) ON DELETE CASCADE
+    )
+`, (err) => {
     if (err) {
-        console.error('Erreur lors de la suppression de la table reservations', err.message);
+        console.error('Erreur lors de la création de la table reservations', err.message);
     } else {
-        console.log('Table reservations supprimée avec succès.');
-
-        // Créer une nouvelle table
-        db.run(`
-            CREATE TABLE reservations (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                client_name TEXT NOT NULL,
-                vehicle_id INTEGER NOT NULL,
-                start_date TEXT NOT NULL,
-                end_date TEXT NOT NULL,
-                status TEXT NOT NULL,
-                FOREIGN KEY (vehicle_id) REFERENCES cars(id) ON DELETE CASCADE
-            )
-        `, (err) => {
-            if (err) {
-                console.error('Erreur lors de la création de la table reservations', err.message);
-            } else {
-                console.log('Table reservations créée avec succès.');
-            }
-        });
+        console.log('Table reservations vérifiée/créée avec succès.');
     }
 });
+
 module.exports = db;

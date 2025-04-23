@@ -169,7 +169,7 @@ function injectDynamicCarouselStyles(count) {
       width: 100%; height: 100%;
       cursor: pointer;
       transition: transform 0.4s ease, opacity 0.4s ease;
-      background: #fff;
+      background: white;
   }
   .card img {
       width: 100%; height: 100%;

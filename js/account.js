@@ -52,10 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Mettre à jour les divs stats
       document.querySelector(".stat:nth-child(1) h2").textContent = cars.length;
-      document.querySelector(".stat:nth-child(2) h2").textContent = users.filter(user => user.role === "client").length;
+      document.querySelector(".stat:nth-child(2) h2").textContent = users.filter(user => user.role === "user").length;
+      document.querySelector(".stat:nth-child(3) h2").textContent = reservations.length;
 
       // Mettre à jour le graphique avec les données dynamiques
-      const chartData = [cars.length, users.filter(user => user.role === "client").length, reservations.length];
+      const chartData = [cars.length, users.filter(user => user.role === "user").length, reservations.length];
       const chart = new Chart(ctx, {
         type: "bar",
         data: {
@@ -96,6 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Erreur lors de la récupération des statistiques.");
     });
 
+  // Charger les réservations en cours
+  loadReservations();
+
   // Gestion de la déconnexion
   logoutButton.addEventListener("click", () => {
     localStorage.removeItem("token");
@@ -104,5 +108,42 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const ctx = document.getElementById("reservationsChart").getContext("2d");
+
+// Charger les réservations en cours
+function loadReservations() {
+  const token = localStorage.getItem("token");
+  fetch("http://localhost:3000/reservations", {
+    headers: { Authorization: token },
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Erreur lors du chargement des réservations.");
+      return response.json();
+    })
+    .then((reservations) => {
+      const reservationsContainer = document.getElementById("current-reservations");
+      reservationsContainer.innerHTML = ""; // Vider le contenu précédent
+
+      if (reservations.length === 0) {
+        reservationsContainer.innerHTML = "<p>Aucune réservation en cours.</p>";
+        return;
+      }
+
+      reservations.forEach((reservation) => {
+        const reservationDiv = document.createElement("div");
+        reservationDiv.classList.add("reservation-item");
+        reservationDiv.innerHTML = `
+          <p><strong>Client :</strong> ${reservation.client_name}</p>
+          <p><strong>Véhicule :</strong> ${reservation.model_name} (${reservation.brand})</p>
+          <p><strong>Du :</strong> ${reservation.start_date} <strong>au :</strong> ${reservation.end_date}</p>
+          <p><strong>Statut :</strong> ${reservation.status}</p>
+        `;
+        reservationsContainer.appendChild(reservationDiv);
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Erreur lors du chargement des réservations.");
+    });
+}
 
 

@@ -94,7 +94,14 @@ aside{
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
     width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 
+}
+
+.profile_user_actions button svg path{
+    stroke: var(--text-color);
 }
 
 #theme-toggle{
@@ -153,4 +160,8 @@ aside{
 .reservations_content p,.history_content p{
     width: fit-content;
     margin: auto;
+}
+
+.logout-icon path {
+    stroke: var(--text-color);
 }

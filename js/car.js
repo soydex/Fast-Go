@@ -118,3 +118,42 @@ function reservation(model_name) {
         console.log(`Réservation pour le modèle : ${model_name}`);
     });
 }
+
+document.getElementById('reservation_form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const client_name = document.getElementById('client_name').value;
+    const start_date = document.getElementById('start_date').value;
+    const end_date = document.getElementById('end_date').value;
+
+    try {
+        console.log("Données envoyées pour la réservation :", {
+            client_name,
+            vehicle_id: model_name,
+            start_date,
+            end_date,
+            status: 'En attente'
+        });
+
+        const response = await fetch('http://localhost:3000/reservations', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                client_name,
+                vehicle_id: model_name, // Utilisation du modèle comme ID
+                start_date,
+                end_date,
+                status: 'En attente'
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Erreur lors de la réservation.');
+        }
+
+        alert('Réservation effectuée avec succès.');
+        document.getElementById('calendar').style.display = 'none';
+    } catch (error) {
+        console.error('Erreur lors de la réservation :', error);
+        alert('Une erreur est survenue.');
+    }
+});

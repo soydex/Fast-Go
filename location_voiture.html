@@ -54,7 +54,17 @@
           <div id="calendar_weekdays"></div>
           <div id="calendar_dates_selected"></div>
         </div>
-        <div id="calendar_infos"></div>
+        <div id="calendar_infos">
+          <form id="reservation_form">
+            <label for="client_name">Nom du client :</label>
+            <input type="text" id="client_name" name="client_name" required />
+            <label for="start_date">Date de début :</label>
+            <input type="date" id="start_date" name="start_date" required />
+            <label for="end_date">Date de fin :</label>
+            <input type="date" id="end_date" name="end_date" required />
+            <button type="submit">Réserver</button>
+          </form>
+        </div>
       </div>
     </div>
   </body>

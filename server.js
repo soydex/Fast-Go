@@ -208,10 +208,28 @@ app.put('/cars/:id', (req, res) => {
 
 // 🔹 Récupérer toutes les réservations
 app.get('/reservations', (req, res) => {
-    db.all(`SELECT reservations.*, cars.model_name, cars.brand 
-            FROM reservations 
-            JOIN cars ON reservations.vehicle_id = cars.id`, 
-    [], (err, rows) => {
+    db.all(`
+        SELECT 
+            reservations.id, 
+            reservations.client_name, 
+            reservations.vehicle_id, 
+            reservations.start_date, 
+            reservations.end_date, 
+            reservations.status, 
+            cars.model_name, 
+            cars.brand 
+        FROM reservations
+        LEFT JOIN cars ON reservations.vehicle_id = cars.model_name
+    `, [], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
+
+// 🔹 Récupérer les réservations d'un véhicule spécifique
+app.get('/reservations/:vehicle_id', (req, res) => {
+    const { vehicle_id } = req.params;
+    db.all(`SELECT * FROM reservations WHERE vehicle_id = ?`, [vehicle_id], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
     });
@@ -220,6 +238,10 @@ app.get('/reservations', (req, res) => {
 // 🔹 Ajouter une réservation
 app.post('/reservations', (req, res) => {
     const { client_name, vehicle_id, start_date, end_date, status } = req.body;
+
+    // Ajout d'un log pour vérifier les données reçues
+    console.log("Données reçues pour la réservation :", req.body);
+
     if (!client_name || !vehicle_id || !start_date || !end_date || !status) {
         return res.status(400).json({ error: "Tous les champs sont requis." });
     }
