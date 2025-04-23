@@ -35,6 +35,23 @@ body {
     position: relative;
 }
 
+p span {
+    background: var(--bg-button-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+h3 span {
+    background: var(--bg-button-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}   
+
 /*Barre de Navigation*/
 
 /*catalogue header*/
@@ -210,8 +227,8 @@ header nav ul li a:hover {
     background: var(--bg-button-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text; /* For future browser support */
-    color: transparent;    /* Fallback */
+    background-clip: text;
+    color: transparent;
 }
 
 
@@ -487,7 +504,7 @@ h6 {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    border: solid 1px var(--text-color);
+    border: solid 1px black;
     border-radius: 2.5rem;
     width: 100%;
     justify-content: space-between;
@@ -528,6 +545,14 @@ h6 {
     text-align: center;
     padding-top: 10rem;
     padding-bottom: 8rem;
+}
+
+.section_questions h6 span {
+    background: var(--bg-button-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 .answers {
