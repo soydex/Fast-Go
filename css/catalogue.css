@@ -54,11 +54,10 @@ header {
 /*Menu select pour filtrer*/
 .list-filtre {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 2rem;
     align-items: center;
-    width: 80%;
-    margin: auto;
-    margin-top: 12rem;
+    padding: 2rem 0;
 }
 
 .filtre {
@@ -75,6 +74,18 @@ header {
 /*Section main pour les voitures*/
 main {
     padding: 10rem 0;
+}
+
+.hidden-info {
+    display: block; /* Toujours visible pour permettre l'animation */
+    opacity: 0;
+    transform: translateY(20px); /* Décalage initial vers le bas */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Animation */
+}
+
+.car_card:hover .hidden-info {
+    opacity: 1; /* Rendre visible */
+    transform: translateY(0); /* Revenir à la position initiale */
 }
 
 /*FOOTER*/

@@ -411,7 +411,7 @@ h3 {
     position: absolute;
     bottom: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: flex-start;
     align-items: flex-start;
 }
@@ -429,7 +429,7 @@ h3 {
 
 .car_card p {
     font-weight: normal;
-    color: black;
+    color: #474646;
     font-size: 20px;
 }
 
