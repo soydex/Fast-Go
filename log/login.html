@@ -34,6 +34,8 @@
       background-color: rgba(38, 38, 38, 0.7) !important;
       backdrop-filter: blur(5px);
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+      max-width: 400px; /* Limite la largeur maximale de la carte */
+      margin: auto; /* Centre la carte horizontalement */
     }
 
     a[href="login.html"] {
@@ -43,6 +45,11 @@
     a[href="login.html"]:hover,
     a[href="register.html"]:hover {
       text-decoration: underline;
+    }
+
+    .card {
+      max-width: 100%; /* Assure que la carte ne dépasse pas la largeur de l'écran */
+      width: 100%; /* Prend toute la largeur disponible */
     }
   </style>
   <body>

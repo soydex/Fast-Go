@@ -4,11 +4,13 @@
 :root {
     --bg-color: #f9f6f6;
     --text-color: black;
+    --fill-svg: #323232;
 }
 
 [data-theme="dark"] {
     --bg-color: #323232;
     --text-color: white;
+    --fill-svg: white;
 }
 
 *{
@@ -53,8 +55,9 @@ aside{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: fit-content;
     height: 20vh;
+    margin: auto;
 }
 
 .profile_user_img img{
@@ -126,4 +129,28 @@ aside{
     width: 100%;
     border: 1px solid;
     border-radius: 2rem;
+}
+
+.reservations svg path,.history svg path{
+    stroke: var(--fill-svg);
+}
+
+.reservations,.history{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: 1px solid;
+    border-radius: 2rem;
+    padding: 2rem;
+}
+.reservations_content,.history_content{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.reservations_content p,.history_content p{
+    width: fit-content;
+    margin: auto;
 }
