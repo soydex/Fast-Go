@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selection-Véhicule</title>
+    <meta name="description" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/helpers.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/style-selection-vehicule.css"/>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="index.html"><img src="imgs/logo_fastgo.webp" width="200px" alt="Logo Fast&GO" /></a>
+        <ul id="menu" class="menu">
+          <li><a href="#">Supercar</a></li>
+          <li><a href="#">Berline</a></li>
+          <li><a href="#">Tout-Terrain</a></li>
+          <li><a href="#">Deux-roues</a></li>
+          <li><a id="compte" href="account.html">COMPTE</a></li>
+        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+
+
+
+    <h1>Quel véhicule souhaitez-vous conduire ?</h1>
+    <div class="list-filtre container">
+      <select id="sort" class="filtre">
+        <option value="" selected>Trier par</option>
+        <option value="asc">Prix croissant</option>
+        <option value="desc">Prix décroissant</option>
+      </select>
+      <select id="type" class="filtre">
+        <option value="" selected>Type de véhicule</option>
+        <option value="supercars">Supercars</option>
+        <option value="berlines">Berlines</option>
+        <option value="tout-terrain">Tout-Terrain</option>
+        <option value="deux-roues">Deux-roues</option>
+      </select>
+      <select id="transmission" class="filtre">
+        <option value="" selected>Transmission</option>
+        <option value="automatique">Automatique</option>
+        <option value="manuelle">Manuelle</option>
+      </select>
+      <select id="passengers" class="filtre">
+        <option value="" selected>Passagers</option>
+        <option value="2">2+</option>
+        <option value="4">4+</option>
+        <option value="5">5+</option>
+        <option value="7">7+</option>
+      </select>
+      <button id="apply-filters" class="btn-offre">Appliquer les filtres</button>
+      <a class="btn-effacer-filtre" href="">Effacer</a>
+    </div>
+
+    <div class="filtre-container">
+      <button onclick="afficherDiv()" id="btn-filtre">Filtrer et Trier</button>
+      <div id="textBox" class="hidden">
+        <div class="filtre-header">
+          <a onclick="afficherDiv()"><img src="/imgs/fleche.svg" alt="" /></a>
+          <a class="btn-effacer-filtre" href="">Effacer</a>
+        </div>
+        <h4>Trier par</h4>
+        <div class="double-bouton">
+          <button class="bouton-critere">Prix croissant</button>
+          <button class="bouton-critere">Prix décroissant</button>
+        </div>
+        <h4>Type de véhicule</h4>
+        <div class="double-bouton">
+          <button class="bouton-critere">Supercars</button>
+          <button class="bouton-critere">Berlines</button>
+          <button class="bouton-critere">Tout-Terrain</button>
+          <button class="bouton-critere">Deux-Roues</button>
+        </div>
+        <h4>Transmission</h4>
+        <div class="double-bouton">
+          <button class="bouton-critere">Automatique</button>
+          <button class="bouton-critere">Manuelle</button>
+        </div>
+        <h4>Passagers</h4>
+        <div class="double-bouton">
+          <button class="bouton-critere">2+</button>
+          <button class="bouton-critere">4+</button>
+          <button class="bouton-critere">5+</button>
+          <button class="bouton-critere">7+</button>
+        </div>
+        <button id="btn-offre">Voir les 15 offres</button>
+      </div>
+    </div>
+
+    <main id="main">
+      <h3 id="user-info"></h3>
+      <div id="main_content" class="main_content"></div>
+    </main>
+
+    <footer>
+      <div class="footer-top">
+        <img
+          src="imgs/logo_fastgo.webp"
+          alt="FAST&GO Logo"
+          class="footer-logo"
+          width="400px"
+        />
+      </div>
+      <div class="footer-middle">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+          "
+        >
+          <div class="footer_nav">
+            <ul>
+              <li><a href="#">Supercar</a></li>
+              <li><a href="#">Berline</a></li>
+              <li><a href="#">Tout-Terrain</a></li>
+              <li><a href="#">Deux-roues</a></li>
+            </ul>
+          </div>
+          <div class="footer-text">
+            <a href="mailto:contactfastandgo@gmail.com"
+              >contactfastandgo@gmail.com</a
+            >
+          </div>
+          <ul class="footer-links">
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Conditions d'utilisation</a></li>
+          </ul>
+        </div>
+        <p>&copy; 2025 FAST&GO. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <script src="js/selection-vehicule.js"></script>
+    <script src="js/all_car.js"></script>
+  </body>
+</html>
