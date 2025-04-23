@@ -13,11 +13,11 @@
     --fill-svg: white;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-}   
+}
 
 body {
     background-color: var(--bg-color);
@@ -25,13 +25,13 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-main{
+main {
     display: flex;
     width: 100vw;
     height: 100vh;
 }
 
-aside{
+aside {
     width: 20vw;
     height: 100vh;
     padding: 2rem 0;
@@ -42,7 +42,7 @@ aside{
     border-right: 2px solid var(--text-color);
 }
 
-.profile_user{
+.profile_user {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -51,7 +51,7 @@ aside{
     padding: 2rem 0;
 }
 
-.profile_user_img{
+.profile_user_img {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,13 +60,14 @@ aside{
     margin: auto;
 }
 
-.profile_user_img img{
+.profile_user_img img {
     width: 50%;
     border-radius: 50%;
     box-shadow: 0 0 4px var(--text-color);
 }
 
-.profile_user_info::after{
+.profile_user_info::after,
+#gestion_admin::after {
     content: '';
     display: block;
     width: 30%;
@@ -77,7 +78,7 @@ aside{
 
 }
 
-.profile_user_actions{
+.profile_user_actions {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -85,7 +86,7 @@ aside{
     align-items: center;
 }
 
-.profile_user_actions button{
+.profile_user_actions button {
     padding: 1rem 2rem;
     border: none;
     border-radius: 2rem;
@@ -100,21 +101,21 @@ aside{
 
 }
 
-.profile_user_actions button svg path{
+.profile_user_actions button svg path {
     stroke: var(--text-color);
 }
 
-#theme-toggle{
+#theme-toggle {
     display: flex;
     gap: 1rem;
 }
 
-.profile_user_actions button:hover{
+.profile_user_actions button:hover {
     background-color: #D9D9D9;
     color: #333;
 }
 
-.profile_content{
+.profile_content {
     width: 100%;
     padding: 2rem;
     display: flex;
@@ -122,12 +123,12 @@ aside{
     gap: 2rem;
 }
 
-.stats{
+.stats {
     display: flex;
     gap: 2rem;
 }
 
-.stat{
+.stat {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -138,11 +139,13 @@ aside{
     border-radius: 2rem;
 }
 
-.reservations svg path,.history svg path{
+.reservations svg path,
+.history svg path {
     stroke: var(--fill-svg);
 }
 
-.reservations,.history{
+.reservations,
+.history {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -150,14 +153,17 @@ aside{
     border-radius: 2rem;
     padding: 2rem;
 }
-.reservations_content,.history_content{
+
+.reservations_content,
+.history_content {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     justify-content: center;
 }
 
-.reservations_content p,.history_content p{
+.reservations_content p,
+.history_content p {
     width: fit-content;
     margin: auto;
 }
