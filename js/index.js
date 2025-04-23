@@ -67,7 +67,7 @@ async function loadCars() {
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  loadCars();
+  //loadCars();
 });
 
 const account_button = document.getElementById("compte");
