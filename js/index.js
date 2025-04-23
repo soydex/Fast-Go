@@ -190,16 +190,19 @@ function injectDynamicCarouselStyles(count) {
           transform: translateX(0) scale(1);
           opacity: 1;
           z-index: 2;
+          border-radius: 1rem;
       }
       #item-${current}:checked ~ .cards #song-${next} {
           transform: translateX(40%) scale(0.8);
           opacity: 0.4;
           z-index: 1;
+          border-radius: 1rem;
       }
       #item-${current}:checked ~ .cards #song-${prev} {
           transform: translateX(-40%) scale(0.8);
           opacity: 0.4;
           z-index: 1;
+          border-radius: 1rem;  
       }
       `;
   }
