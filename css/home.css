@@ -709,6 +709,15 @@ footer p {
         justify-content: center;
         align-items: center;
     }
+
+    .hero_buttons{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .hero_buttons a{
+        width: 100%;
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 769px) {

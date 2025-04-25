@@ -113,26 +113,62 @@ async function loadCarsInCarousel(limit = 3) {
       label.setAttribute("for", `item-${index + 1}`);
       label.className = "card";
       label.id = `song-${index + 1}`;
-      label.innerHTML = `
-              <img src="${car.image_url}" alt="${car.model_name}">
-              <div style="position: absolute;
-    bottom: 10%;
-    right: 0;
-    padding: 3rem;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
-    color: white;
-    font-size: 1.2em;
-    border-radius: 1rem 0rem 0rem 1rem;">
-                  ${car.brand} ${car.model_name}
-              </div>
-          `;
+
+      // Création d'un conteneur pour les infos de la voiture
+      const infoContainer = document.createElement("div");
+      infoContainer.style = `position: absolute;
+        bottom: 10%;
+        right: 50px;
+        padding: 3rem;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        color: white;
+        font-size: 1.2em;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 5px rgba(0,0,0,0.3);`;
+
+      infoContainer.innerHTML = `
+        <span>${car.brand} ${car.model_name}</span>
+        <div><span>${car.rental_price_per_day}€/jour</span> <span>${car.horsepower} Ch - ${car.torque} Nm</span></div>
+      `;
+
+      // Création du bouton pour accéder aux détails
+      const detailsButton = document.createElement("button");
+      detailsButton.textContent = "Voir détails";
+      detailsButton.style = `
+        margin-top: 10px;
+        padding: 8px 15px;
+        background: linear-gradient(180deg, rgba(238, 210, 158, 1) 0%, rgba(211, 176, 115, 1) 50%, rgba(177, 141, 87, 1) 100%);
+        color: black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      `;
+
+      detailsButton.addEventListener("click", (event) => {
+        event.stopPropagation(); // Évite de déclencher l'événement du parent
+        window.location.href = `location_voiture.html?model_name=${car.model_name}`;
+      });
+
+      infoContainer.appendChild(detailsButton);
+
+      const img = document.createElement("img");
+      img.src = car.image_url;
+      img.alt = car.model_name;
+
+      label.appendChild(img);
+      label.appendChild(infoContainer);
       cardsDiv.appendChild(label);
     });
 
     container.appendChild(cardsDiv);
 
     injectDynamicCarouselStyles(selectedCars.length);
+
+    // Démarrer la rotation automatique
+    startAutoRotation(selectedCars.length);
   } catch (error) {
     console.error("Erreur lors du chargement :", error);
   }
@@ -210,5 +246,49 @@ function injectDynamicCarouselStyles(count) {
   style.textContent = css;
 }
 
-// Lancer avec la limite voulue
-loadCarsInCarousel(3); // Choisis 3, 5, 6, etc.
+// Fonction pour la rotation automatique du carrousel
+let autoRotationInterval;
+
+function startAutoRotation(count) {
+  // Arrêter tout intervalle existant
+  if (autoRotationInterval) {
+    clearInterval(autoRotationInterval);
+  }
+
+  // Définir l'intervalle pour la rotation automatique (4 secondes)
+  autoRotationInterval = setInterval(() => {
+    // Trouver le bouton radio actuellement sélectionné
+    let currentRadio;
+    for (let i = 1; i <= count; i++) {
+      if (document.getElementById(`item-${i}`).checked) {
+        currentRadio = i;
+        break;
+      }
+    }
+
+    // Calculer le prochain index (rotation circulaire)
+    const nextRadio = (currentRadio % count) + 1;
+
+    // Sélectionner le prochain bouton radio
+    document.getElementById(`item-${nextRadio}`).checked = true;
+  }, 4000); // Intervalle de rotation en millisecondes
+}
+
+// Fonction pour arrêter la rotation quand l'utilisateur interagit avec le carrousel
+function setupCarouselInteraction(count) {
+  for (let i = 1; i <= count; i++) {
+    const radio = document.getElementById(`item-${i}`);
+    if (radio) {
+      radio.addEventListener("change", () => {
+        // Réinitialise le timer quand l'utilisateur change manuellement
+        if (autoRotationInterval) {
+          clearInterval(autoRotationInterval);
+          startAutoRotation(count);
+        }
+      });
+    }
+  }
+}
+
+// Charger le carrousel avec 3 voitures
+loadCarsInCarousel(3);
