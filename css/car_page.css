@@ -241,3 +241,41 @@ header{
     border: none;
     color: white;
 }   
+
+.car_perf{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    justify-items: center;
+    padding: 1rem;
+}
+
+.car_perf div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+
+}
+
+@media screen and (max-width: 768px) {
+    #main{
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    .car_card img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .car_card{
+        width: 100%;
+        height: fit-content;
+    }
+
+    .car_perf{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+}
