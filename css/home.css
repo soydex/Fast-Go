@@ -654,6 +654,17 @@ footer p {
     text-align: left;
 }
 
+.social_links {
+    display: flex;
+    gap: 2rem;
+}
+
+.social_links a img{
+    text-decoration: none;
+    color: white;
+    size: 2.5rem;
+}
+
 .footer_copyright {
     background-color: #2b2b2b;
     text-align: center;
