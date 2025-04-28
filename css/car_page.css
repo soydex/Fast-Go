@@ -1,7 +1,10 @@
 :root {
-    --bg-color: #ffffff;
+    --bg-color: #f9f6f6;
     --text-color: black;
+    --bg-button-gradient: linear-gradient(180deg, rgba(238, 210, 158, 1) 0%, rgba(211, 176, 115, 1) 50%, rgba(177, 141, 87, 1) 100%);
+    --bg-button-gradient-hover: linear-gradient(180deg, rgba(177, 141, 87, 1) 0%, rgba(211, 176, 115, 1) 50%, rgba(238, 210, 158, 1) 100%);
 }
+
 
 [data-theme="dark"] {
     --bg-color: #323232;
@@ -15,22 +18,22 @@ body {
 }
 
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     position: relative;
 }
 
-header{
-    position: relative;   
+header {
+    position: relative;
 }
 
 
-.car_infos{
+.car_infos {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -39,7 +42,7 @@ header{
     padding: 1rem;
 }
 
-#main{
+#main {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -51,7 +54,7 @@ header{
     justify-content: space-around;
 }
 
-#paiement_secu{
+#paiement_secu {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -60,7 +63,7 @@ header{
     align-self: center;
 }
 
-#rent_me{
+#rent_me {
     background-color: black;
     color: white;
     text-decoration: none;
@@ -70,12 +73,12 @@ header{
     text-align: center;
 }
 
-#dispo{
+#dispo {
     color: green;
     font-weight: bold;
 }
 
-#dispo::before{
+#dispo::before {
     content: " ";
     display: inline-block;
     width: 10px;
@@ -86,20 +89,20 @@ header{
 }
 
 
-.main_content{
+.main_content {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
 }
 
-.car_card img{
+.car_card img {
     width: 400px;
     height: 400px;
     object-fit: contain;
 }
 
-.car_card{
+.car_card {
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
@@ -107,35 +110,36 @@ header{
     transition: 0.6s;
 }
 
-.car_card:hover{
+.car_card:hover {
     border: 1px solid black;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.car_card_info{
+.car_card_info {
     position: absolute;
     bottom: 10px;
 }
 
-.car_card a{
+.car_card a {
     text-decoration: none;
     color: black;
 }
 
-.car_card p{
+.car_card p {
     font-weight: normal;
     color: black;
     font-size: 20px;
 }
 
-#car_description{
+#car_description {
     width: fit-content;
 }
 
 
 
-#calendar{
-    position: fixed; /* Correction pour un positionnement fixe */
+#calendar {
+    position: fixed;
+    /* Correction pour un positionnement fixe */
     display: none;
     justify-content: center;
     align-items: center;
@@ -146,16 +150,17 @@ header{
     top: 0;
     left: 0;
     backdrop-filter: blur(5px);
-    background-color: rgba(0, 0, 0, 0.5); /* Ajout d'un fond semi-transparent */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Ajout d'un fond semi-transparent */
 }
 
-#calendar_content{
+#calendar_content {
     position: relative;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     padding: 2rem;
     width: 80%;
-    max-width: 600px; 
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -163,7 +168,7 @@ header{
     background-color: var(--bg-color);
 }
 
-#close_calendar{
+#close_calendar {
     position: absolute;
     border: none;
     border-radius: 50%;
@@ -183,15 +188,14 @@ header{
 .calendar_button {
     cursor: pointer;
     padding: 0.5rem 1rem;
-    background-color: #007bff;
-    border: none;
     border-radius: 5px;
     font-size: 1rem;
     transition: background-color 0.3s;
 }
 
 .calendar_button:hover {
-    background-color: #0056b3;
+    background: var(--bg-button-gradient-hover);
+    color: var(--bg-color);
 }
 
 #calendar_weekdays {
@@ -240,9 +244,9 @@ header{
     background: none;
     border: none;
     color: white;
-}   
+}
 
-.car_perf{
+.car_perf {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
@@ -250,7 +254,7 @@ header{
     padding: 1rem;
 }
 
-.car_perf div{
+.car_perf div {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -259,23 +263,23 @@ header{
 }
 
 @media screen and (max-width: 768px) {
-    #main{
+    #main {
         flex-direction: column;
         height: fit-content;
     }
 
-    .car_card img{
+    .car_card img {
         width: 100%;
         height: 100%;
     }
 
-    .car_card{
+    .car_card {
         width: 100%;
         height: fit-content;
     }
 
-    .car_perf{
+    .car_perf {
         grid-template-columns: repeat(1, 1fr);
     }
-    
+
 }

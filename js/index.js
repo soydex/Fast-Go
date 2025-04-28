@@ -167,7 +167,6 @@ async function loadCarsInCarousel(limit = 3) {
 
     injectDynamicCarouselStyles(selectedCars.length);
 
-    // Démarrer la rotation automatique
     startAutoRotation(selectedCars.length);
   } catch (error) {
     console.error("Erreur lors du chargement :", error);
@@ -292,3 +291,17 @@ function setupCarouselInteraction(count) {
 
 // Charger le carrousel avec 3 voitures
 loadCarsInCarousel(3);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cookiePopup = document.getElementById("cookie-popup");
+  const acceptCookiesButton = document.getElementById("accept-cookies");
+
+  if (!localStorage.getItem("cookiesAccepted")) {
+    cookiePopup.style.display = "block";
+  }
+
+  acceptCookiesButton.addEventListener("click", () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    cookiePopup.style.display = "none";
+  });
+});
