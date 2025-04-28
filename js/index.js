@@ -305,3 +305,69 @@ document.addEventListener("DOMContentLoaded", () => {
     cookiePopup.style.display = "none";
   });
 });
+
+const contact_button = document.getElementById("contact_button");
+const contact_form = document.getElementById("form-contact");
+const form_content = document.getElementById("form-content");
+const close_form_button = document.getElementById("close-form");
+
+contact_button.addEventListener("click", () => {
+  if (localStorage.getItem("token")) {
+    form_content.innerHTML = `
+      <label for="subject">Sujet</label>
+      <input type="text" id="subject" name="subject" placeholder="Sujet" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+
+      <button type="submit">Envoyer</button>
+    `;
+
+    const submitButton = form_content.querySelector("button[type='submit']");
+    submitButton.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const subject = document.getElementById("subject").value;
+      const message = document.getElementById("message").value;
+
+      try {
+        const response = await fetch("http://localhost:3000/messages", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({ subject, message, recipient: "admin" }),
+        });
+
+        if (!response.ok) {
+          let errorMessage = `Erreur HTTP ${response.status}`;
+          if (response.headers.get("Content-Type")?.includes("application/json")) {
+            const errorData = await response.json();
+            errorMessage = errorData.error || errorMessage;
+          }
+          throw new Error(errorMessage);
+        }
+
+        alert("Message envoyé avec succès !");
+        contact_form.style.display = "none";
+      } catch (error) {
+        console.error("Erreur lors de l'envoi du message :", error);
+        alert(`Une erreur est survenue : ${error.message}`);
+      }
+    });
+  } else {
+    form_content.innerHTML = `
+      <p>Veuillez vous connecter pour remplir ce formulaire.</p>
+      <a href="log/login.html" id="login-button">Se connecter</a>
+    `;
+    document.getElementById("login-button").addEventListener("click", () => {
+      window.location.href = "log/login.html";
+    });
+  }
+
+  contact_form.style.display = "flex";
+});
+
+close_form_button.addEventListener("click", () => {
+  contact_form.style.display = "none";
+});

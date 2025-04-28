@@ -103,6 +103,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Charger les réservations spécifiques à l'utilisateur connecté
   loadMyReservations();
 
+  // Charger les messages pour les administrateurs
+  if (localStorage.getItem("token") && document.getElementById("admin-messages")) {
+    loadAdminMessages();
+  }
+
   // Gestion de la déconnexion
   logoutButton.addEventListener("click", () => {
     localStorage.removeItem("token");
@@ -182,6 +187,42 @@ function loadMyReservations() {
     .catch((error) => {
       console.error(error);
       alert("Erreur lors du chargement de vos réservations.");
+    });
+}
+
+// Charger les messages reçus par les administrateurs
+function loadAdminMessages() {
+  const token = localStorage.getItem("token");
+  fetch("http://localhost:3000/messages", {
+    headers: { Authorization: token },
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Erreur lors du chargement des messages.");
+      return response.json();
+    })
+    .then((messages) => {
+      const messagesContainer = document.getElementById("admin-messages");
+      messagesContainer.innerHTML = ""; // Vider le contenu précédent
+
+      if (messages.length === 0) {
+        messagesContainer.innerHTML = "<p>Aucun message reçu.</p>";
+        return;
+      }
+
+      messages.forEach((msg) => {
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add("message-item");
+        messageDiv.innerHTML = `
+          <p><strong>De :</strong> Utilisateur ID ${msg.sender_id}</p>
+          <p><strong>Sujet :</strong> ${msg.subject}</p>
+          <p><strong>Message :</strong> ${msg.message}</p>
+        `;
+        messagesContainer.appendChild(messageDiv);
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Erreur lors du chargement des messages.");
     });
 }
 

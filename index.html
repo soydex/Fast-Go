@@ -4,14 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FAST&GO</title>
-    <meta name="description" content="FAST&GO - Location de véhicules de luxe à Paris." />
+    <meta
+      name="description"
+      content="FAST&GO - Location de véhicules de luxe à Paris."
+    />
 
-    <meta property="og:title" content="FAST&GO - Location de véhicules de luxe" />
+    <meta
+      property="og:title"
+      content="FAST&GO - Location de véhicules de luxe"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fastandgo.com" />
     <meta property="og:image" content="imgs/logo_fastgo.webp" />
 
-    <link rel="icon" href="imgs/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="imgs/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="imgs/apple-touch-icon.png" />
     <link rel="manifest" href="manifest.webmanifest" />
 
@@ -55,7 +61,7 @@
       <p>La vitesse à portée de main</p>
       <div class="hero_buttons">
         <a href="catalogue.html" class="btn">Réserver maintenant</a>
-        <a href="contact.html" class="btn">Contactez-nous</a>
+        <a href="#" class="btn" id="contact_button">Contactez-nous</a>
       </div>
 
       <div class="dots">
@@ -83,11 +89,12 @@
           <div class="texte">
             <h2>Pourquoi nous choisir ?</h2>
             <p>
-              Chez FAST<span>&</span>GO, nous vous offrons bien plus qu'une location de
-              véhicules de luxe : une expérience sur-mesure. Profitez d'une
-              flotte prestigieuse, entretenue avec rigueur pour une sécurité
-              optimale. Chaque détail est pensé pour répondre à vos attentes
-              avec discrétion, confort et élégance. Vivez l'excellence avec FAST<span>&</span>GO.
+              Chez FAST<span>&</span>GO, nous vous offrons bien plus qu'une
+              location de véhicules de luxe : une expérience sur-mesure.
+              Profitez d'une flotte prestigieuse, entretenue avec rigueur pour
+              une sécurité optimale. Chaque détail est pensé pour répondre à vos
+              attentes avec discrétion, confort et élégance. Vivez l'excellence
+              avec FAST<span>&</span>GO.
             </p>
           </div>
         </section>
@@ -183,8 +190,8 @@
           </div>
           <div class="answers">
             <p>
-              Non, il est impossible de louer un véhicule chez FAST<span>&</span>GO si vous
-              êtes en permis probatoire.
+              Non, il est impossible de louer un véhicule chez
+              FAST<span>&</span>GO si vous êtes en permis probatoire.
             </p>
           </div>
         </div>
@@ -239,13 +246,19 @@
         </p>
         <ul class="social_links">
           <li>
-            <a href="#!"><img src="imgs/logo_facebook.svg" alt="logo_facebook"></a>
+            <a href="#!"
+              ><img src="imgs/logo_facebook.svg" alt="logo_facebook"
+            /></a>
           </li>
           <li>
-            <a href="#!"><img src="imgs/logo_instagram.svg" alt="logo_instagram"></a>
+            <a href="#!"
+              ><img src="imgs/logo_instagram.svg" alt="logo_instagram"
+            /></a>
           </li>
           <li>
-            <a href="#!"><img src="imgs/logo_youtube.svg" alt="logo_youtube"></a>
+            <a href="#!"
+              ><img src="imgs/logo_youtube.svg" alt="logo_youtube"
+            /></a>
           </li>
         </ul>
       </div>
@@ -300,9 +313,23 @@
     </div>
 
     <div id="cookie-popup">
-      <p>Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre politique de cookies.</p>
+      <p>
+        Nous utilisons des cookies pour améliorer votre expérience. En
+        continuant, vous acceptez notre politique de cookies.
+      </p>
       <button id="accept-cookies">Accepter</button>
       <button id="decline-cookies">Refuser</button>
+    </div>
+
+    <div id="form-contact">
+      <form class="contact-form" action="submit_message.php" method="POST">
+        <button type="button" id="close-form">X</button>
+        <h2>Contactez-nous</h2>
+        <div id="form-content">
+          <input type="hidden" name="recipient" value="admin" />
+          <!-- Le contenu sera rempli dynamiquement via JavaScript -->
+        </div>
+      </form>
     </div>
 
     <script src="js/index.js"></script>

@@ -173,6 +173,21 @@ aside {
     stroke: var(--text-color);
 }
 
+.messages {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+}
+
+.message-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    background-color: var(--bg-color);
+}
+
 @media (max-width: 1024px) {
     aside {
         width: 25vw; 

@@ -6,9 +6,7 @@ app.use(express.json());
 app.use(cors());
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const stripe = require('stripe')('votre_clé_secrète_stripe');
 const helmet = require('helmet');
-const nodemailer = require('nodemailer');
 
 app.use(helmet());
 
@@ -23,7 +21,6 @@ function authenticateToken(req, res, next) {
         next();
     });
 }
-
 
 // 🔹 Récupérer tous les utilisateurs (protégé par admin)
 app.get('/users', (req, res) => {
@@ -135,8 +132,6 @@ app.get('/cars/:model_name', (req, res) => {
         res.json(row);
     });
 });
-
-
 
 const SECRET_KEY = 'vidaloca'; // Remplacez par une clé secrète sécurisée
 
@@ -301,6 +296,42 @@ app.get('/my-reservations', authenticateToken, (req, res) => {
             SELECT name FROM users WHERE id = ?
         )
     `, [userId], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
+
+// 🔹 Ajouter un message
+app.post('/messages', (req, res) => {
+    const { subject, message, recipient } = req.body;
+
+    if (!subject || !message || !recipient) {
+        res.setHeader("Content-Type", "application/json");
+        return res.status(400).json({ error: "Sujet, message et destinataire requis." });
+    }
+
+    const senderId = req.user ? req.user.id : 0; // Utiliser 0 si l'utilisateur n'est pas authentifié
+
+    db.run(
+        `INSERT INTO messages (sender_id, recipient, subject, message) VALUES (?, ?, ?, ?)`,
+        [senderId, recipient, subject, message],
+        function (err) {
+            if (err) {
+                res.setHeader("Content-Type", "application/json");
+                return res.status(500).json({ error: err.message });
+            }
+            res.json({ id: this.lastID, senderId, recipient, subject, message });
+        }
+    );
+});
+
+// 🔹 Récupérer les messages pour les administrateurs
+app.get('/messages', authenticateToken, (req, res) => {
+    if (req.user.role !== 'admin') {
+        return res.status(403).json({ error: "Accès interdit." });
+    }
+
+    db.all(`SELECT * FROM messages WHERE recipient = 'admin'`, [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
     });
