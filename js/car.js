@@ -53,16 +53,19 @@ function generateCalendar() {
     const calendarDates = document.getElementById('calendar_dates');
     const calendarWeekdays = document.getElementById('calendar_weekdays');
     const calendarDatesSelected = document.getElementById('calendar_dates_selected');
+    const calendarHeader = document.getElementById('calendar_header');
 
     const weekdays = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
-    const currentDate = new Date();
-    const currentMonth = currentDate.getMonth();
-    const currentYear = currentDate.getFullYear();
+    const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+    let currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
 
     calendarWeekdays.innerHTML = weekdays.map(day => `<div>${day}</div>`).join('');
 
     function renderCalendar(month, year) {
         calendarDates.innerHTML = '';
+        calendarHeader.querySelector('#calendar_month').textContent = `${months[month]} ${year}`;
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
@@ -72,7 +75,6 @@ function generateCalendar() {
             calendarDates.appendChild(emptyCell);
         }
 
-        // Ajoute les jours du mois
         for (let day = 1; day <= daysInMonth; day++) {
             const dateCell = document.createElement('div');
             dateCell.textContent = day;
@@ -87,15 +89,15 @@ function generateCalendar() {
     renderCalendar(currentMonth, currentYear);
 
     document.getElementById('calendar_prev').addEventListener('click', () => {
-        const newMonth = currentMonth === 0 ? 11 : currentMonth - 1;
-        const newYear = currentMonth === 0 ? currentYear - 1 : currentYear;
-        renderCalendar(newMonth, newYear);
+        currentMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+        currentYear = currentMonth === 11 ? currentYear - 1 : currentYear;
+        renderCalendar(currentMonth, currentYear);
     });
 
     document.getElementById('calendar_next').addEventListener('click', () => {
-        const newMonth = currentMonth === 11 ? 0 : currentMonth + 1;
-        const newYear = currentMonth === 11 ? currentYear + 1 : currentYear;
-        renderCalendar(newMonth, newYear);
+        currentMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+        currentYear = currentMonth === 0 ? currentYear + 1 : currentYear;
+        renderCalendar(currentMonth, currentYear);
     });
 }
 
@@ -121,17 +123,32 @@ function reservation(model_name) {
 
 document.getElementById('reservation_form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const client_name = document.getElementById('client_name').value;
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        document.getElementById('login-warning').style.display = 'block';
+        return;
+    }
+
     const start_date = document.getElementById('start_date').value;
     const end_date = document.getElementById('end_date').value;
 
     try {
+        // Récupérer les informations utilisateur
+        const userResponse = await fetch('http://localhost:3000/me', {
+            headers: { Authorization: token },
+        });
+        if (!userResponse.ok) throw new Error('Erreur lors de la récupération des informations utilisateur.');
+
+        const user = await userResponse.json();
+        const client_name = user.name;
+
         console.log("Données envoyées pour la réservation :", {
             client_name,
             vehicle_id: model_name,
             start_date,
             end_date,
-            status: 'En attente'
+            status: 'En attente',
         });
 
         const response = await fetch('http://localhost:3000/reservations', {
@@ -139,11 +156,11 @@ document.getElementById('reservation_form').addEventListener('submit', async (e)
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 client_name,
-                vehicle_id: model_name, // Utilisation du modèle comme ID
+                vehicle_id: model_name,
                 start_date,
                 end_date,
-                status: 'En attente'
-            })
+                status: 'En attente',
+            }),
         });
 
         if (!response.ok) {

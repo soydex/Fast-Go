@@ -283,6 +283,28 @@ function logUserAction(userId, action) {
     });
 }
 
+// 🔹 Récupérer les réservations de l'utilisateur connecté
+app.get('/my-reservations', authenticateToken, (req, res) => {
+    const userId = req.user.id;
+    db.all(`
+        SELECT 
+            reservations.id, 
+            reservations.vehicle_id, 
+            reservations.start_date, 
+            reservations.end_date, 
+            reservations.status, 
+            cars.model_name, 
+            cars.brand 
+        FROM reservations
+        LEFT JOIN cars ON reservations.vehicle_id = cars.model_name
+        WHERE reservations.client_name = (
+            SELECT name FROM users WHERE id = ?
+        )
+    `, [userId], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
 
 // 🔹 Démarrer le serveur
 app.listen(3000, () => console.log('Serveur sur http://localhost:3000'));

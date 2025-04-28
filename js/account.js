@@ -100,6 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Charger les réservations en cours
   loadReservations();
 
+  // Charger les réservations spécifiques à l'utilisateur connecté
+  loadMyReservations();
+
   // Gestion de la déconnexion
   logoutButton.addEventListener("click", () => {
     localStorage.removeItem("token");
@@ -143,6 +146,42 @@ function loadReservations() {
     .catch((error) => {
       console.error(error);
       alert("Erreur lors du chargement des réservations.");
+    });
+}
+
+// Charger les réservations spécifiques à l'utilisateur connecté
+function loadMyReservations() {
+  const token = localStorage.getItem("token");
+  fetch("http://localhost:3000/my-reservations", {
+    headers: { Authorization: token },
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Erreur lors du chargement de vos réservations.");
+      return response.json();
+    })
+    .then((reservations) => {
+      const myReservationsContainer = document.getElementById("my-reservations");
+      myReservationsContainer.innerHTML = ""; // Vider le contenu précédent
+
+      if (reservations.length === 0) {
+        myReservationsContainer.innerHTML = "<p>Oups.. Vous n'avez pas de réservations actuellement</p>";
+        return;
+      }
+
+      reservations.forEach((reservation) => {
+        const reservationDiv = document.createElement("div");
+        reservationDiv.classList.add("reservation-item");
+        reservationDiv.innerHTML = `
+          <p><strong>Véhicule :</strong> ${reservation.model_name} (${reservation.brand})</p>
+          <p><strong>Du :</strong> ${reservation.start_date} <strong>au :</strong> ${reservation.end_date}</p>
+          <p><strong>Statut :</strong> ${reservation.status}</p>
+        `;
+        myReservationsContainer.appendChild(reservationDiv);
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Erreur lors du chargement de vos réservations.");
     });
 }
 
