@@ -380,8 +380,10 @@ contact_button.addEventListener("click", () => {
   }
 
   contact_form.style.display = "flex";
+  contact_form.classList.add("show");
 });
 
 close_form_button.addEventListener("click", () => {
   contact_form.style.display = "none";
+  contact_form.classList.remove("show");
 });
