@@ -310,7 +310,7 @@ app.post('/messages', (req, res) => {
         return res.status(400).json({ error: "Sujet, message et destinataire requis." });
     }
 
-    const senderId = req.user ? req.user.id : 0; // Utiliser 0 si l'utilisateur n'est pas authentifié
+    const senderId = req.user ? req.user.id : 0; // Utiliser 0 si l'w n'est pas authentifié
 
     db.run(
         `INSERT INTO messages (sender_id, recipient, subject, message) VALUES (?, ?, ?, ?)`,

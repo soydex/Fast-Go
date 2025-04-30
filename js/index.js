@@ -116,6 +116,7 @@ async function loadCarsInCarousel(limit = 3) {
 
       // Création d'un conteneur pour les infos de la voiture
       const infoContainer = document.createElement("div");
+      infoContainer.className = "info-container";
       infoContainer.style = `position: absolute;
         bottom: 10%;
         right: 50px;
@@ -146,6 +147,17 @@ async function loadCarsInCarousel(limit = 3) {
         border-radius: 5px;
         cursor: pointer;
       `;
+      detailsButton.addEventListener("mouseover", () => {
+        detailsButton.style.background =
+          "linear-gradient(180deg, rgba(211, 176, 115, 1) 0%, rgba(238, 210, 158, 1) 50%, rgba(177, 141, 87, 1) 100%)";
+        detailsButton.style.color = "white";
+      });
+      detailsButton.addEventListener("mouseout", () => {
+        detailsButton.style.background =
+          "linear-gradient(180deg, rgba(238, 210, 158, 1) 0%, rgba(211, 176, 115, 1) 50%, rgba(177, 141, 87, 1) 100%)";
+        detailsButton.style.color = "black";
+      });
+      detailsButton.style.transition = "background 0.3s ease";
 
       detailsButton.addEventListener("click", (event) => {
         event.stopPropagation(); // Évite de déclencher l'événement du parent
@@ -341,7 +353,9 @@ contact_button.addEventListener("click", () => {
 
         if (!response.ok) {
           let errorMessage = `Erreur HTTP ${response.status}`;
-          if (response.headers.get("Content-Type")?.includes("application/json")) {
+          if (
+            response.headers.get("Content-Type")?.includes("application/json")
+          ) {
             const errorData = await response.json();
             errorMessage = errorData.error || errorMessage;
           }
