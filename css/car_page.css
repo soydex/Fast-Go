@@ -32,6 +32,9 @@ header {
     position: relative;
 }
 
+.car_imgs img{
+    max-width: 100%;
+}
 
 .car_infos {
     display: flex;
@@ -282,4 +285,9 @@ header {
         grid-template-columns: repeat(1, 1fr);
     }
 
+}
+
+
+.top_speed svg, .acceleration svg, .power svg{
+    fill: var(--text-color);
 }

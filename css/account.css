@@ -141,12 +141,12 @@ aside {
 }
 
 .reservations svg path,
-.history svg path {
+.history svg path, .messages svg path {
     stroke: var(--fill-svg);
 }
 
 .reservations,
-.history {
+.history, .messages{
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -171,13 +171,6 @@ aside {
 
 .logout-icon path {
     stroke: var(--text-color);
-}
-
-.messages {
-    margin-top: 2rem;
-    padding: 1rem;
-    border: 1px solid var(--text-color);
-    border-radius: 10px;
 }
 
 .message-item {

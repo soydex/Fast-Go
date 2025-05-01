@@ -106,10 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
     generateCalendar();
 });
 
-
+    
 const car_rent_button = document.getElementById('rent_me');
 
 car_rent_button.addEventListener('click', () => reservation(model_name));
+
 
 function reservation(model_name) {
     const div_calendar = document.getElementById('calendar');
