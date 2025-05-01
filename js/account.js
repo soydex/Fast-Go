@@ -213,7 +213,7 @@ function loadAdminMessages() {
         const messageDiv = document.createElement("div");
         messageDiv.classList.add("message-item");
         messageDiv.innerHTML = `
-          <p><strong>De :</strong> Utilisateur ID ${msg.sender_id}</p>
+          <p><strong>De :</strong> ${msg.sender_name || msg.sender_email || "Utilisateur inconnu"}</p>
           <p><strong>Sujet :</strong> ${msg.subject}</p>
           <p><strong>Message :</strong> ${msg.message}</p>
         `;

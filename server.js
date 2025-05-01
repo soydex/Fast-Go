@@ -331,7 +331,17 @@ app.get('/messages', authenticateToken, (req, res) => {
         return res.status(403).json({ error: "Accès interdit." });
     }
 
-    db.all(`SELECT * FROM messages WHERE recipient = 'admin'`, [], (err, rows) => {
+    db.all(`
+        SELECT 
+            messages.id, 
+            messages.subject, 
+            messages.message, 
+            COALESCE(users.name, 'Utilisateur inconnu') AS sender_name, 
+            COALESCE(users.email, 'Email inconnu') AS sender_email
+        FROM messages
+        LEFT JOIN users ON messages.sender_id = users.id
+        WHERE messages.recipient = 'admin'
+    `, [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
     });
