@@ -3,7 +3,7 @@ const questionBoxes = document.querySelectorAll(".questions_box");
 questionBoxes.forEach((box) => {
   const question = box.querySelector(".questions");
   const answer = box.querySelector(".answers");
-  const arrow = box.querySelector(".questions img");
+  const arrow = box.querySelector(".questions svg");
   if (question && answer && arrow) {
     question.addEventListener("click", () => {
       console.log("clicked");

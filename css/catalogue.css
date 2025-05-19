@@ -88,6 +88,22 @@ main {
     transform: translateY(0); /* Revenir à la position initiale */
 }
 
+/*Barre de recherche*/
+#searchBar {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+    margin-right: 10px;
+}
+
+#searchBar:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,.25);
+}
+
 /*FOOTER*/
 footer {
     background-color: #333;
