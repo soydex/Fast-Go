@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion des Utilisateurs</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    button {
+      background-color: black;
+
+      color: white;
+      border: none;
+      padding: 5px;
+      cursor: pointer;
+      border-radius: 25px;
+    }
+
+    form {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 80%;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+    }
+  </style>
+  <body>
+    <h1>Gestion des Utilisateurs</h1>
+
+    <!-- Formulaire d'ajout -->
+    <form id="userForm">
+      <input type="text" id="name" placeholder="Nom" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input
+        type="password"
+        id="password"
+        placeholder="Mot de passe"
+        required
+      />
+      <select id="role" required>
+        <option value="user">Utilisateur</option>
+        <option value="admin">Administrateur</option>
+      </select>
+      <button type="submit">Ajouter</button>
+    </form>
+
+    <h2>Liste des Utilisateurs</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Crée le</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="userTable">
+        <tr>
+          <td colspan="6">Chargement...</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert("Vous devez être connecté pour accéder à cette page.");
+      window.location.href = "/log/login.html";
+    }
+
+    fetch('http://localhost:3000/me', {
+      headers: { 'Authorization': token }
+    })
+    .then(response => response.json())
+    .then(user => {
+      if (user.role !== 'admin') {
+        alert("Accès interdit : droits administrateur requis.");
+        window.location.href = "/";
+      }
+    })
+    .catch(() => {
+      alert("Erreur lors de la vérification des droits.");
+      window.location.href = "/log/login.html";
+    });
+  </script>
+  <script src="../js/script_user.js"></script>
+</html>

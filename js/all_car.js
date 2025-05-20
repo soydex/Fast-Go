@@ -7,7 +7,7 @@ async function loadCars() {
         const cars = await response.json();
         const main_content = document.getElementById('main_content');
         cars.forEach(car => {
-            const car_card= document.createElement('a');
+            const car_card = document.createElement('a');
             car_card.href = `location_voiture.html?model_name=${car.model_name}`;
             car_card.target = '_blank';
             car_card.classList.add('car_card');
@@ -16,12 +16,26 @@ async function loadCars() {
                     <img src="${car.image_url}" alt="${car.model_name}">
                 </div>
                 <div class="car_card_info">
-                    <a href="location_voiture.html?model_name=${car.model_name}" target="_blank"><h2>${car.brand} ${car.model_name}</h2></a>
-                    <p>${car.rental_price_per_day} € / jour</p>
-                    <p>${car.horsepower} Ch - ${car.torque} Nm</p>
+                    <h2>${car.brand} ${car.model_name}</h2>
+                    <p class="hidden-info">${car.rental_price_per_day} € / jour</p>
+                    <p class="hidden-info">${car.horsepower} Ch - ${car.torque} Nm</p>
                 </div>
             `;
             main_content.appendChild(car_card);
+        });
+
+        // Ajouter des événements pour afficher/masquer les informations au survol
+        document.querySelectorAll('.car_card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelectorAll('.hidden-info').forEach(info => {
+                    // Supprimer les styles inline
+                });
+            });
+            card.addEventListener('mouseleave', () => {
+                card.querySelectorAll('.hidden-info').forEach(info => {
+                    // Supprimer les styles inline
+                });
+            });
         });
     } catch (error) {
         console.error("Erreur lors du chargement :", error);
@@ -35,14 +49,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 document.addEventListener('DOMContentLoaded', () => {
     const userInfoElement = document.getElementById('user-info');
 
-    // Récupérer le token depuis le stockage local
     const token = localStorage.getItem('token');
     if (!token) {
-        userInfoElement.textContent = 'Vous devez être connecté pour accéder à cette page.';
+        userInfoElement.textContent = 'Vous n\'êtes pas connecté.';
         return;
     }
 
-    // Récupérer les informations utilisateur
     fetch('http://localhost:3000/me', {
         headers: {
             'Authorization': token

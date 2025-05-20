@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+    background-color: #F9F6F6;
+}
+
+/*Titre*/
+h1,
+h2,
+h4 {
+    text-align: left;
+}
+
+
+
+#main {
+    width: 80%;
+}
+
+/*btn*/
+.btn-effacer-filtre,
+.btn-offre {
+    border: none;
+    border-radius: 2rem;
+    padding: 0.7rem 3rem;
+    display: block;
+    text-align: center;
+}
+
+.btn-effacer-filtre {
+    color: black;
+}
+
+.btn-offre {
+    color: white;
+    background-color: black;
+}
+
+#compte {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #D9D9D9;
+    color: #333;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+}
+
+/*Barre de Navigation*/
+header {
+    position: relative;
+}
+
+/*Menu select pour filtrer*/
+.list-filtre {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.filtre {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: #D9D9D9;
+}
+
+.filtre-container {
+    display: none;
+}
+
+/*Section main pour les voitures*/
+main {
+    padding: 10rem 0;
+}
+
+.hidden-info {
+    display: block; /* Toujours visible pour permettre l'animation */
+    opacity: 0;
+    transform: translateY(20px); /* Décalage initial vers le bas */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Animation */
+}
+
+.car_card:hover .hidden-info {
+    opacity: 1; /* Rendre visible */
+    transform: translateY(0); /* Revenir à la position initiale */
+}
+
+/*Barre de recherche*/
+#searchBar {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+    margin-right: 10px;
+}
+
+#searchBar:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,.25);
+}
+
+/*FOOTER*/
+footer {
+    background-color: #333;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.footer-middle {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-text a,
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 769px) {
+
+    /*Titre*/
+    h1 {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    /*NAVIGATION*/
+    nav ul li a {
+        font-size: 1.4rem;
+    }
+
+    nav ul img {
+        width: 15%;
+    }
+
+    /*Section filtre*/
+    .list-filtre {
+        flex-wrap: wrap;
+    }
+
+    .filtre {
+        font-size: 1.4rem;
+        padding: 0.8rem 1.5rem;
+        display: block;
+    }
+
+    /*Section footer*/
+    .footer-middle {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 376px) {
+
+    /*Class pour gérer l'affichage ou non du menu lorsque l'on clique sur le bouton filtrer*/
+    .list-filtre {
+        display: none;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .box {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #F9F6F6;
+        display: inline-block;
+        width: 100%;
+    }
+
+    /*Titre*/
+    h1 {
+        padding-left: 0%;
+        padding-top: 2.8rem;
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    h4 {
+        padding: 1.5rem 0rem 1rem 1rem;
+    }
+
+    /*btn*/
+    #btn-filtre {
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 2rem;
+        background-color: #D9D9D9;
+        text-align: center;
+        margin-top: 2rem;
+        margin-left: 12rem;
+    }
+
+    .bouton-critere {
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 2rem;
+        background-color: #D9D9D9;
+        font-size: 1.4rem;
+        width: 15rem;
+    }
+
+    #btn-offre {
+        color: white;
+        background-color: black;
+        border: none;
+        border-radius: 2rem;
+        padding: 1rem 4rem;
+        display: block;
+        margin: auto;
+        margin-top: 2rem;
+    }
+
+    /*Section filtrer et trier*/
+    .filtre-container {
+        display: block;
+    }
+
+    .filtre-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .filtre-header p {
+        font-size: 1.4rem;
+    }
+
+    .double-bouton {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.6rem;
+    }
+
+    /*Section footer*/
+    .footer-logo{
+        width: 100%;
+    }
+
+    .footer-middle {
+        font-size: 1.2rem;
+    }
+}

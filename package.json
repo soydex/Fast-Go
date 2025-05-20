@@ -3,8 +3,11 @@
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "express": "^4.21.2",
+    "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
     "mdb-ui-kit": "^8.2.0",
-    "sqlite3": "^5.1.7"
+    "nodemailer": "^6.10.0",
+    "sqlite3": "^5.1.7",
+    "stripe": "^18.0.0"
   }
 }

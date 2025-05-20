@@ -1,30 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/car_page.css">
-    <title>Car page</title>
-</head>
-<body>
-    <header>
-        <a href="index.html"><img src="./imgs/logo_fast&go.png" alt="" srcset="" width="200"></a>
-        <nav>
-          <ul>
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">Berline</a></li>
-            <li><a href="#">Notre Équipe</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a id="compte" href="account.html">COMPTE</a></li>
-          </ul>
-        </nav>
-      </header>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Catalogue des véhicules disponibles chez FAST&GO." />
+    <meta property="og:title" content="Catalogue - FAST&GO" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fastandgo.com/catalogue" />
+    <meta property="og:image" content="imgs/logo_fastgo.webp" />
+    <link rel="icon" href="imgs/favicon.ico" sizes="any" />
+    <link rel="icon" href="imgs/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="imgs/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <title>Catalogue - FAST&GO</title>
 
-      <main id="main">
-        <h3 id="user-info"></h3>
-        <div  id="main_content" class="main_content">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/helpers.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/catalogue.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="index.html"
+          ><img src="imgs/logo_fastgo.webp" width="200px" alt="Logo Fast&GO"
+        /></a>
+        <ul id="menu" class="menu">
+          <li><a href="#">Supercar</a></li>
+          <li><a href="#">Berline</a></li>
+          <li><a href="#">Tout-Terrain</a></li>
+          <li><a href="#">Deux-roues</a></li>
+          <li><a id="compte" href="account.html">COMPTE</a></li>
+        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-      </main>
-</body>
-<script src="js/all_car.js"></script>
+      </nav>
+    </header>
+
+    <main id="main">
+      <h3 id="user-info"></h3>
+      <div class="list-filtre container">
+        <input type="text" id="searchBar" class="filtre" placeholder="Rechercher un véhicule...">
+        <select id="sort" class="filtre">
+          <option value="" selected>Trier par</option>
+          <option value="asc">Prix croissant</option>
+          <option value="desc">Prix décroissant</option>
+        </select>
+        <select id="type" class="filtre">
+          <option value="" selected>Type de véhicule</option>
+          <option value="supercars">Supercars</option>
+          <option value="berlines">Berlines</option>
+          <option value="tout-terrain">Tout-Terrain</option>
+          <option value="deux-roues">Deux-roues</option>
+        </select>
+        <select id="transmission" class="filtre">
+          <option value="" selected>Transmission</option>
+          <option value="automatique">Automatique</option>
+          <option value="manuelle">Manuelle</option>
+        </select>
+        <select id="passengers" class="filtre">
+          <option value="" selected>Passagers</option>
+          <option value="2">2+</option>
+          <option value="4">4+</option>
+          <option value="5">5+</option>
+          <option value="7">7+</option>
+        </select>
+        <button id="apply-filters" class="btn-offre">
+          Appliquer les filtres
+        </button>
+        <a class="btn-effacer-filtre" href="">Effacer</a>
+      </div>
+
+      <div class="filtre-container">
+        <button onclick="afficherDiv()" id="btn-filtre">
+          Filtrer et Trier
+        </button>
+        <div id="textBox" class="hidden">
+          <div class="filtre-header">
+            <a onclick="afficherDiv()"><img src="/imgs/fleche.svg" alt="" /></a>
+            <a class="btn-effacer-filtre" href="">Effacer</a>
+          </div>
+          <h4>Trier par</h4>
+          <div class="double-bouton">
+            <button class="bouton-critere">Prix croissant</button>
+            <button class="bouton-critere">Prix décroissant</button>
+          </div>
+          <h4>Type de véhicule</h4>
+          <div class="double-bouton">
+            <button class="bouton-critere">Supercars</button>
+            <button class="bouton-critere">Berlines</button>
+            <button class="bouton-critere">Tout-Terrain</button>
+            <button class="bouton-critere">Deux-Roues</button>
+          </div>
+          <h4>Transmission</h4>
+          <div class="double-bouton">
+            <button class="bouton-critere">Automatique</button>
+            <button class="bouton-critere">Manuelle</button>
+          </div>
+          <h4>Passagers</h4>
+          <div class="double-bouton">
+            <button class="bouton-critere">2+</button>
+            <button class="bouton-critere">4+</button>
+            <button class="bouton-critere">5+</button>
+            <button class="bouton-critere">7+</button>
+          </div>
+          <button id="btn-offre">Voir les 15 offres</button>
+        </div>
+      </div>
+      <div id="main_content" class="main_content"></div>
+    </main>
+
+    <footer>
+      <div class="footer_logo">
+        <a href="index.html"
+          ><img src="imgs/logo_fastgo.webp" alt="Logo Fast&GO" width="400px"
+        /></a>
+      </div>
+      <div class="footer_about">
+        <p>
+          Location de véhicules de luxe sur Paris Retrouvez-nous sur les réseaux
+          sociaux !
+        </p>
+        <ul class="social_links">
+          <li>
+            <a href="#!">Facebook</a>
+          </li>
+          <li>
+            <a href="#!">Instagram</a>
+          </li>
+          <li>
+            <a href="#!">YouTube</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer_products">
+        <h5>Nos Produits</h5>
+        <ul>
+          <li>
+            <a href="#!">F&G+ Abonnement auto</a>
+          </li>
+          <li>
+            <a href="#!">Location de voiture</a>
+          </li>
+          <li>
+            <a href="#!">Location de deux roues</a>
+          </li>
+          <li>
+            <a href="#!">Chauffeur privé</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer_enterprise">
+        <h5>F&G ENTREPRISE</h5>
+        <ul>
+          <li>
+            <a href="#!">Enregistrer votre entreprise</a>
+          </li>
+          <li>
+            <a href="#!">Mobilité pour vos voyages d'affaires</a>
+          </li>
+          <li>
+            <a href="#!">Alternatives voitures de fonction</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer_contact">
+        <h5>Contact</h5>
+        <ul>
+          <li>
+            <p>14 Avenue des Champs Elysées Paris, France</p>
+          </li>
+          <li>
+            <p>06 95 82 35 74</p>
+          </li>
+          <li>
+            <p>contactfastandgo@gmail.com</p>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <div class="footer_copyright">
+      <p>© 2025 Copyright: <a href="index.html">FAST&GO.COM</a></p>
+    </div>
+
+    <script src="js/selection-vehicule.js"></script>
+    <script src="js/all_car.js"></script>
+    <script src="js/search.js"></script>
+  </body>
 </html>

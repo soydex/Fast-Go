@@ -6,10 +6,23 @@ app.use(express.json());
 app.use(cors());
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const helmet = require('helmet');
 
+app.use(helmet());
 
+// Middleware pour vérifier le token
+function authenticateToken(req, res, next) {
+    const token = req.headers['authorization'];
+    if (!token) return res.sendStatus(401);
 
-// 🔹 Récupérer tous les utilisateurs
+    jwt.verify(token, SECRET_KEY, (err, user) => {
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    });
+}
+
+// 🔹 Récupérer tous les utilisateurs (protégé par admin)
 app.get('/users', (req, res) => {
     db.all(`SELECT * FROM users`, [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
@@ -25,7 +38,7 @@ app.get('/cars', (req, res) => {
     });
 });
 
-// Ajouter un véhicule
+// Ajouter un véhicule (protégé par admin)
 app.post('/cars', (req, res) => {
     const { model_name, brand, image_url, transmission, weight, rental_price_per_day, engine_type, horsepower, torque, seating_capacity } = req.body;
     if (!model_name || !brand || !transmission || !weight || !rental_price_per_day || !engine_type || !horsepower || !torque || !seating_capacity) {
@@ -43,7 +56,7 @@ app.post('/cars', (req, res) => {
     });
 });
 
-// 🔹 Ajouter un utilisateur
+// 🔹 Ajouter un utilisateur (protégé par admin)
 app.post('/users', (req, res) => {
     const { name, email, password, role } = req.body;
     if (!name || !email || !password || !role) {
@@ -56,7 +69,7 @@ app.post('/users', (req, res) => {
     });
 });
 
-// 🔹 Supprimer un utilisateur
+// 🔹 Supprimer un utilisateur (protégé par admin)
 app.delete('/users/:id', (req, res) => {
     const { id } = req.params;
 
@@ -66,7 +79,7 @@ app.delete('/users/:id', (req, res) => {
     });
 });
 
-// 🔹 Mettre à jour un utilisateur
+// 🔹 Mettre à jour un utilisateur (protégé par admin)
 app.put('/users/:id', (req, res) => {
     const { id } = req.params;
     const { name, email, role } = req.body;
@@ -85,7 +98,7 @@ app.put('/users/:id', (req, res) => {
     );
 });
 
-// 🔹 Supprimer un véhicule
+// 🔹 Supprimer un véhicule (protégé par admin)
 app.delete('/cars/:id', (req, res) => {
     const { id } = req.params;
 
@@ -119,8 +132,6 @@ app.get('/cars/:model_name', (req, res) => {
         res.json(row);
     });
 });
-
-
 
 const SECRET_KEY = 'vidaloca'; // Remplacez par une clé secrète sécurisée
 
@@ -161,23 +172,6 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Middleware pour vérifier le token
-function authenticateToken(req, res, next) {
-    const token = req.headers['authorization'];
-    if (!token) return res.sendStatus(401);
-
-    jwt.verify(token, SECRET_KEY, (err, user) => {
-        if (err) return res.sendStatus(403);
-        req.user = user;
-        next();
-    });
-}
-
-// Exemple de route protégée
-app.get('/protected', authenticateToken, (req, res) => {
-    res.json({ message: 'Accès autorisé', user: req.user });
-});
-
 // 🔹 Récupérer les informations de l'utilisateur connecté
 app.get('/me', authenticateToken, (req, res) => {
     const userId = req.user.id;
@@ -188,6 +182,170 @@ app.get('/me', authenticateToken, (req, res) => {
     });
 });
 
+// 🔹 Mettre à jour un véhicule (protégé par admin)
+app.put('/cars/:id', (req, res) => {
+    const { id } = req.params;
+    const { model_name, brand, image_url, transmission, weight, rental_price_per_day, engine_type, horsepower, torque, seating_capacity } = req.body;
+
+    if (!model_name || !brand || !image_url || !transmission || !weight || !rental_price_per_day || !engine_type || !horsepower || !torque || !seating_capacity) {
+        return res.status(400).json({ error: "Tous les champs sont requis." });
+    }
+
+    db.run(
+        `UPDATE cars SET model_name = ?, brand = ?, image_url = ?, transmission = ?, weight = ?, rental_price_per_day = ?, engine_type = ?, horsepower = ?, torque = ?, seating_capacity = ? WHERE id = ?`,
+        [model_name, brand, image_url, transmission, weight, rental_price_per_day, engine_type, horsepower, torque, seating_capacity, id],
+        function (err) {
+            if (err) return res.status(500).json({ error: err.message });
+            res.json({ message: "Véhicule mis à jour", id });
+        }
+    );
+});
+
+// 🔹 Récupérer toutes les réservations
+app.get('/reservations', (req, res) => {
+    db.all(`
+        SELECT 
+            reservations.id, 
+            reservations.client_name, 
+            reservations.vehicle_id, 
+            reservations.start_date, 
+            reservations.end_date, 
+            reservations.status, 
+            cars.model_name, 
+            cars.brand 
+        FROM reservations
+        LEFT JOIN cars ON reservations.vehicle_id = cars.model_name
+    `, [], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
+
+// 🔹 Récupérer les réservations d'un véhicule spécifique
+app.get('/reservations/:vehicle_id', (req, res) => {
+    const { vehicle_id } = req.params;
+    db.all(`SELECT * FROM reservations WHERE vehicle_id = ?`, [vehicle_id], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
+
+// 🔹 Ajouter une réservation
+app.post('/reservations', (req, res) => {
+    const { client_name, vehicle_id, start_date, end_date, status } = req.body;
+
+    // Ajout d'un log pour vérifier les données reçues
+    console.log("Données reçues pour la réservation :", req.body);
+
+    if (!client_name || !vehicle_id || !start_date || !end_date || !status) {
+        return res.status(400).json({ error: "Tous les champs sont requis." });
+    }
+
+    db.run(`INSERT INTO reservations (client_name, vehicle_id, start_date, end_date, status) 
+            VALUES (?, ?, ?, ?, ?)`, 
+    [client_name, vehicle_id, start_date, end_date, status], 
+    function (err) {
+        if (err) {
+            console.error('Erreur lors de l\'insertion dans la base de données', err.message);
+            return res.status(500).json({ error: err.message });
+        }
+        res.json({ id: this.lastID, client_name, vehicle_id, start_date, end_date, status });
+    });
+});
+
+// 🔹 Supprimer une réservation
+app.delete('/reservations/:id', (req, res) => {
+    const { id } = req.params;
+
+    db.run(`DELETE FROM reservations WHERE id = ?`, id, function (err) {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ message: "Réservation supprimée", id });
+    });
+});
+
+// 🔹 Route pour récupérer les analyses
+app.get('/analytics', (req, res) => {
+    db.all(`SELECT * FROM user_actions`, [], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
+
+// Fonction pour enregistrer les actions des utilisateurs
+function logUserAction(userId, action) {
+    db.run(`INSERT INTO user_actions (user_id, action) VALUES (?, ?)`, [userId, action], (err) => {
+        if (err) console.error('Erreur lors de l\'enregistrement de l\'action utilisateur:', err.message);
+    });
+}
+
+// 🔹 Récupérer les réservations de l'utilisateur connecté
+app.get('/my-reservations', authenticateToken, (req, res) => {
+    const userId = req.user.id;
+    db.all(`
+        SELECT 
+            reservations.id, 
+            reservations.vehicle_id, 
+            reservations.start_date, 
+            reservations.end_date, 
+            reservations.status, 
+            cars.model_name, 
+            cars.brand 
+        FROM reservations
+        LEFT JOIN cars ON reservations.vehicle_id = cars.model_name
+        WHERE reservations.client_name = (
+            SELECT name FROM users WHERE id = ?
+        )
+    `, [userId], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
+
+// 🔹 Ajouter un message
+app.post('/messages', (req, res) => {
+    const { subject, message, recipient } = req.body;
+
+    if (!subject || !message || !recipient) {
+        res.setHeader("Content-Type", "application/json");
+        return res.status(400).json({ error: "Sujet, message et destinataire requis." });
+    }
+
+    const senderId = req.user ? req.user.id : 0; // Utiliser 0 si l'w n'est pas authentifié
+
+    db.run(
+        `INSERT INTO messages (sender_id, recipient, subject, message) VALUES (?, ?, ?, ?)`,
+        [senderId, recipient, subject, message],
+        function (err) {
+            if (err) {
+                res.setHeader("Content-Type", "application/json");
+                return res.status(500).json({ error: err.message });
+            }
+            res.json({ id: this.lastID, senderId, recipient, subject, message });
+        }
+    );
+});
+
+// 🔹 Récupérer les messages pour les administrateurs
+app.get('/messages', authenticateToken, (req, res) => {
+    if (req.user.role !== 'admin') {
+        return res.status(403).json({ error: "Accès interdit." });
+    }
+
+    db.all(`
+        SELECT 
+            messages.id, 
+            messages.subject, 
+            messages.message, 
+            COALESCE(users.name, 'Utilisateur inconnu') AS sender_name, 
+            COALESCE(users.email, 'Email inconnu') AS sender_email
+        FROM messages
+        LEFT JOIN users ON messages.sender_id = users.id
+        WHERE messages.recipient = 'admin'
+    `, [], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
 
 // 🔹 Démarrer le serveur
 app.listen(3000, () => console.log('Serveur sur http://localhost:3000'));

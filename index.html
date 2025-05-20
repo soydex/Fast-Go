@@ -4,17 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FAST&GO</title>
-    <meta name="description" content="" />
+    <meta
+      name="description"
+      content="FAST&GO - Location de véhicules de luxe à Paris."
+    />
 
-    <meta property="og:title" content="" />
-    <meta property="og:type" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:image" content="" />
+    <meta
+      property="og:title"
+      content="FAST&GO - Location de véhicules de luxe"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fastandgo.com" />
+    <meta property="og:image" content="imgs/logo_fastgo.webp" />
 
-    <link rel="icon" href="imgs/favicon.ico" sizes="any" />
-    <link rel="icon" href="imgs/icon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="imgs/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="imgs/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
 
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/helpers.css" />
@@ -24,20 +29,39 @@
   <body>
     <header>
       <nav>
-        <img src="imgs/logo_fastgo.webp" width="200px" alt="Logo Fast&GO" />
-        <ul>
-          <li><a href="#">Supercar</a></li>
-          <li><a href="#">Berline</a></li>
-          <li><a href="#">Tout-Terrain</a></li>
-          <li><a href="#">Deux-roues</a></li>
+        <a href="index.html"
+          ><img
+            src="imgs/logo_fastgo.webp"
+            width="200px"
+            alt="Logo Fast&GO"
+            class="logo"
+        /></a>
+        <ul id="menu" class="menu">
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="#about_us">A Propos de nous</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li>
+            <a id="theme-toggle"
+              ><img id="theme-toggle-img" src="imgs/moon.svg" alt="Lune"
+            /></a>
+          </li>
           <li><a id="compte" href="account.html">COMPTE</a></li>
         </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </nav>
     </header>
 
     <section class="hero hero-1">
-      <h1>FAST & GO</h1>
+      <h1 class="fastgo_title">FAST<span>&</span>GO</h1>
       <p>La vitesse à portée de main</p>
+      <div class="hero_buttons">
+        <a href="catalogue.html" class="btn">Réserver maintenant</a>
+        <a href="#" class="btn" id="contact_button">Contactez-nous</a>
+      </div>
 
       <div class="dots">
         <div class="dot"></div>
@@ -46,32 +70,34 @@
       </div>
     </section>
 
-    <section class="nos_vehicules">
-      <div>
-        <h3>Nos Véhicules</h3>
-        <p>Notre meilleure sélection de véhicules rien que pour vous !</p>
-      </div>
-      <div class="main_content" id="main_content"></div>
-      <a id="see_more" href="selection-vehicule.html">Voir plus</a>
+    <section class="vehicules_section">
+      <section class="nos_vehicules">
+        <div>
+          <h3>Modèles <span>phares</span></h3>
+          <p>Notre meilleure sélection de véhicules rien que pour vous !</p>
+        </div>
+        <div class="slider" id="carousel_container"></div>
+        <a id="see_more" href="catalogue.html">Voir plus</a>
+      </section>
     </section>
 
     <section class="main">
       <section class="section_info">
-        <section class="informations">
+        <section id="about_us" class="informations">
           <img src="imgs/BRABUS-S63.webp" alt="BRABUS S63" />
           <div class="texte">
             <h2>Pourquoi nous choisir ?</h2>
             <p>
-              Chez FAST & GO, nous vous offrons bien plus qu'une location de
-              véhicules de luxe : une expérience sur-mesure. Profitez d'une
-              flotte prestigieuse, entretenue avec rigueur pour une sécurité
-              optimale. Chaque détail est pensé pour répondre à vos attentes
-              avec discrétion, confort et élégance. Vivez l'excellence avec FAST
-              & GO.
+              Chez FAST<span>&</span>GO, nous vous offrons bien plus qu'une
+              location de véhicules de luxe : une expérience sur-mesure.
+              Profitez d'une flotte prestigieuse, entretenue avec rigueur pour
+              une sécurité optimale. Chaque détail est pensé pour répondre à vos
+              attentes avec discrétion, confort et élégance. Vivez l'excellence
+              avec FAST<span>&</span>GO.
             </p>
           </div>
         </section>
-        <section class="informations">
+        <section id="section_taycan" class="informations">
           <div class="texte">
             <h2>Qu'en pensent nos clients</h2>
             <p>
@@ -95,46 +121,70 @@
       <h5>Les Avis de Nos Clients</h5>
       <div class="avis_content">
         <div class="contenu_avis">
-          <h4>⭐⭐⭐⭐⭐</h4>
           <h6>Nathaniel Daudrich</h6>
+          <h4>⭐⭐⭐⭐⭐</h4>
           <p>
-            Vivamus non neque efficitur, mollis massa sit amet, sollicitudin
-            orci. Cras sit amet velit sed erat ornare sollicitudin.
+            Une vraie expérience de luxe !
+            <br />
+            Voiture impeccable, service rapide et équipe aux petits soins. Je
+            réserverai à nouveau sans hésiter !
           </p>
         </div>
 
         <div class="contenu_avis">
+          <h6>Achraf Hakimi</h6>
           <h4>⭐⭐⭐⭐⭐</h4>
-          <h6>Achrafe Hakimi</h6>
           <p>
-            Vivamus non neque efficitur, mollis massa sit amet, sollicitudin
-            orci. Cras sit amet velit sed erat ornare sollicitudin.
+            Expérience incroyable !
+            <br />
+            Voiture de rêve, service impeccable et réservation sans stress. Je
+            reviendrai sans hésiter !
           </p>
         </div>
 
         <div class="contenu_avis">
-          <h4>⭐⭐⭐⭐⭐</h4>
           <h6>Dwayne Johnson</h6>
+          <h4>⭐⭐⭐⭐⭐</h4>
           <p>
-            Vivamus non neque efficitur, mollis massa sit amet, sollicitudin
-            orci. Cras sit amet velit sed erat ornare sollicitudin.
+            Parfait du début à la fin !
+            <br />
+            Location facile, voiture sublime et équipe professionnelle. Je
+            recommande sans hésitation !
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section_questions">
-      <h6>QUESTIONS FRÉQUENTES</h6>
+    <section id="faq" class="section_questions">
+      <h6>QUESTIONS <span>FRÉQUENTES</span></h6>
       <div class="div_questions">
         <div class="questions_box">
           <div class="questions">
             <p>Combien de temps puis-je louer un véhicule au maximum ?</p>
-            <img
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
               width="32px"
               height="32px"
-              src="https://img.icons8.com/windows/32/circled-chevron-up.png"
-              alt="circled-chevron-up"
-            />
+              stroke="none"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M9 13L12 16M12 16L15 13M12 16V8M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
           </div>
           <div class="answers">
             <p>
@@ -148,17 +198,35 @@
             <p>
               Puis-je louer un véhicule alors que je suis en permis probatoire ?
             </p>
-            <img
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
               width="32px"
               height="32px"
-              src="https://img.icons8.com/windows/32/circled-chevron-up.png"
-              alt="circled-chevron-up"
-            />
+              stroke="none"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M9 13L12 16M12 16L15 13M12 16V8M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
           </div>
           <div class="answers">
             <p>
-              Non, il est impossible de louer un véhicule chez FAST & GO si vous
-              êtes en permis probatoire.
+              Non, il est impossible de louer un véhicule chez
+              FAST<span>&</span>GO si vous êtes en permis probatoire.
             </p>
           </div>
         </div>
@@ -166,12 +234,30 @@
         <div class="questions_box">
           <div class="questions">
             <p>Combien de temps puis-je louer un véhicule au maximum ?</p>
-            <img
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
               width="32px"
               height="32px"
-              src="https://img.icons8.com/windows/32/circled-chevron-up.png"
-              alt="circled-chevron-up"
-            />
+              stroke="none"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M9 13L12 16M12 16L15 13M12 16V8M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
           </div>
           <div class="answers">
             <p>
@@ -183,12 +269,30 @@
         <div class="questions_box">
           <div class="questions">
             <p>Quel est le montant de la caution ?</p>
-            <img
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
               width="32px"
               height="32px"
-              src="https://img.icons8.com/windows/32/circled-chevron-up.png"
-              alt="circled-chevron-up"
-            />
+              stroke="none"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M9 13L12 16M12 16L15 13M12 16V8M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
           </div>
           <div class="answers">
             <p>
@@ -201,38 +305,106 @@
     </section>
 
     <footer>
-      <div class="footer-top">
-        <img
-          src="imgs/logo_fastgo.webp"
-          alt="FAST&GO Logo"
-          class="footer-logo"
-          width="400px"
-        />
+      <div class="footer_logo">
+        <a href="index.html"
+          ><img src="imgs/logo_fastgo.webp" alt="Logo Fast&GO" width="400px"
+        /></a>
       </div>
-      <div class="footer-middle">
-        <div style="display: flex; align-items: center; gap: 2rem">
-          <div class="footer_nav">
-            <ul>
-              <li><a href="#">Supercar</a></li>
-              <li><a href="#">Berline</a></li>
-              <li><a href="#">Tout-Terrain</a></li>
-              <li><a href="#">Deux-roues</a></li>
-            </ul>
-          </div>
-          <div class="footer-text">
-            <a href="mailto:contactfastandgo@gmail.com"
-              >contactfastandgo@gmail.com</a
-            >
-          </div>
-          <ul class="footer-links">
-            <li><a href="#">Mentions légales</a></li>
-            <li><a href="#">Politique de confidentialité</a></li>
-            <li><a href="#">Conditions d'utilisation</a></li>
-          </ul>
-        </div>
-        <p>&copy; 2025 FAST&GO. Tous droits réservés.</p>
+      <div class="footer_about">
+        <p>
+          Location de véhicules de luxe sur Paris Retrouvez-nous sur les réseaux
+          sociaux !
+        </p>
+        <ul class="social_links">
+          <li>
+            <a href="#!"
+              ><img src="imgs/logo_facebook.svg" alt="logo_facebook"
+            /></a>
+          </li>
+          <li>
+            <a href="#!"
+              ><img src="imgs/logo_instagram.svg" alt="logo_instagram"
+            /></a>
+          </li>
+          <li>
+            <a href="#!"
+              ><img src="imgs/logo_youtube.svg" alt="logo_youtube"
+            /></a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer_products">
+        <h5>Nos Produits</h5>
+        <ul>
+          <li>
+            <a href="#!">F&G+ Abonnement auto</a>
+          </li>
+          <li>
+            <a href="#!">Location de voiture</a>
+          </li>
+          <li>
+            <a href="#!">Location de deux roues</a>
+          </li>
+          <li>
+            <a href="#!">Chauffeur privé</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer_enterprise">
+        <h5>F&G ENTREPRISE</h5>
+        <ul>
+          <li>
+            <a href="#!">Enregistrer votre entreprise</a>
+          </li>
+          <li>
+            <a href="#!">Mobilité pour vos voyages d'affaires</a>
+          </li>
+          <li>
+            <a href="#!">Alternatives voitures de fonction</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer_contact">
+        <h5>Contact</h5>
+        <ul>
+          <li>
+            <p>14 Avenue des Champs Elysées Paris, France</p>
+          </li>
+          <li>
+            <p>06 95 82 35 74</p>
+          </li>
+          <li>
+            <p>contactfastandgo@gmail.com</p>
+          </li>
+        </ul>
       </div>
     </footer>
+    <div class="footer_copyright">
+      <p>© 2025 Copyright. <a href="index.html">FAST&GO.COM</a></p>
+    </div>
+
+    <div id="cookie-popup">
+      <p>
+        Nous utilisons des cookies pour améliorer votre expérience. En
+        continuant, vous acceptez notre politique de cookies.
+      </p>
+      <button id="accept-cookies">Accepter</button>
+      <button id="decline-cookies">Refuser</button>
+    </div>
+
+    <div id="form-contact">
+      <form class="contact-form" action="submit_message.php" method="POST">
+        <button type="button" id="close-form">X</button>
+        <h2>Contactez-nous</h2>
+        <div id="form-content">
+          <input type="hidden" name="recipient" value="admin" />
+          <!-- Le contenu sera rempli dynamiquement via JavaScript -->
+        </div>
+      </form>
+    </div>
+
     <script src="js/index.js"></script>
+    <script src="js/darkmode.js"></script>
+    <script src="js/nav.js"></script>
   </body>
 </html>
