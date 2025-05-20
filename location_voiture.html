@@ -33,14 +33,7 @@
         /></a>
         <ul id="menu" class="menu">
           <li><a href="catalogue.html">Catalogue</a></li>
-          <li><a href="#">Berline</a></li>
-          <li><a href="#">Tout-Terrain</a></li>
-          <li><a href="#">Deux-roues</a></li>
-          <li>
-            <a id="theme-toggle"
-              ><img id="theme-toggle-img" src="imgs/moon.svg" alt="Lune"
-            /></a>
-          </li>
+          <li><a href="#">Accueil</a></li>
           <li><a id="compte" href="account.html">COMPTE</a></li>
         </ul>
         <div class="menu-toggle" onclick="toggleMenu()">
@@ -50,6 +43,10 @@
         </div>
       </nav>
     </header>
+
+    <a id="theme-toggle"
+      ><img id="theme-toggle-img" src="imgs/moon.svg" alt="Lune"
+    /></a>
 
     <main id="main">
       <div id="car_imgs" class="car_imgs"></div>
@@ -146,8 +143,11 @@
         <div>
           <div id="calendar_header">
             <div id="calendar_prev" class="calendar_button">Précédent</div>
-            <div id="calendar_month" style="font-weight: bold; text-align: center;"></div>
-            
+            <div
+              id="calendar_month"
+              style="font-weight: bold; text-align: center"
+            ></div>
+
             <div id="calendar_next" class="calendar_button">Suivant</div>
           </div>
           <div id="calendar_weekdays"></div>
@@ -162,7 +162,7 @@
             <input type="date" id="start_date" name="start_date" required />
             <label for="end_date">Date de fin :</label>
             <input type="date" id="end_date" name="end_date" required />
-            <p id="login-warning" style="color: red; display: none;">
+            <p id="login-warning" style="color: red; display: none">
               Vous devez être connecté pour réserver.
             </p>
             <button type="submit">Réserver</button>

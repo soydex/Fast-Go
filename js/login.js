@@ -29,7 +29,7 @@ async function loginUser(event) {
             Spaninfo.style.display = 'block';
             Spaninfo.style.color = 'green';
             Spaninfo.innerHTML = 'Connexion réussie';
-            window.location.href = '../catalogue.html';
+            window.location.href = '../index.html';
         }
     } catch (error) {
         console.error('Erreur:', error);

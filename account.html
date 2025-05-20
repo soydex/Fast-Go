@@ -11,306 +11,316 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fastandgo.com/account" />
     <meta property="og:image" content="imgs/logo_fastgo.webp" />
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/helpers.css" />
-    <link rel="stylesheet" href="/css/account.css" />
     <link rel="icon" href="/imgs/favicon.ico" sizes="any" />
     <link rel="icon" href="/imgs/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <title>Profil</title>
+    <link rel="stylesheet" href="/css/account.css" />
+    <title>Tableau de Bord - FAST&GO</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style></style>
   </head>
+
   <body>
-    <main>
-      <aside>
-        <div class="profile_user">
-          <div class="profile_user_img">
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <img
+            src="/imgs/user.png"
+            alt="User Image"
+            id="user-image"
+            class="w-10 h-10 rounded-full"
+          />
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#" class="active" title="Tableau de bord">
+            <i data-feather="grid"></i>
+            <span class="sidebar-text">Tableau de bord</span>
+          </a>
+          <a href="#" title="Statistiques">
+            <i data-feather="bar-chart-2"></i>
+            <span class="sidebar-text">Statistiques</span>
+          </a>
+          <a href="#" title="Réservations">
+            <i data-feather="calendar"></i>
+            <span class="sidebar-text">Réservations</span>
+          </a>
+          <a href="#" title="Messages">
+            <i data-feather="mail"></i>
+            <span class="sidebar-text">Messages</span>
+          </a>
+          <a href="#" title="Paramètres">
+            <i data-feather="settings"></i>
+            <span class="sidebar-text">Paramètres</span>
+          </a>
+        </nav>
+        <div class="sidebar-user">
+          <div
+            class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center"
+            id="user-avatar"
+          >
+            <i data-feather="user" class="text-white"></i>
+          </div>
+          <div class="flex-1 hidden sidebar-text">
+            <p class="font-semibold" id="user-name">Nom d'utilisateur</p>
+            <p class="text-sm text-gray-400" id="user-email">Email</p>
+          </div>
+          <button id="logout" class="btn btn-secondary hidden sidebar-text">
+            <i data-feather="log-out"></i>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="header">
+          <h1 class="text-2xl font-bold">
+            Bienvenue sur votre tableau de bord
+          </h1>
+          <div class="flex gap-4">
+            <button class="btn btn-secondary" id="theme-toggle">
+              <i data-feather="moon"></i>
+              <span>Thème</span>
+            </button>
+            <button class="btn btn-primary">
+              <i data-feather="plus"></i>
+              <span>Nouvelle réservation</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <i data-feather="car" class="text-blue-500"></i>
+            <h3 id="vehicles-count">Chargement..</h3>
+            <p class="text-gray-400">Véhicules disponibles</p>
+          </div>
+          <div class="stat-card">
+            <i data-feather="users" class="text-green-500"></i>
+            <h3 id="users-count">Chargement..</h3>
+            <p class="text-gray-400">Clients actifs</p>
+          </div>
+          <div class="stat-card">
+            <i data-feather="clipboard" class="text-orange-500"></i>
+            <h3 id="reservations-count">Chargement..</h3>
+            <p class="text-gray-400">Réservations en cours</p>
+          </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="card">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-semibold">Aperçu des activités</h2>
+            <div class="text-sm text-gray-400">
+              <span>Août 2023 - Mai 2024</span>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="reservationsChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Current Reservations -->
+        <div class="card">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-blue-500/20">
+              <i data-feather="calendar" class="text-blue-500"></i>
+            </div>
+            <h2 class="text-xl font-semibold">Réservations en cours</h2>
+          </div>
+          <div class="reservation-list" id="current-reservations">
+            <p class="text-center text-gray-400">
+              Chargement des réservations...
+            </p>
+          </div>
+        </div>
+
+        <!-- My Reservations -->
+        <div class="card">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-green-500/20">
+              <i data-feather="check-circle" class="text-green-500"></i>
+            </div>
+            <h2 class="text-xl font-semibold">Mes réservations</h2>
+          </div>
+          <div class="reservation-list" id="my-reservations">
+            <p class="text-center text-gray-400">
+              Oups.. Vous n'avez pas de réservations actuellement
+            </p>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="card">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-purple-500/20">
+              <i data-feather="message-circle" class="text-purple-500"></i>
+            </div>
+            <h2 class="text-xl font-semibold">Messages reçus</h2>
+          </div>
+          <div class="message-list" id="admin-messages">
+            <p class="text-center text-gray-400">Chargement des messages...</p>
+          </div>
+        </div>
+
+        <!-- History -->
+        <div class="card">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-orange-500/20">
+              <i data-feather="clock" class="text-orange-500"></i>
+            </div>
+            <h2 class="text-xl font-semibold">Historique des réservations</h2>
+          </div>
+          <div class="history_content">
+            <p class="text-center text-gray-400">
+              Oups.. Vous n'avez pas d'historique de réservations
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <!-- Right Panel -->
+      <aside class="right-panel">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-semibold">Profil</h2>
+            <button id="edit-profile" class="btn btn-secondary">
+              <i data-feather="edit-2"></i>
+            </button>
+          </div>
+          <div class="flex flex-col items-center gap-4">
             <img
               src="/imgs/user.png"
               alt="User Image"
-              id="user-image"
-              width="300"
+              class="w-24 h-24 rounded-full"
+              id="profile-pic"
             />
+            <div class="text-center">
+              <h3 class="text-lg font-semibold" id="profile-name">
+                Nom d'utilisateur
+              </h3>
+              <p class="text-sm text-gray-400" id="profile-email">Email</p>
+            </div>
+            <div class="flex gap-2 w-full">
+              <button class="btn btn-secondary flex-1" id="change-password">
+                <i data-feather="lock"></i>
+                <span>Mot de passe</span>
+              </button>
+              <button class="btn btn-secondary flex-1" id="delete-account">
+                <i data-feather="trash-2"></i>
+                <span>Supprimer</span>
+              </button>
+            </div>
           </div>
-          <div class="profile_user_info">
-            <h2 id="user-name">Nom d'utilisateur</h2>
-            <p id="user-email">Email</p>
+        </div>
+
+        <!-- Calendar -->
+        <div>
+          <div class="calendar-header">
+            <h3 class="font-semibold">Calendrier</h3>
+            <span class="text-sm text-gray-400">Septembre 2023</span>
           </div>
-          <div class="profile_user_actions">
-            <button id="edit-profile">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20px"
-                height="20px"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path
-                    d="M11 4H7.2C6.0799 4 5.51984 4 5.09202 4.21799C4.71569 4.40974 4.40973 4.7157 4.21799 5.09202C4 5.51985 4 6.0799 4 7.2V16.8C4 17.9201 4 18.4802 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.51984 20 6.0799 20 7.2 20H16.8C17.9201 20 18.4802 20 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V12.5M15.5 5.5L18.3284 8.32843M10.7627 10.2373L17.411 3.58902C18.192 2.80797 19.4584 2.80797 20.2394 3.58902C21.0205 4.37007 21.0205 5.6364 20.2394 6.41745L13.3774 13.2794C12.6158 14.0411 12.235 14.4219 11.8012 14.7247C11.4162 14.9936 11.0009 15.2162 10.564 15.3882C10.0717 15.582 9.54378 15.6885 8.48793 15.9016L8 16L8.04745 15.6678C8.21536 14.4925 8.29932 13.9048 8.49029 13.3561C8.65975 12.8692 8.89125 12.4063 9.17906 11.9786C9.50341 11.4966 9.92319 11.0768 10.7627 10.2373Z"
-                    stroke="#ffffff"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </g>
-              </svg>
-              Modifier le profil
-            </button>
-            <button id="change-password">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20px"
-                height="20px"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path
-                    d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
-                    stroke="#000000"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </g>
-              </svg>
-              Changer le mot de passe
-            </button>
-            <button id="theme-toggle">
-              <img
-                id="theme-toggle-img"
-                src="imgs/moon.svg"
-                alt="Lune"
-              />Changer de thème
-            </button>
-            <button id="delete-account">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20px"
-                height="20px"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path
-                    d="M3 3L6 6M6 6L10 10M6 6V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18M6 6H4M10 10L14 14M10 10V17M14 14L18 18M14 14V17M18 18L21 21M18 6V12.3906M18 6H16M18 6H20M16 6L15.4558 4.36754C15.1836 3.55086 14.4193 3 13.5585 3H10.4415C9.94239 3 9.47572 3.18519 9.11861 3.5M16 6H11.6133"
-                    stroke="#000000"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </g>
-              </svg>
-              Supprimer le compte
-            </button>
-            <button id="logout">Déconnexion</button>
-            <p id="gestion_admin">Gestion Administrative</p>
-            <button
-              onclick="location.href='http://127.0.0.1:5500/gestion/utilisateurs.html'"
+          <div class="calendar">
+            <div class="calendar-grid">
+              <div class="day-name">L</div>
+              <div class="day-name">M</div>
+              <div class="day-name">M</div>
+              <div class="day-name">J</div>
+              <div class="day-name">V</div>
+              <div class="day-name">S</div>
+              <div class="day-name">D</div>
+
+              <div class="calendar-day">28</div>
+              <div class="calendar-day">29</div>
+              <div class="calendar-day">30</div>
+              <div class="calendar-day">31</div>
+              <div class="calendar-day day">1</div>
+              <div class="calendar-day day">2</div>
+              <div class="calendar-day day">3</div>
+
+              <div class="calendar-day day">4</div>
+              <div class="calendar-day day">5</div>
+              <div class="calendar-day day">6</div>
+              <div class="calendar-day day">7</div>
+              <div class="calendar-day day">8</div>
+              <div class="calendar-day day">9</div>
+              <div class="calendar-day day">10</div>
+
+              <div class="calendar-day day">11</div>
+              <div class="calendar-day day">12</div>
+              <div class="calendar-day day">13</div>
+              <div class="calendar-day day today">14</div>
+              <div class="calendar-day day active">15</div>
+              <div class="calendar-day day">16</div>
+              <div class="calendar-day day">17</div>
+
+              <div class="calendar-day day">18</div>
+              <div class="calendar-day day">19</div>
+              <div class="calendar-day day">20</div>
+              <div class="calendar-day day">21</div>
+              <div class="calendar-day day">22</div>
+              <div class="calendar-day day">23</div>
+              <div class="calendar-day day">24</div>
+
+              <div class="calendar-day day">25</div>
+              <div class="calendar-day day">26</div>
+              <div class="calendar-day day">27</div>
+              <div class="calendar-day day">28</div>
+              <div class="calendar-day day">29</div>
+              <div class="calendar-day day">30</div>
+              <div class="calendar-day day">31</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popular Topics / Admin Actions -->
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="font-semibold">Gestion Administrative</h3>
+            <span class="text-xs text-blue-500">Tout voir</span>
+          </div>
+          <div class="topics">
+            <a
+              href="http://127.0.0.1:5500/gestion/utilisateurs.html"
+              class="topic-item"
             >
-              Gestion Utilisateurs
-            </button>
-            <button
-              onclick="location.href='http://127.0.0.1:5500/gestion/vehicules.html'"
+              <div class="topic-icon bg-blue-500/20">
+                <i data-feather="users" class="text-blue-500"></i>
+              </div>
+              <div class="topic-details">
+                <p class="font-medium">Gestion Utilisateurs</p>
+                <p class="text-xs text-gray-400">Gérer les comptes</p>
+              </div>
+              <i data-feather="chevron-right" class="text-gray-400"></i>
+            </a>
+            <a
+              href="http://127.0.0.1:5500/gestion/vehicules.html"
+              class="topic-item"
             >
-              Gestion Véhicules
-            </button>
+              <div class="topic-icon bg-green-500/20">
+                <i data-feather="truck" class="text-green-500"></i>
+              </div>
+              <div class="topic-details">
+                <p class="font-medium">Gestion Véhicules</p>
+                <p class="text-xs text-gray-400">Gérer la flotte</p>
+              </div>
+              <i data-feather="chevron-right" class="text-gray-400"></i>
+            </a>
           </div>
         </div>
       </aside>
-      <section class="profile_content">
-        <h1>Bienvenue sur votre profil !</h1>
-        <p>
-          Vous pouvez gérer vos informations personnelles et vos paramètres de
-          compte ici.
-        </p>
-
-        <div class="stats">
-          <div class="stat">
-            <h2>Chargement..</h2>
-            <p>Véhicules disponibles</p>
-          </div>
-          <div class="stat">
-            <h2>Chargement..</h2>
-            <p>Clients actifs</p>
-          </div>
-          <div class="stat">
-            <h2>Chargement..</h2>
-            <p>Réservations en cours</p>
-          </div>
-        </div>
-
-        <div class="chart-container" style="max-width: 600px; margin-top: 2rem">
-          <canvas id="reservationsChart"></canvas>
-        </div>
-        <div class="reservations">
-          <div style="display: flex; align-items: center; gap: 1rem">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              stroke="#ffffff"
-              width="50px"
-              height="50px"
-            >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path
-                  d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
-                  stroke="#ffffff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                ></path>
-              </g>
-            </svg>
-            <h2>Réservations en cours</h2>
-          </div>
-          <div class="reservations_content" id="current-reservations">
-            <p>Chargement des réservations...</p>
-          </div>
-        </div>
-        <div class="reservations">
-          <div style="display: flex; align-items: center; gap: 1rem">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              stroke="#ffffff"
-              width="50px"
-              height="50px"
-            >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path
-                  d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
-                  stroke="#ffffff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                ></path>
-              </g>
-            </svg>
-            <h2>Mes réservations</h2>
-          </div>
-          <div class="reservations_content" id="my-reservations">
-            <p>Oups.. Vous n'avez pas de réservations actuellement</p>
-          </div>
-        </div>
-        <div class="history">
-          <div style="display: flex; align-items: center; gap: 1rem">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              width="50px"
-              height="50px"
-            >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path
-                  d="M3.0156 10H6.99999M3.0156 10V6M3.0156 10L6.34315 6.34315C9.46734 3.21895 14.5327 3.21895 17.6569 6.34315C20.781 9.46734 20.781 14.5327 17.6569 17.6569C14.5327 20.781 9.46734 20.781 6.34315 17.6569C5.55928 16.873 4.97209 15.9669 4.58158 15M12 9V13L15 14.5"
-                  stroke="#ffffff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-              </g>
-            </svg>
-            <h2>Historique des réservations</h2>
-          </div>
-          <div class="history_content">
-            <p>Oups.. Vous n'avez pas d'historique de réservations</p>
-          </div>
-        </div>
-        <div class="messages">
-          <div style="display: flex; align-items: center; gap: 1rem">
-            <svg
-              viewBox="-0.5 0 25 25"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              width="50px"
-              height="50px"
-            >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path
-                  d="M9.00977 21.39H19.0098C20.0706 21.39 21.0881 20.9685 21.8382 20.2184C22.5883 19.4682 23.0098 18.4509 23.0098 17.39V7.39001C23.0098 6.32915 22.5883 5.31167 21.8382 4.56152C21.0881 3.81138 20.0706 3.39001 19.0098 3.39001H7.00977C5.9489 3.39001 4.93148 3.81138 4.18134 4.56152C3.43119 5.31167 3.00977 6.32915 3.00977 7.39001V12.39"
-                  stroke="#000000"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M1.00977 18.39H11.0098"
-                  stroke="#000000"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M1.00977 15.39H5.00977"
-                  stroke="#000000"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M22.209 5.41992C16.599 16.0599 9.39906 16.0499 3.78906 5.41992"
-                  stroke="#000000"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-              </g>
-            </svg>
-            <h2>Messages reçus</h2>
-          </div>
-          <div id="admin-messages">
-            <p>Chargement des messages...</p>
-          </div>
-        </div>
-      </section>
-    </main>
+    </div>
     <script src="/js/account.js"></script>
-    <script src="/js/darkmode.js"></script>
   </body>
 </html>

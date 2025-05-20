@@ -58,6 +58,8 @@ header {
     gap: 2rem;
     align-items: center;
     padding: 2rem 0;
+    flex-wrap: wrap;
+    width: fit-content;
 }
 
 .filtre {
@@ -96,6 +98,7 @@ main {
     width: 100%;
     max-width: 300px;
     margin-right: 10px;
+    min-width: fit-content;
 }
 
 #searchBar:focus {
@@ -111,6 +114,7 @@ footer {
     padding: 2rem 0;
     text-align: center;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
 }
