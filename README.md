@@ -71,8 +71,8 @@ Ce projet est une application web permettant de gérer la location de voitures. 
 ## Installation
 1. Cloner le dépôt :
    ```bash
-   git clone <lien-du-repo>
-   cd <nom-du-repo>
+   git clone https://github.com/soydex/Fast-Go.git
+   cd Fast-Go
    ```
 2. Installer les dépendances :
    ```bash
@@ -82,6 +82,6 @@ Ce projet est une application web permettant de gérer la location de voitures. 
    ```bash
    node server.js
    ```
-   
-## Auteur
-Projet développé par nous.
+
+## Licence
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
