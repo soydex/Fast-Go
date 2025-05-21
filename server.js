@@ -133,7 +133,8 @@ app.get('/cars/:model_name', (req, res) => {
     });
 });
 
-const SECRET_KEY = 'vidaloca'; // Remplacez par une clé secrète sécurisée
+const SECRET_KEY = process.env.JWT_SECRET;
+
 
 // 🔹 Inscription d'un utilisateur
 app.post('/register', async (req, res) => {
