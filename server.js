@@ -133,7 +133,7 @@ app.get('/cars/:model_name', (req, res) => {
     });
 });
 
-const SECRET_KEY = process.env.JWT_SECRET;
+const SECRET_KEY = "test";
 
 
 // 🔹 Inscription d'un utilisateur
