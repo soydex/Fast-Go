@@ -2,10 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-body {
-    background-color: #F9F6F6;
-}
-
 /*Titre*/
 h1,
 h2,
@@ -30,7 +26,7 @@ h4 {
 }
 
 .btn-effacer-filtre {
-    color: black;
+    color: var(--text-color);
 }
 
 .btn-offre {
@@ -59,7 +55,7 @@ header {
     align-items: center;
     padding: 2rem 0;
     flex-wrap: wrap;
-    width: fit-content;
+    width: 100%;
 }
 
 .filtre {
@@ -107,40 +103,6 @@ main {
     box-shadow: 0 0 0 2px rgba(0,123,255,.25);
 }
 
-/*FOOTER*/
-footer {
-    background-color: #333;
-    color: white;
-    padding: 2rem 0;
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-}
-
-.footer-middle {
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footer-text a,
-.footer-links a {
-    color: white;
-    text-decoration: none;
-}
-
-.footer-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-}
 
 @media (max-width: 769px) {
 

@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => {
       console.error(error);
-      alert("Erreur lors de la récupération des statistiques.");
+      console.log("Erreur lors de la récupération des statistiques.");
     });
 
   // Charger les réservations en cours
@@ -266,7 +266,7 @@ function loadMyReservations() {
     })
     .catch((error) => {
       console.error(error);
-      alert("Erreur lors du chargement de vos réservations.");
+      console.log("Erreur lors du chargement de vos réservations.");
     });
 }
 
@@ -318,7 +318,7 @@ function loadAdminMessages() {
     })
     .catch((error) => {
       console.error(error);
-      alert("Erreur lors du chargement des messages.");
+      console.log("Erreur lors du chargement des messages.");
     });
 }
 
